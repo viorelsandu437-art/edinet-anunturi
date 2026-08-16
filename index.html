@@ -137,17 +137,17 @@
                 <div class="coloana-dreapta">
                     <div class="video-container-sidebar" id="container-video-lateral-principal">
                         <video id="player-video-dreapta-principal" controls muted playsinline></video>
-                        <p style="text-align:center; font-size:11px; color:#999; margin-top:5px;">Publicitate</p>
+                        <p id="lbl-publicitate-1" style="text-align:center; font-size:11px; color:#999; margin-top:5px;">Publicitate</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container" id="sectiune-detalii" style="display:none;">
-            <p style="margin-bottom: 15px;"><a href="#" onclick="arataPaginaPrincipala(); return false;" style="color: #0b5ed7; text-decoration: none; font-weight: bold;">← Înapoi la listă</a></p>
+            <p style="margin-bottom: 15px;"><a href="#" onclick="arataPaginaPrincipala(); return false;" id="lbl-inapoi-lista" style="color: #0b5ed7; text-decoration: none; font-weight: bold;">← Înapoi la listă</a></p>
             <div class="detalii-layout" id="continut-detalii-anunt"></div>
         </div>
         <div class="container" id="sectiune-profil-public" style="display:none;">
-            <p style="margin-bottom: 15px;"><a href="#" onclick="arataPaginaPrincipala(); return false;" style="color: #0b5ed7; text-decoration: none; font-weight: bold;">← Înapoi la listă</a></p>
+            <p style="margin-bottom: 15px;"><a href="#" onclick="arataPaginaPrincipala(); return false;" id="lbl-inapoi-lista-2" style="color: #0b5ed7; text-decoration: none; font-weight: bold;">← Înapoi la listă</a></p>
             <div id="continut-profil-public"></div>
         </div>
         <div class="container" id="sectiune-contul-meu" style="display:none;">
@@ -155,15 +155,15 @@
                 <img id="fizica-avatar-prev" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EUser%3C/text%3E%3C/svg%3E" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #0b5ed7;">
                 <div>
                     <h2 id="fizica-nume-afis" style="margin: 0; font-size: 22px; color: #1c1e21;">Nume Utilizator</h2>
-                    <div style="color: #0b5ed7; font-size: 14px; font-weight: bold; margin-top: 4px;">Cont Personal (Persoană Fizică)</div>
+                    <div id="lbl-cont-fizic-tag" style="color: #0b5ed7; font-size: 14px; font-weight: bold; margin-top: 4px;">Cont Personal (Persoană Fizică)</div>
                 </div>
             </div>
             <div id="panou-firma-container" style="display:none;">
                 <div class="profil-firma-header">
-                    <div id="firma-banner-prev" class="firma-banner" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Crect width='100%25' height='100%25' fill='%23e4e6eb'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23000000'%3EBanner%3C/text%3E%3C/svg%3E');"></div>
+                    <div id="firma-banner-prev" class="firma-banner" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'220\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e4e6eb\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'18\' fill=\'%23000000\'%3EBanner%3C/text%3E%3C/svg%3E');"></div>
                     <div class="firma-header-content">
                         <div class="firma-logo-container">
-                            <img id="firma-logo-prev" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='130'%20height='130'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%23cccccc'/%3E%3Ctext%20x='50%25'%20y='50%25'%20dominant-baseline='middle'%20text-anchor='middle'%20font-family='sans-serif'%20font-size='14'%20fill='%23000000'%3ELogo%3C/text%3E%3C/svg%3E" class="firma-logo">
+                            <img id="firma-logo-prev" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'130\' height=\'130\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23000000\'%3ELogo%3C/text%3E%3C/svg%3E" class="firma-logo">
                             <div class="firma-titlu-box">
                                 <h2 id="firma-nume-afis" class="firma-nume">Nume Firmă</h2>
                                 <div id="firma-profil-afis" class="firma-profil-tag">Domeniu de activitate</div>
@@ -214,14 +214,14 @@
                 <form id="formular-setari-profil">
                     <div class="form-group">
                         <label id="lbl-setari-avatar">Avatar (Imagine de profil):</label>
-                        <label for="input-avatar-user" class="custom-file-upload">📁 Alege Fișier</label>
+                        <label for="input-avatar-user" class="custom-file-upload" id="lbl-btn-avatar">📁 Alege Fișier</label>
                         <span id="nume-fisier-avatar" class="file-name-display">Niciun fișier selectat</span>
                         <input type="file" id="input-avatar-user" accept="image/*" style="display:none;" onchange="arataNumeFisier('input-avatar-user', 'nume-fisier-avatar')">
                     </div>
                     <div id="setari-extra-firma" style="display:none;">
                         <div class="form-group">
                             <label id="lbl-setari-banner">Banner copertă (Imagine mare de sus):</label>
-                            <label for="input-banner-firma" class="custom-file-upload">📁 Alege Fișier</label>
+                            <label for="input-banner-firma" class="custom-file-upload" id="lbl-btn-banner">📁 Alege Fișier</label>
                             <span id="nume-fisier-banner" class="file-name-display">Niciun fișier selectat</span>
                             <input type="file" id="input-banner-firma" accept="image/*" style="display:none;" onchange="arataNumeFisier('input-banner-firma', 'nume-fisier-banner')">
                         </div>
@@ -232,39 +232,39 @@
                 </form>
                 <hr style="margin: 40px 0; border:0; border-top: 1px solid #eee;">
                 <div style="background: #fff5f5; border: 1px solid #feb2b2; padding: 20px; border-radius: 8px;">
-                    <h3 style="color: #c53030; margin-top:0;">Zonă Periculoasă: Ștergere Cont</h3>
-                    <p style="color: #4a5568; font-size: 14px; margin-bottom: 15px;">Dacă doriți să vă ștergeți definitiv contul și toate datele asociate din platformă, folosiți butonul de mai jos.</p>
-                    <button type="button" onclick="stergeContulPropriu()" style="background: #e53e3e; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">🗑️ Șterge Contul Meu Definitiv</button>
+                    <h3 style="color: #c53030; margin-top:0;" id="lbl-zona-pericol">Zonă Periculoasă: Ștergere Cont</h3>
+                    <p style="color: #4a5568; font-size: 14px; margin-bottom: 15px;" id="lbl-desc-pericol">Dacă doriți să vă ștergeți definitiv contul și toate datele asociate din platformă, folosiți butonul de mai jos.</p>
+                    <button type="button" onclick="stergeContulPropriu()" id="btn-sterge-cont-definitiv" style="background: #e53e3e; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">🗑️ Șterge Contul Meu Definitiv</button>
                 </div>
             </div>
             <div id="panou-superadmin" style="display:none; background: white; padding: 30px; border-radius: 8px; border: 1px solid #8e44ad;">
-                <h3 style="color: #8e44ad; margin-top:0;">Încărcare Reclame Video</h3>
-                <p style="font-size:14px; color:#555;">Alege zona în care dorești să apară reclama video.</p>
+                <h3 style="color: #8e44ad; margin-top:0;" id="lbl-sa-titlu-video">Încărcare Reclame Video</h3>
+                <p style="font-size:14px; color:#555;" id="lbl-sa-desc-video">Alege zona în care dorești să apară reclama video.</p>
                 <div class="form-group" style="background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #eee;">
-                    <label style="color:#8e44ad;">Selectează Zona de afișare:</label>
+                    <label style="color:#8e44ad;" id="lbl-sa-select-zona">Selectează Zona de afișare:</label>
                     <select id="select-zona-video" style="border-color:#8e44ad; margin-bottom: 15px; padding: 10px; font-weight: bold; background: white;">
-                        <option value="sus">Player SUS (Orizontal, sub meniu)</option>
-                        <option value="lateral">Player LATERAL (Vertical, în sidebar)</option>
+                        <option value="sus" id="opt-zona-sus">Player SUS (Orizontal, sub meniu)</option>
+                        <option value="lateral" id="opt-zona-lat">Player LATERAL (Vertical, în sidebar)</option>
                     </select>
-                    <label for="input-video-reclama" class="custom-file-upload">📁 Alege Fișier Video</label>
+                    <label for="input-video-reclama" class="custom-file-upload" id="lbl-btn-video">📁 Alege Fișier Video</label>
                     <span id="nume-fisier-video" class="file-name-display">Niciun fișier selectat</span>
                     <input type="file" id="input-video-reclama" accept="video/*" style="display:none;" onchange="arataNumeFisier('input-video-reclama', 'nume-fisier-video')">
                 </div>
                 <button type="button" id="btn-incarca-video" class="btn-submit" style="background: #8e44ad; width:auto; padding:10px 20px; margin-top:15px;">Încarcă Video</button>
                 <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:30px;">
                     <div style="flex:1; min-width:250px;">
-                        <h4 style="border-bottom:2px solid #0b5ed7; padding-bottom:5px;">Reclame SUS (Active):</h4>
+                        <h4 style="border-bottom:2px solid #0b5ed7; padding-bottom:5px;" id="lbl-sa-reclame-sus">Reclame SUS (Active):</h4>
                         <div id="lista-reclame-sus">Se încarcă...</div>
                     </div>
                     <div style="flex:1; min-width:250px;">
-                        <h4 style="border-bottom:2px solid #27ae60; padding-bottom:5px;">Reclame LATERAL (Active):</h4>
+                        <h4 style="border-bottom:2px solid #27ae60; padding-bottom:5px;" id="lbl-sa-reclame-lat">Reclame LATERAL (Active):</h4>
                         <div id="lista-reclame-lateral">Se încarcă...</div>
                     </div>
                 </div>
             </div>
             <div id="panou-redactare" style="display:none;">
-                <h3 style="color: #d35400; margin-top:0; margin-bottom: 5px;">Anunțuri Suspecte (Necesită Moderare)</h3>
-                <p style="font-size:14px; color:#666; margin-bottom: 20px;">Aceste anunțuri au fost blocate temporar de sistem deoarece conțin cuvinte sensibile. Nu sunt vizibile publicului până nu sunt aprobate.</p>
+                <h3 style="color: #d35400; margin-top:0; margin-bottom: 5px;" id="lbl-sa-titlu-suspect">Anunțuri Suspecte (Necesită Moderare)</h3>
+                <p style="font-size:14px; color:#666; margin-bottom: 20px;" id="lbl-sa-desc-suspect">Aceste anunțuri au fost blocate temporar de sistem deoarece conțin cuvinte sensibile. Nu sunt vizibile publicului până nu sunt aprobate.</p>
                 <div class="lista-anunturi" id="container-anunturi-redactare"></div>
             </div>
             <div id="panou-utilizatori" style="display:none; background: white; padding: 25px; border-radius: 8px; border: 1px solid #34495e;">
@@ -274,11 +274,11 @@
                     </div>
                     <div style="margin-bottom: 20px; display: flex; align-items: center;">
                         <div style="font-size: 16px; font-weight: bold; color: #2c3e50; background: #f8f9fa; padding: 10px 18px; border-radius: 6px; border: 1px solid #e0e0e0; display: inline-flex; align-items: center; gap: 8px;">
-                            👥 Total Utilizatori: <span id="contor-utilizatori" style="background: #0b5ed7; color: white; padding: 2px 10px; border-radius: 20px; font-size: 15px;">0</span>
+                            <span id="lbl-total-utilizatori">👥 Total Utilizatori:</span> <span id="contor-utilizatori" style="background: #0b5ed7; color: white; padding: 2px 10px; border-radius: 20px; font-size: 15px;">0</span>
                         </div>
                     </div>
                 </div>
-                <h3 style="margin-top:0; margin-bottom:15px; color:#2c3e50;">Baza de date: Utilizatori Înregistrați</h3>
+                <h3 style="margin-top:0; margin-bottom:15px; color:#2c3e50;" id="lbl-baza-date-useri">Baza de date: Utilizatori Înregistrați</h3>
                 <div id="container-lista-utilizatori" style="overflow-x: auto;">
                     <p>Se încarcă baza de date cu utilizatori...</p>
                 </div>
@@ -290,9 +290,9 @@
             <a onclick="document.getElementById('modal-termeni').style.display='flex'" id="lbl-footer-termeni">Termeni și Condiții</a>
             <a onclick="document.getElementById('modal-contact-admin').style.display='flex'" id="lbl-footer-contact">Contactează-ne</a>
         </div>
-        <p>&copy; 2026 Edineț-Anunțuri. Toate drepturile rezervate.</p>
+        <p id="lbl-footer-drepturi">&copy; 2026 Edineț-Anunțuri. Toate drepturile rezervate.</p>
     </footer>
-    <div class="modal-overlay" id="modal-mesaj"><div class="modal-content"><button class="btn-inchide-modal" onclick="document.getElementById('modal-mesaj').style.display='none'">✕</button><h2>Contactează prin email</h2><form id="formular-mesaj"><input type="hidden" id="msg-email-vanzator"><div class="form-group"><label>Nume:</label><input type="text" id="msg-nume-expeditor" required></div><div class="form-group"><label>Email:</label><input type="email" id="msg-email-expeditor" required></div><div class="form-group"><label>Mesaj:</label><textarea id="msg-continut" rows="4" required></textarea></div><button type="submit" class="btn-submit">Trimite</button></form></div></div>
+    <div class="modal-overlay" id="modal-mesaj"><div class="modal-content"><button class="btn-inchide-modal" onclick="document.getElementById('modal-mesaj').style.display='none'">✕</button><h2 id="lbl-msg-titlu">Contactează prin email</h2><form id="formular-mesaj"><input type="hidden" id="msg-email-vanzator"><div class="form-group"><label id="lbl-msg-nume">Nume:</label><input type="text" id="msg-nume-expeditor" required></div><div class="form-group"><label id="lbl-msg-email">Email:</label><input type="email" id="msg-email-expeditor" required></div><div class="form-group"><label id="lbl-msg-text">Mesaj:</label><textarea id="msg-continut" rows="4" required></textarea></div><button type="submit" class="btn-submit" id="btn-msg-trimite">Trimite</button></form></div></div>
     <div class="modal-overlay" id="modal-login">
         <div class="modal-content">
             <button class="btn-inchide-modal" onclick="document.getElementById('modal-login').style.display='none'">✕</button>
@@ -327,7 +327,7 @@
             </div>
         </div>
     </div>
-    <div class="modal-overlay" id="modal-inregistrare"><div class="modal-content"><button class="btn-inchide-modal" onclick="document.getElementById('modal-inregistrare').style.display='none'">✕</button><h2 id="lbl-modal-reg-titlu">Creare Cont</h2><form id="formular-inregistrare"><div class="form-group"><label id="lbl-modal-reg-tip">Tip Cont:</label><select id="reg-tip-cont" onchange="comutaCampuriInregistrare()"><option value="fizica">Persoană Fizică</option><option value="firma">Firmă</option></select></div><div class="form-group"><label id="label-nume-reg">Nume:</label><input type="text" id="reg-nume" required></div><div id="campuri-firma-extra" style="display:none;"><div class="form-group"><label id="lbl-reg-profil">Profil (Domeniu):</label><input type="text" id="reg-profil"></div><div class="form-group"><label id="lbl-reg-despre">Despre noi:</label><textarea id="reg-despre" rows="2"></textarea></div></div><div class="form-group"><label id="lbl-modal-reg-tel">Telefon:</label><input type="tel" id="reg-telefon" required></div><div class="form-group"><label id="lbl-modal-reg-loc">Localitate:</label><select id="reg-localitate" required></select></div><div class="form-group"><label>Email:</label><input type="email" id="reg-email" required></div><div class="form-group"><label id="lbl-modal-reg-pass">Parolă:</label><input type="password" id="reg-parola" required></div><button type="submit" class="btn-submit" id="btn-modal-creaza">Crează</button></form></div></div>
+    <div class="modal-overlay" id="modal-inregistrare"><div class="modal-content"><button class="btn-inchide-modal" onclick="document.getElementById('modal-inregistrare').style.display='none'">✕</button><h2 id="lbl-modal-reg-titlu">Creare Cont</h2><form id="formular-inregistrare"><div class="form-group"><label id="lbl-modal-reg-tip">Tip Cont:</label><select id="reg-tip-cont" onchange="comutaCampuriInregistrare()"><option value="fizica" id="opt-pers-fiz">Persoană Fizică</option><option value="firma" id="opt-pers-firm">Firmă</option></select></div><div class="form-group"><label id="label-nume-reg">Nume:</label><input type="text" id="reg-nume" required></div><div id="campuri-firma-extra" style="display:none;"><div class="form-group"><label id="lbl-reg-profil">Profil (Domeniu):</label><input type="text" id="reg-profil"></div><div class="form-group"><label id="lbl-reg-despre">Despre noi:</label><textarea id="reg-despre" rows="2"></textarea></div></div><div class="form-group"><label id="lbl-modal-reg-tel">Telefon:</label><input type="tel" id="reg-telefon" required></div><div class="form-group"><label id="lbl-modal-reg-loc">Localitate:</label><select id="reg-localitate" required></select></div><div class="form-group"><label>Email:</label><input type="email" id="reg-email" required></div><div class="form-group"><label id="lbl-modal-reg-pass">Parolă:</label><input type="password" id="reg-parola" required></div><button type="submit" class="btn-submit" id="btn-modal-creaza">Crează</button></form></div></div>
     <div class="modal-overlay" id="modal-adaugare">
         <div class="modal-content">
             <button class="btn-inchide-modal" onclick="document.getElementById('modal-adaugare').style.display='none'">✕</button>
@@ -344,7 +344,7 @@
                         <input type="number" id="pret" required oninput="calculeazaConversieValuta()">
                     </div>
                     <div class="form-group" style="flex: 1;">
-                        <label>Valută:</label>
+                        <label id="lbl-add-valuta">Valută:</label>
                         <select id="valuta" onchange="calculeazaConversieValuta()">
                             <option value="MDL">MDL (Lei)</option>
                             <option value="EUR">EUR (€)</option>
@@ -356,7 +356,7 @@
                 <div class="form-group">
                     <label id="lbl-add-foto">Foto:</label>
                     <div class="container-fotografii" id="preview-imagini"></div>
-                    <label for="input-foto" class="custom-file-upload">📁 Adaugă Fotografii</label>
+                    <label for="input-foto" class="custom-file-upload" id="lbl-btn-add-foto">📁 Adaugă Fotografii</label>
                     <span id="nume-fisier-foto" class="file-name-display">Niciun fișier selectat</span>
                     <input type="file" id="input-foto" multiple accept="image/*" style="display:none;" onchange="arataNumeFisierMultiplu('input-foto', 'nume-fisier-foto')">
                 </div>
@@ -367,8 +367,8 @@
     <div class="modal-overlay" id="modal-termeni">
         <div class="modal-content">
             <button class="btn-inchide-modal" onclick="document.getElementById('modal-termeni').style.display='none'">✕</button>
-            <h2 style="font-size:24px; color:#0b5ed7; margin-top:0;">Termeni, Condiții și Pachete Business</h2>
-            <div style="font-size:15px; color:#333; line-height:1.7; max-height:550px; overflow-y:auto; padding-right:10px;">
+            <h2 style="font-size:24px; color:#0b5ed7; margin-top:0;" id="lbl-termeni-titlu">Termeni, Condiții și Pachete Business</h2>
+            <div style="font-size:15px; color:#333; line-height:1.7; max-height:550px; overflow-y:auto; padding-right:10px;" id="lbl-termeni-continut">
                 <h3 style="color:#1c1e21; margin-top:20px;">1. Condiții pentru Persoane Fizice</h3>
                 <p>• Fiecare persoană fizică beneficiază de posibilitatea de a adăuga anunțuri gratuite valabile timp de <strong>90 de zile</strong>.</p>
                 <p>• După expirarea celor 90 de zile, anunțul poate fi republicat sau ridicat în listă contra sumei de <strong>1 MDL (~0.05€)</strong> prin intermediul portofelului electronic.</p>
@@ -388,715 +388,844 @@
             </div>
         </div>
     </div>
-    <div class="modal-overlay" id="modal-contact-admin"><div class="modal-content"><button class="btn-inchide-modal" onclick="document.getElementById('modal-contact-admin').style.display='none'">✕</button><h2>Contact Admin</h2><form id="formular-contact-admin"><div class="form-group"><label>Email:</label><input type="email" id="admin-msg-email" required></div><div class="form-group"><label>Mesaj:</label><textarea id="admin-msg-text" rows="4" required></textarea></div><button type="submit" class="btn-submit">Trimite</button></form></div></div>
+    <div class="modal-overlay" id="modal-contact-admin"><div class="modal-content"><button class="btn-inchide-modal" onclick="document.getElementById('modal-contact-admin').style.display='none'">✕</button><h2 id="lbl-cnt-admin-titlu">Contact Admin</h2><form id="formular-contact-admin"><div class="form-group"><label id="lbl-cnt-email">Email:</label><input type="email" id="admin-msg-email" required></div><div class="form-group"><label id="lbl-cnt-mesaj">Mesaj:</label><textarea id="admin-msg-text" rows="4" required></textarea></div><button type="submit" class="btn-submit" id="btn-cnt-trimite">Trimite</button></form></div></div>
+    
     <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, deleteDoc, updateDoc, getDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendEmailVerification, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-storage.js";
-import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-functions.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, deleteDoc, updateDoc, getDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendEmailVerification, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-storage.js";
+        import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-functions.js";
 
-(function() {
-    emailjs.init({ publicKey: "onV7RfXkiQzGGziPF" });
-})();
+        (function() {
+            emailjs.init({ publicKey: "onV7RfXkiQzGGziPF" });
+        })();
 
-const app = initializeApp({
-    apiKey: "AIzaSyAiRBIDDC0gaU4MAxKvV1sksfUbEsBxucA", 
-    authDomain: "panoul-de-anunturi-edinet.firebaseapp.com",
-    projectId: "panoul-de-anunturi-edinet", 
-    storageBucket: "panoul-de-anunturi-edinet.firebasestorage.app"
-});
-const db = getFirestore(app); const auth = getAuth(app); const storage = getStorage(app); const functions = getFunctions(app, "us-central1");
-
-function sanitizeUrl(url) {
-    if (!url || typeof url !== 'string') return "";
-    if (url.startsWith('http') || url.startsWith('data:')) return url;
-    return ""; 
-}
-
-window.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') {
-        if (!e.target.src.includes('data:image/svg')) {
-            e.target.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EFara+Imagine%3C/text%3E%3C/svg%3E";
-        }
-    }
-}, true);
-
-document.getElementById("formular-mesaj").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const templateParams = {
-        name: document.getElementById("msg-nume-expeditor").value,
-        email: document.getElementById("msg-email-expeditor").value,
-        message: document.getElementById("msg-continut").value
-    };
-    emailjs.send('default_service', 'template_xz3tu8g', templateParams)
-        .then(function() {
-            alert('Mesajul a fost trimis cu succes!');
-            document.getElementById('modal-mesaj').style.display = 'none';
-            document.getElementById('formular-mesaj').reset();
-        }, function(error) {
-            alert('Eroare la trimitere: ' + JSON.stringify(error));
+        const app = initializeApp({
+            apiKey: "AIzaSyAiRBIDDC0gaU4MAxKvV1sksfUbEsBxucA", 
+            authDomain: "panoul-de-anunturi-edinet.firebaseapp.com",
+            projectId: "panoul-de-anunturi-edinet", 
+            storageBucket: "panoul-de-anunturi-edinet.firebasestorage.app"
         });
-});
+        const db = getFirestore(app); const auth = getAuth(app); const storage = getStorage(app); const functions = getFunctions(app, "us-central1");
 
-window.arataNumeFisier = function(inputId, spanId) {
-    const input = document.getElementById(inputId);
-    const span = document.getElementById(spanId);
-    if(input.files && input.files[0]) {
-        span.innerText = input.files[0].name;
-        span.style.color = "#27ae60";
-        span.style.fontWeight = "bold";
-    }
-}
-
-window.arataNumeFisierMultiplu = function(inputId, spanId) {
-    const input = document.getElementById(inputId);
-    const span = document.getElementById(spanId);
-    if(input.files && input.files.length > 0) {
-        span.innerText = `${input.files.length} fișier(e) selectat(e)`;
-        span.style.color = "#27ae60";
-        span.style.fontWeight = "bold";
-    }
-}
-
-window.calculeazaConversieValuta = function() {
-    const pretVal = parseFloat(document.getElementById("pret").value) || 0;
-    const valutaSel = document.getElementById("valuta").value;
-    const infoBox = document.getElementById("text-conversie-info");
-    if(pretVal <= 0) { infoBox.innerText = ""; return; }
-    if(valutaSel === 'MDL') {
-        infoBox.innerText = `💱 Echivalent estimat: ~${(pretVal / 20).toFixed(2)} EUR (€)`;
-    } else {
-        infoBox.innerText = `💱 Echivalent estimat: ~${(pretVal * 20).toFixed(2)} MDL (Lei)`;
-    }
-}
-
-window.alimenteazaPortofel = async function(suma, metoda) {
-    if(!auth.currentUser) return alert("Vă rugăm să vă autentificați pentru a alimenta portofelul!");
-    try {
-        const userRef = doc(db, "utilizatori", auth.currentUser.uid);
-        const uDoc = await getDoc(userRef);
-        let soldCurent = 0;
-        if(uDoc.exists()) {
-            soldCurent = uDoc.data().soldMdl || 0;
+        function sanitizeUrl(url) {
+            if (!url || typeof url !== 'string') return "";
+            if (url.startsWith('http') || url.startsWith('data:')) return url;
+            return ""; 
         }
-        let soldNou = soldCurent + suma;
-        await setDoc(userRef, { soldMdl: soldNou }, { merge: true });
-        alert(`Portofel alimentat cu succes prin ${metoda} cu ${suma} MDL! Sold nou: ${soldNou.toFixed(2)} MDL`);
-        window.location.reload();
-    } catch(err) {
-        alert("Eroare la alimentarea portofelului: " + err.message);
-    }
-}
 
-window.toateAnunturile = []; window.rolUtilizatorGlobal = 'user'; window.dateUtilizatorCurent = null;
-window.stareTabCurent = 'activ'; window.fisiereSelectateGlobal = [];
-window.playlistReclameSus = []; window.playlistReclameLateral = [];
-window.toataListaUtilizatori = []; 
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                if (!e.target.src.includes('data:image/svg')) {
+                    e.target.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EFara+Imagine%3C/text%3E%3C/svg%3E";
+                }
+            }
+        }, true);
 
-window.limbaCurenta = 'RO';
-const dictionar = {
-    'RO': { btnAdauga: '+ Adaugă', btnAcasa: 'Acasă', btnCont: 'Contul Meu', btnLogin: 'Autentificare', btnLogout: 'Deconectare', btnCauta: '🔍 Caută', catToate: 'Toate Categoriile', catSelect: 'Alege categoria...', locToate: 'Toate localitățile', locSelect: 'Alege localitatea...', titluLogin: 'Autentificare', lblParola: 'Parolă:', btnIntra: 'Intră', btnNuCont: 'Nu ai cont?', btnRecup: 'Ați uitat parola?', titluRecup: 'Recuperare Parolă', descRecup: 'Introduceți adresa de email pentru a primi un link de resetare a parolei.', btnTrimiteRecup: 'Trimite Link', btnInapoiLogin: 'Înapoi la Autentificare', titluReg: 'Creare Cont', lblTip: 'Tip Cont:', lblNumeFiz: 'Nume:', lblNumeFirm: 'Denumire Firmă / Companie:', lblTel: 'Telefon:', lblLoc: 'Localitate:', btnCreaza: 'Crează', lblProfilFirma: 'Profil (Domeniu):', lblDespreFirma: 'Despre noi:', titluAdd: 'Adaugă Anunț', lblAddTitlu: 'Titlu:', lblAddCat: 'Categorie:', lblAddLoc: 'Localitate:', lblAddTel: 'Telefon:', lblAddPret: 'Preț:', lblAddDesc: 'Descriere:', lblAddFoto: 'Foto:', btnAddFoto: 'Adaugă Foto', btnPublica: 'Publică', titluPanou: 'Panoul de administrare', tabActive: 'Anunțuri Active', tabNeactive: 'Anunțuri Neactive / Expirate', tabPortofel: '💰 Portofel & Plăți', tabSetari: 'Setări Cont & Ștergere', tabDespre: 'Despre noi', tabProfilFirma: 'Profilul firmei', titluDespre: 'Despre compania noastră', titluProfilFirma: 'Profilul și activitatea firmei', titluPortofel: 'Sold Curent în Portofel', titluAlimenteaza: 'Alimentează Portofelul', titluSetari: 'Personalizare Profil & Branding', lblSetariAvatar: 'Avatar (Imagine de profil):', lblSetariBanner: 'Banner copertă (Imagine mare de sus):', lblSetariProfil: 'Profil / Domeniu de activitate:', lblSetariDespre: 'Despre noi (Scurtă descriere):', btnSalveazaSetari: 'Salvează Setările', msgNiciunAnunt: 'Niciun anunț găsit.', msgIncarcare: 'Se încarcă anunțurile...', msgFaraAnunturi: 'Nu ai anunțuri aici.' },
-    'RU': { btnAdauga: '+ Добавить', btnAcasa: 'Главная', btnCont: 'Мой Аккаунт', btnLogin: 'Войти', btnLogout: 'Выйти', btnCauta: '🔍 Поиск', catToate: 'Все категории', catSelect: 'Выберите категорию...', locToate: 'Все населенные пункты', locSelect: 'Выберите населенный пункт...', titluLogin: 'Авторизация', lblParola: 'Пароль:', btnIntra: 'Войти', btnNuCont: 'Нет аккаунта?', btnRecup: 'Забыли пароль?', titluRecup: 'Восстановление пароля', descRecup: 'Введите свой адрес электронной почты, чтобы получить ссылку для сброса пароля.', btnTrimiteRecup: 'Отправить ссылку', btnInapoiLogin: 'Назад к авторизации', titluReg: 'Создать Аккаунт', lblTip: 'Тип аккаунта:', lblNumeFiz: 'Имя:', lblNumeFirm: 'Название компании:', lblTel: 'Телефон:', lblLoc: 'Населенный пункт:', btnCreaza: 'Создать', lblProfilFirma: 'Профиль (Сфера):', lblDespreFirma: 'О нас:', titluAdd: 'Добавить Объявление', lblAddTitlu: 'Заголовок:', lblAddCat: 'Категория:', lblAddLoc: 'Населенный пункт:', lblAddTel: 'Телефон:', lblAddPret: 'Цена:', lblAddDesc: 'Описание:', lblAddFoto: 'Фото:', btnAddFoto: 'Добавить Фото', btnPublica: 'Опубликовать', titluPanou: 'Панель управления', tabActive: 'Активные', tabNeactive: 'Неактивные / Истекшие', tabPortofel: '💰 Кошелек и Платежи', tabSetari: 'Настройки и Удаление', tabDespre: 'О нас', tabProfilFirma: 'Профиль фирмы', titluDespre: 'О нашей компании', titluProfilFirma: 'Профиль и деятельность', titluPortofel: 'Текущий баланс', titluAlimenteaza: 'Пополнить кошелек', titluSetari: 'Настройка профиля и бренда', lblSetariAvatar: 'Аватар (Фото профиля):', lblSetariBanner: 'Баннер обложки (Большое фото):', lblSetariProfil: 'Профиль / Сфера деятельности:', lblSetariDespre: 'О нас (Краткое описание):', btnSalveazaSetari: 'Сохранить', msgNiciunAnunt: 'Объявления не найдены.', msgIncarcare: 'Загрузка объявлений...', msgFaraAnunturi: 'У вас нет объявлений.' }
-};
-
-window.comutaLimba = function() {
-    window.limbaCurenta = (window.limbaCurenta === 'RO') ? 'RU' : 'RO';
-    const lang = window.limbaCurenta;
-    document.getElementById('btn-schimba-limba').innerText = lang === 'RO' ? '🌐 RU' : '🌐 RO';
-    document.getElementById('btn-deschide-adaugare').innerText = dictionar[lang].btnAdauga;
-    document.getElementById('btn-acasa').innerText = dictionar[lang].btnAcasa;
-    document.getElementById('btn-cont-meu').innerText = dictionar[lang].btnCont;
-    document.getElementById('btn-deschide-login').innerText = auth.currentUser ? dictionar[lang].btnLogout : dictionar[lang].btnLogin;
-    document.getElementById('btn-cauta-filtre').innerText = dictionar[lang].btnCauta;
-    populeazaSelectCategorii('filtrare-categorie', dictionar[lang].catToate); populeazaSelectCategorii('categorie', dictionar[lang].catSelect); populeazaSelectSate('filtrare-regiune', dictionar[lang].locToate); populeazaSelectSate('regiune', dictionar[lang].locSelect); populeazaSelectSate('reg-localitate', dictionar[lang].locSelect);
-    if(document.getElementById('lbl-modal-login-titlu')) document.getElementById('lbl-modal-login-titlu').innerText = dictionar[lang].titluLogin;
-    if(document.getElementById('lbl-modal-parola')) document.getElementById('lbl-modal-parola').innerText = dictionar[lang].lblParola;
-    if(document.getElementById('btn-modal-intra')) document.getElementById('btn-modal-intra').innerText = dictionar[lang].btnIntra;
-    if(document.getElementById('btn-modal-nu-cont')) document.getElementById('btn-modal-nu-cont').innerText = dictionar[lang].btnNuCont;
-    if(document.getElementById('btn-modal-recuperare')) document.getElementById('btn-modal-recuperare').innerText = dictionar[lang].btnRecup;
-    if(document.getElementById('lbl-modal-recup-titlu')) document.getElementById('lbl-modal-recup-titlu').innerText = dictionar[lang].titluRecup;
-    if(document.getElementById('lbl-modal-recup-desc')) document.getElementById('lbl-modal-recup-desc').innerText = dictionar[lang].descRecup;
-    if(document.getElementById('btn-modal-trimite-recup')) document.getElementById('btn-modal-trimite-recup').innerText = dictionar[lang].btnTrimiteRecup;
-    if(document.getElementById('btn-modal-inapoi-login')) document.getElementById('btn-modal-inapoi-login').innerText = dictionar[lang].btnInapoiLogin;
-    if(document.getElementById('lbl-modal-reg-titlu')) document.getElementById('lbl-modal-reg-titlu').innerText = dictionar[lang].titluReg;
-    if(document.getElementById('lbl-modal-reg-tip')) document.getElementById('lbl-modal-reg-tip').innerText = dictionar[lang].lblTip;
-    if(document.getElementById('lbl-modal-reg-tel')) document.getElementById('lbl-modal-reg-tel').innerText = dictionar[lang].lblTel;
-    if(document.getElementById('lbl-modal-reg-loc')) document.getElementById('lbl-modal-reg-loc').innerText = dictionar[lang].lblLoc;
-    if(document.getElementById('lbl-modal-reg-pass')) document.getElementById('lbl-modal-reg-pass').innerText = dictionar[lang].lblParola;
-    if(document.getElementById('btn-modal-creaza')) document.getElementById('btn-modal-creaza').innerText = dictionar[lang].btnCreaza;
-    if(document.getElementById('lbl-reg-profil')) document.getElementById('lbl-reg-profil').innerText = dictionar[lang].lblProfilFirma;
-    if(document.getElementById('lbl-reg-despre')) document.getElementById('lbl-reg-despre').innerText = dictionar[lang].lblDespreFirma;
-    const tip = document.getElementById('reg-tip-cont').value;
-    document.getElementById('label-nume-reg').innerText = (tip === 'firma') ? dictionar[lang].lblNumeFirm : dictionar[lang].lblNumeFiz;
-    if(document.getElementById('titlu-modal-formular')) document.getElementById('titlu-modal-formular').innerText = dictionar[lang].titluAdd;
-    if(document.getElementById('lbl-add-titlu')) document.getElementById('lbl-add-titlu').innerText = dictionar[lang].lblAddTitlu;
-    if(document.getElementById('lbl-add-cat')) document.getElementById('lbl-add-cat').innerText = dictionar[lang].lblAddCat;
-    if(document.getElementById('lbl-add-loc')) document.getElementById('lbl-add-loc').innerText = dictionar[lang].lblAddLoc;
-    if(document.getElementById('lbl-add-tel')) document.getElementById('lbl-add-tel').innerText = dictionar[lang].lblAddTel;
-    if(document.getElementById('lbl-add-pret')) document.getElementById('lbl-add-pret').innerText = dictionar[lang].lblAddPret;
-    if(document.getElementById('lbl-add-desc')) document.getElementById('lbl-add-desc').innerText = dictionar[lang].lblAddDesc;
-    if(document.getElementById('lbl-add-foto')) document.getElementById('lbl-add-foto').innerText = dictionar[lang].lblAddFoto;
-    if(document.getElementById('buton-publicare')) document.getElementById('buton-publicare').innerText = dictionar[lang].btnPublica;
-    if(document.getElementById('titlu-panou-cont')) document.getElementById('titlu-panou-cont').innerText = dictionar[lang].titluPanou;
-    if(document.getElementById('tab-active')) document.getElementById('tab-active').innerText = dictionar[lang].tabActive;
-    if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').innerText = dictionar[lang].tabNeactive;
-    if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').innerText = dictionar[lang].tabPortofel;
-    if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').innerText = dictionar[lang].tabSetari;
-    if(document.getElementById('tab-btn-despre')) document.getElementById('tab-btn-despre').innerText = dictionar[lang].tabDespre;
-    if(document.getElementById('tab-btn-profil')) document.getElementById('tab-btn-profil').innerText = dictionar[lang].tabProfilFirma;
-    if(document.getElementById('lbl-titlu-despre')) document.getElementById('lbl-titlu-despre').innerText = dictionar[lang].titluDespre;
-    if(document.getElementById('lbl-titlu-profil')) document.getElementById('lbl-titlu-profil').innerText = dictionar[lang].titluProfilFirma;
-    if(document.getElementById('lbl-titlu-portofel')) document.getElementById('lbl-titlu-portofel').innerText = dictionar[lang].titluPortofel;
-    if(document.getElementById('lbl-titlu-alimenteaza')) document.getElementById('lbl-titlu-alimenteaza').innerText = dictionar[lang].titluAlimenteaza;
-    if(document.getElementById('lbl-titlu-setari')) document.getElementById('lbl-titlu-setari').innerText = dictionar[lang].titluSetari;
-    if(document.getElementById('lbl-setari-avatar')) document.getElementById('lbl-setari-avatar').innerText = dictionar[lang].lblSetariAvatar;
-    if(document.getElementById('lbl-setari-banner')) document.getElementById('lbl-setari-banner').innerText = dictionar[lang].lblSetariBanner;
-    if(document.getElementById('lbl-setari-profil')) document.getElementById('lbl-setari-profil').innerText = dictionar[lang].lblSetariProfil;
-    if(document.getElementById('lbl-setari-despre')) document.getElementById('lbl-setari-despre').innerText = dictionar[lang].lblSetariDespre;
-    if(document.getElementById('btn-salveaza-profil')) document.getElementById('btn-salveaza-profil').innerText = dictionar[lang].btnSalveazaSetari;
-    if(window.deseneazaAnunturi) window.deseneazaAnunturi();
-}
-
-window.schimbaTabFirma = function(tabName) {
-    document.querySelectorAll('.btn-tab-firma').forEach(btn => btn.classList.remove('activ'));
-    document.getElementById('tab-continut-despre').style.display = 'none';
-    document.getElementById('tab-continut-profil').style.display = 'none';
-    if(tabName === 'despre') {
-        document.getElementById('tab-btn-despre').classList.add('activ');
-        document.getElementById('tab-continut-despre').style.display = 'block';
-    } else {
-        document.getElementById('tab-btn-profil').classList.add('activ');
-        document.getElementById('tab-continut-profil').style.display = 'block';
-    }
-}
-
-onSnapshot(query(collection(db, "reclame_video"), orderBy("dataIncarcare", "asc")), snap => {
-    window.playlistReclameSus = []; window.playlistReclameLateral = [];
-    let htmlSus = ""; let htmlLateral = "";
-    snap.forEach(d => {
-        let data = d.data(); let zona = data.zona || 'sus';
-        let blocReclama = `<div style="display:flex; justify-content:space-between; align-items:center; background:#f9f9f9; padding:10px; margin-bottom:5px; border-radius:4px; border:1px solid #eee;"><video src="${data.url}" width="100" height="60" muted style="background:#000; border-radius:4px; object-fit:cover;"></video><button type="button" onclick="stergeReclamaVideo('${d.id}')" style="background:#e74c3c; color:white; border:none; padding:6px 10px; border-radius:4px; font-weight:bold; cursor:pointer; font-size:12px;">Șterge</button></div>`;
-        if(zona === 'sus') { window.playlistReclameSus.push(data.url); htmlSus += blocReclama; } 
-        else { window.playlistReclameLateral.push(data.url); htmlLateral += blocReclama; }
-    });
-    const divSus = document.getElementById("lista-reclame-sus"); if(divSus) divSus.innerHTML = htmlSus || "<p style='color:#777;'>Nicio reclamă Sus.</p>";
-    const divLat = document.getElementById("lista-reclame-lateral"); if(divLat) divLat.innerHTML = htmlLateral || "<p style='color:#777;'>Nicio reclamă Laterală.</p>";
-    ruleazaPlaylistVideo('player-video-sus', window.playlistReclameSus, 'container-video-sus');
-    ruleazaPlaylistVideo('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
-});
-
-window.ruleazaPlaylistVideo = function(elementId, playlistArray, containerId) {
-    const videoPlayer = document.getElementById(elementId); const container = document.getElementById(containerId);
-    if (!videoPlayer) return;
-    if (playlistArray.length === 0) { videoPlayer.src = ""; if(container) container.style.display = 'block'; return; }
-    if(container) container.style.display = 'block';
-    let indexCurent = 0;
-    if(!videoPlayer.src.includes(playlistArray[indexCurent])) videoPlayer.src = playlistArray[indexCurent];
-    videoPlayer.onended = function() { indexCurent = (indexCurent + 1) % playlistArray.length; videoPlayer.src = playlistArray[indexCurent]; videoPlayer.play().catch(e => console.log(e)); };
-}
-
-window.stergeReclamaVideo = async function(id) { if(confirm("Ștergi definitiv această reclamă?")) { await deleteDoc(doc(db, "reclame_video", id)); alert("Reclama a fost ștearsă!"); } }
-
-const btnIncarcaVideo = document.getElementById("btn-incarca-video");
-if(btnIncarcaVideo) {
-    btnIncarcaVideo.addEventListener("click", async () => {
-        const file = document.getElementById("input-video-reclama").files[0];
-        const zonaSelectata = document.getElementById("select-zona-video").value;
-        if(!file) return alert("Selectează un fișier video!");
-        if(zonaSelectata === 'sus' && window.playlistReclameSus.length >= 5) return alert("Limită: 5 reclame SUS active!");
-        if(zonaSelectata === 'lateral' && window.playlistReclameLateral.length >= 5) return alert("Limită: 5 reclame LATERAL active!");
-        btnIncarcaVideo.innerText = "Se încarcă..."; btnIncarcaVideo.disabled = true;
-        try {
-            const rVid = ref(storage, 'reclame_video/' + zonaSelectata + '_' + Date.now() + '_' + file.name);
-            await uploadBytes(rVid, file); const url = await getDownloadURL(rVid);
-            await addDoc(collection(db, "reclame_video"), { url: url, zona: zonaSelectata, dataIncarcare: serverTimestamp() });
-            alert("Reclamă publicată în zona: " + zonaSelectata.toUpperCase()); document.getElementById("input-video-reclama").value = '';
-            document.getElementById("nume-fisier-video").innerText = "Niciun fișier selectat";
-        } catch(e) { alert("Eroare: " + e.message); } finally { btnIncarcaVideo.innerText = "Încarcă Video"; btnIncarcaVideo.disabled = false; }
-    });
-}
-
-const cuvinteInterzise = ["arma", "arme", "pistol", "pusca", "glont", "bomba", "drog", "droguri", "cocaina", "heroina", "marijuana", "canabis", "etnobotanice", "pula", "pizda", "fut", "curva", "prostituata", "sex", "escorta"];
-function contineCuvinteInterzise(text) { return cuvinteInterzise.some(c => new RegExp("\\b" + c + "\\b", "i").test(text.toLowerCase())); }
-
-window.onload = function() {
-    populeazaSelectCategorii('filtrare-categorie', 'Toate Categoriile'); populeazaSelectCategorii('categorie', 'Alege categoria...');
-    populeazaSelectSate('filtrare-regiune', 'Toate localitățile'); populeazaSelectSate('regiune', 'Alege localitatea...'); populeazaSelectSate('reg-localitate', 'Alege localitatea...');
-};
-
-const categoriiLista = [ "Fructe, Legume și Produse Ecologice", "Produse Zootehnice și Apicole", "Animale Domestice și Păsări", "Cereale, Furaje și Nutrețuri", "Tehnică Agricolă și Utilaje", "Material Semincer, Puieți și Răsaduri", "Terenuri Agricole și Extravilane", "Piese de Schimb (Auto și Agricole)", "Imobiliare (Case, Apartamente, Spații)", "Auto, Moto și Transport", "Electronice și Electrocasnice", "Materiale de Construcție și Reparații", "Mobilă și Articole pentru Casă", "Îmbrăcăminte, Încălțăminte și Accesorii", "Locuri de Muncă (Oferte și Cereri)", "Servicii Profesionale", "Diverse / Altele" ];
-const sateLista = [ "Edineț (Oraș)", "Cupcini (Oraș)", "Alexăndreni", "Bădragii Noi", "Bădragii Vechi", "Bălănești", "Bleșteni", "Brătușeni", "Brînzeni", "Burlănești", "Buzdugeni", "Cepeleuți", "Chetroșica Nouă", "Chetroșica Veche", "Chiurt", "Clișcăuți", "Constantinovca", "Corpaci", "Cuconeștii Noi", "Fetești", "Fîntîna Albă", "Gașpar", "Goleni", "Gordinești", "Hancăuți", "Hincăuți", "Hlinaia", "Iachimeni", "Lopatnic", "Obreja", "Onești", "Parcova", "Poiana", "Rîngaci", "Roșiori", "Rotunda", "Ruseni", "Slobozia", "Stolniceni", "Șofrîncani", "Terebna", "Tîrnova", "Trinca", "Vancicăuți", "Viișoara", "Volodeni", "Zăbriceni" ];
-function populeazaSelectCategorii(id, text) { const sel = document.getElementById(id); if(sel) { sel.innerHTML = `<option value="">${text}</option>`; categoriiLista.forEach(c => sel.innerHTML += `<option value="${c}">${c}</option>`); } }
-function populeazaSelectSate(id, text) { const sel = document.getElementById(id); if(sel) { sel.innerHTML = `<option value="">${text}</option>`; sateLista.forEach(s => sel.innerHTML += `<option value="${s}">${s}</option>`); } }
-
-window.comutaCampuriInregistrare = function() {
-    const tip = document.getElementById('reg-tip-cont').value;
-    document.getElementById('campuri-firma-extra').style.display = (tip === 'firma') ? 'block' : 'none';
-}
-
-window.arataPaginaPrincipala = function() {
-    document.getElementById('sectiune-principala').style.display = 'block'; document.getElementById('sectiune-detalii').style.display = 'none';
-    document.getElementById('sectiune-profil-public').style.display = 'none'; document.getElementById('sectiune-contul-meu').style.display = 'none';
-    if(window.deseneazaAnunturi) window.deseneazaAnunturi();
-    ruleazaPlaylistVideo('player-video-sus', window.playlistReclameSus, 'container-video-sus');
-    ruleazaPlaylistVideo('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
-}
-
-window.arataContulMeu = function() {
-    document.getElementById('sectiune-principala').style.display = 'none'; document.getElementById('sectiune-detalii').style.display = 'none';
-    document.getElementById('sectiune-profil-public').style.display = 'none'; document.getElementById('sectiune-contul-meu').style.display = 'block';
-    if(window.rolUtilizatorGlobal === 'super_admin') schimbaTabCont('utilizatori'); else schimbaTabCont('activ');
-}
-
-window.schimbaTabCont = function(stare) {
-    window.stareTabCurent = stare;
-    document.querySelectorAll('.tab-cont').forEach(t => t.classList.remove('activ'));
-    document.getElementById('container-anunturi-personale').style.display = 'none';
-    document.getElementById('panou-portofel').style.display = 'none';
-    document.getElementById('panou-setari-cont').style.display = 'none';
-    document.getElementById('panou-superadmin').style.display = 'none';
-    document.getElementById('panou-redactare').style.display = 'none';
-    document.getElementById('panou-utilizatori').style.display = 'none';
-    
-    if(stare === 'activ') { document.getElementById('tab-active').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
-    else if(stare === 'inactiv') { document.getElementById('tab-neactive').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
-    else if(stare === 'portofel') { document.getElementById('tab-portofel').classList.add('activ'); document.getElementById('panou-portofel').style.display = 'block'; }
-    else if(stare === 'stergere') { document.getElementById('tab-stergere').classList.add('activ'); document.getElementById('panou-setari-cont').style.display = 'block'; }
-    else if(stare === 'superadmin') { document.getElementById('tab-superadmin').classList.add('activ'); document.getElementById('panou-superadmin').style.display = 'block'; }
-    else if(stare === 'redactare') { document.getElementById('tab-redactare').classList.add('activ'); document.getElementById('panou-redactare').style.display = 'block'; incarcaAnunturiRedactare(); }
-    else if(stare === 'utilizatori') { document.getElementById('tab-utilizatori').classList.add('activ'); document.getElementById('panou-utilizatori').style.display = 'block'; incarcaUtilizatori(); }
-    
-    if(stare === 'activ' || stare === 'inactiv') if(window.deseneazaAnunturi) window.deseneazaAnunturi();
-}
-
-window.incarcaUtilizatori = async function() {
-    const container = document.getElementById("container-lista-utilizatori");
-    container.innerHTML = "<p>Se preia lista utilizatorilor...</p>";
-    try {
-        const snap = await getDocs(collection(db, "utilizatori"));
-        window.toataListaUtilizatori = [];
-        snap.forEach(doc => {
-            let u = doc.data(); 
-            u.id = doc.id;
-            window.toataListaUtilizatori.push(u);
+        document.getElementById("formular-mesaj").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const templateParams = {
+                name: document.getElementById("msg-nume-expeditor").value,
+                email: document.getElementById("msg-email-expeditor").value,
+                message: document.getElementById("msg-continut").value
+            };
+            emailjs.send('default_service', 'template_xz3tu8g', templateParams)
+                .then(function() {
+                    alert(window.limbaCurenta === 'RO' ? 'Mesajul a fost trimis cu succes!' : 'Сообщение успешно отправлено!');
+                    document.getElementById('modal-mesaj').style.display = 'none';
+                    document.getElementById('formular-mesaj').reset();
+                }, function(error) {
+                    alert((window.limbaCurenta === 'RO' ? 'Eroare la trimitere: ' : 'Ошибка отправки: ') + JSON.stringify(error));
+                });
         });
-        renderUtilizatori(window.toataListaUtilizatori);
-    } catch(e) { container.innerHTML = "<p style='color:red;'>Eroare: " + e.message + "</p>"; }
-}
 
-window.renderUtilizatori = function(lista) {
-    const container = document.getElementById("container-lista-utilizatori");
-    const contor = document.getElementById("contor-utilizatori");
-    if(contor) contor.innerText = lista.length; 
-    
-    if(lista.length === 0) {
-        container.innerHTML = "<p style='color:#666;'>Niciun utilizator găsit.</p>";
-        return;
-    }
-
-    let html = "<table class='tabel-admin'><tr><th>Nume</th><th>Email</th><th>Telefon</th><th>Tip Cont</th><th>Acțiuni</th></tr>";
-    lista.forEach(u => {
-        let tipText = u.tipCont === 'firma' ? '<span style="color:#e67e22; font-weight:bold;">Firmă</span>' : 'Fizică';
-        html += `<tr><td>${u.nume || 'Fără nume'}</td><td>${u.email || '-'}</td><td>${u.telefon || '-'}</td><td>${tipText}</td><td><button style="background:#e74c3c; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-weight:bold;" onclick="stergeUtilizatorDinBaza('${u.id}', '${u.email}')">🗑️ Șterge</button></td></tr>`;
-    });
-    html += "</table>"; 
-    container.innerHTML = html;
-}
-
-window.cautaUtilizator = function() {
-    const termen = document.getElementById("cautare-email-user").value.toLowerCase();
-    const listaFiltrata = window.toataListaUtilizatori.filter(u => u.email && u.email.toLowerCase().includes(termen));
-    renderUtilizatori(listaFiltrata);
-}
-
-window.stergeUtilizatorDinBaza = async function(uid, email) {
-    if(uid === auth.currentUser.uid) return alert("Nu poți șterge contul tău de Super Admin curent!");
-    if(confirm(`Atenție! Ești sigur că vrei să ștergi profilul utilizatorului ${email}?`)) {
-        try { await deleteDoc(doc(db, "utilizatori", uid)); alert("Utilizatorul a fost șters!"); incarcaUtilizatori(); } catch(e) { alert("Eroare la ștergere: " + e.message); }
-    }
-}
-
-window.stergeContulPropriu = async function() {
-    if(confirm("ATENȚIE! Această acțiune este ireversibilă. Toate datele contului și setările dumneavoastră vor fi șterse definitiv. Sigur doriți să continuați?")) {
-        const user = auth.currentUser; if(!user) return;
-        try { await deleteDoc(doc(db, "utilizatori", user.uid)); await deleteUser(user); alert("Contul dumneavoastră a fost șters cu succes."); window.location.reload(); } catch(err) { alert("Eroare la ștergerea contului: " + err.message); }
-    }
-}
-
-window.incarcaAnunturiRedactare = function() {
-    const container = document.getElementById("container-anunturi-redactare"); let html = "";
-    const anunturiSuspecte = window.toateAnunturile.filter(a => a.status === 'suspect');
-    anunturiSuspecte.forEach(a => { html += genereazaCard(a, true); });
-    container.innerHTML = html || "<p style='text-align:center; color:#27ae60; font-weight:bold; margin-top:30px;'>✅ Niciun anunț suspect în așteptare.</p>";
-}
-
-window.aprobaAnunt = async function(id) {
-    if(confirm("Ești sigur că vrei să aprobi acest anunț și să devină vizibil pe site?")) {
-        await updateDoc(doc(db, "anunturi", id), { status: 'activ', dataPublicare: serverTimestamp() }); alert("Anunțul a fost aprobat cu succes!");
-    }
-}
-
-window.actualizeazaPreviewUI = function() {
-    const cont = document.getElementById("preview-imagini");
-    if(cont) { cont.innerHTML = ""; window.fisiereSelectateGlobal.forEach((item, i) => { cont.innerHTML += `<div class="preview-item"><img src="${item.preview}"><button type="button" class="btn-sterge-foto" onclick="stergeFotoUI(${i})">X</button></div>`; }); }
-}
-
-window.stergeFotoUI = function(index) { window.fisiereSelectateGlobal.splice(index, 1); window.actualizeazaPreviewUI(); }
-
-const btnDeschideAdaugare = document.getElementById("btn-deschide-adaugare");
-if(btnDeschideAdaugare) {
-    btnDeschideAdaugare.addEventListener("click", () => {
-        if (!auth.currentUser) {
-            alert(window.limbaCurenta === 'RO' ? "Vă rugăm să vă autentificați pentru a adăuga un anunț!" : "Пожалуйста, войдите, чтобы добавить объявление!");
-            document.getElementById('modal-login').style.display = 'flex';
-            return;
+        window.arataNumeFisier = function(inputId, spanId) {
+            const input = document.getElementById(inputId);
+            const span = document.getElementById(spanId);
+            if(input.files && input.files[0]) {
+                span.innerText = input.files[0].name;
+                span.style.color = "#27ae60";
+                span.style.fontWeight = "bold";
+            }
         }
-        document.getElementById("formular-anunt").reset(); 
-        document.getElementById("edit-id-anunt").value = ""; 
-        window.fisiereSelectateGlobal = []; 
-        window.actualizeazaPreviewUI(); 
-        document.getElementById('nume-fisier-foto').innerText = "Niciun fișier selectat"; 
-        document.getElementById('text-conversie-info').innerText = ""; 
-        document.getElementById('modal-adaugare').style.display = "flex"; 
-    });
-}
 
-onAuthStateChanged(auth, async (user) => {
-    const btnLoginTop = document.getElementById("btn-deschide-login");
-    const btnCont = document.getElementById("btn-cont-meu");
-    if (user) {
-        window.utilizatorCurentGlobal = user;
-        let dateUser = {};
-        try { const uDoc = await getDoc(doc(db, "utilizatori", user.uid)); if(uDoc.exists()) { dateUser = uDoc.data(); } } catch(e) { console.log("Profil negăsit în Firestore."); }
-        window.dateUtilizatorCurent = dateUser;
-        window.rolUtilizatorGlobal = dateUser.rol || 'user';
-        
-        const panouFizica = document.getElementById("panou-fizica-container");
-        const panouFirma = document.getElementById("panou-firma-container");
+        window.arataNumeFisierMultiplu = function(inputId, spanId) {
+            const input = document.getElementById(inputId);
+            const span = document.getElementById(spanId);
+            if(input.files && input.files.length > 0) {
+                span.innerText = `${input.files.length} ` + (window.limbaCurenta === 'RO' ? 'fișier(e) selectat(e)' : 'файл(ов) выбрано');
+                span.style.color = "#27ae60";
+                span.style.fontWeight = "bold";
+            }
+        }
 
-        if (window.rolUtilizatorGlobal === 'super_admin' || user.email === 'viorelsandu437@gmail.com') {
-            window.rolUtilizatorGlobal = 'super_admin'; 
-            if(document.getElementById('label-super-admin')) { document.getElementById('label-super-admin').innerText = 'SUPER ADMIN'; document.getElementById('label-super-admin').style.display = 'inline-block'; }
-            if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').style.display = 'block'; 
-            if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').style.display = 'block'; 
-            if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'block';
-            if(document.getElementById('tab-active')) document.getElementById('tab-active').style.display = 'none'; 
-            if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').style.display = 'none'; 
-            if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').style.display = 'none'; 
-            if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').style.display = 'none';
+        window.calculeazaConversieValuta = function() {
+            const pretVal = parseFloat(document.getElementById("pret").value) || 0;
+            const valutaSel = document.getElementById("valuta").value;
+            const infoBox = document.getElementById("text-conversie-info");
+            if(pretVal <= 0) { infoBox.innerText = ""; return; }
+            if(valutaSel === 'MDL') {
+                infoBox.innerText = `💱 ` + (window.limbaCurenta === 'RO' ? `Echivalent estimat: ~${(pretVal / 20).toFixed(2)} EUR (€)` : `Примерный эквивалент: ~${(pretVal / 20).toFixed(2)} EUR (€)`);
+            } else {
+                infoBox.innerText = `💱 ` + (window.limbaCurenta === 'RO' ? `Echivalent estimat: ~${(pretVal * 20).toFixed(2)} MDL (Lei)` : `Примерный эквивалент: ~${(pretVal * 20).toFixed(2)} MDL (Леев)`);
+            }
+        }
+
+        window.alimenteazaPortofel = async function(suma, metoda) {
+            if(!auth.currentUser) return alert(window.limbaCurenta === 'RO' ? "Vă rugăm să vă autentificați pentru a alimenta portofelul!" : "Пожалуйста, авторизуйтесь для пополнения кошелька!");
+            try {
+                const userRef = doc(db, "utilizatori", auth.currentUser.uid);
+                const uDoc = await getDoc(userRef);
+                let soldCurent = 0;
+                if(uDoc.exists()) {
+                    soldCurent = uDoc.data().soldMdl || 0;
+                }
+                let soldNou = soldCurent + suma;
+                await setDoc(userRef, { soldMdl: soldNou }, { merge: true });
+                alert(window.limbaCurenta === 'RO' ? `Portofel alimentat cu succes prin ${metoda} cu ${suma} MDL! Sold nou: ${soldNou.toFixed(2)} MDL` : `Кошелек успешно пополнен через ${metoda} на ${suma} MDL! Новый баланс: ${soldNou.toFixed(2)} MDL`);
+                window.location.reload();
+            } catch(err) {
+                alert((window.limbaCurenta === 'RO' ? "Eroare la alimentarea portofelului: " : "Ошибка пополнения кошелька: ") + err.message);
+            }
+        }
+
+        window.toateAnunturile = []; window.rolUtilizatorGlobal = 'user'; window.dateUtilizatorCurent = null;
+        window.stareTabCurent = 'activ'; window.fisiereSelectateGlobal = [];
+        window.playlistReclameSus = []; window.playlistReclameLateral = [];
+        window.toataListaUtilizatori = []; 
+
+        window.limbaCurenta = 'RO';
+        const dictionar = {
+            'RO': { 
+                btnAdauga: '+ Adaugă', btnAcasa: 'Acasă', btnCont: 'Contul Meu', btnLogin: 'Autentificare', btnLogout: 'Deconectare', btnCauta: '🔍 Caută', catToate: 'Toate Categoriile', catSelect: 'Alege categoria...', locToate: 'Toate localitățile', locSelect: 'Alege localitatea...', titluLogin: 'Autentificare', lblParola: 'Parolă:', btnIntra: 'Intră', btnNuCont: 'Nu ai cont?', btnRecup: 'Ați uitat parola?', titluRecup: 'Recuperare Parolă', descRecup: 'Introduceți adresa de email pentru a primi un link de resetare a parolei.', btnTrimiteRecup: 'Trimite Link', btnInapoiLogin: 'Înapoi la Autentificare', titluReg: 'Creare Cont', lblTip: 'Tip Cont:', lblNumeFiz: 'Nume:', lblNumeFirm: 'Denumire Firmă / Companie:', lblTel: 'Telefon:', lblLoc: 'Localitate:', btnCreaza: 'Crează', lblProfilFirma: 'Profil (Domeniu):', lblDespreFirma: 'Despre noi:', titluAdd: 'Adaugă Anunț', lblAddTitlu: 'Titlu:', lblAddCat: 'Categorie:', lblAddLoc: 'Localitate:', lblAddTel: 'Telefon:', lblAddPret: 'Preț:', lblAddDesc: 'Descriere:', lblAddFoto: 'Foto:', btnAddFoto: '📁 Adaugă Fotografii', btnPublica: 'Publică', titluPanou: 'Panoul de administrare', tabActive: 'Anunțuri Active', tabNeactive: 'Anunțuri Neactive / Expirate', tabPortofel: '💰 Portofel & Plăți', tabSetari: 'Setări Cont & Ștergere', tabDespre: 'Despre noi', tabProfilFirma: 'Profilul firmei', titluDespre: 'Despre compania noastră', titluProfilFirma: 'Profilul și activitatea firmei', titluPortofel: 'Sold Curent în Portofel', titluAlimenteaza: 'Alimentează Portofelul', titluSetari: 'Personalizare Profil & Branding', lblSetariAvatar: 'Avatar (Imagine de profil):', lblSetariBanner: 'Banner copertă (Imagine mare de sus):', lblSetariProfil: 'Profil / Domeniu de activitate:', lblSetariDespre: 'Despre noi (Scurtă descriere):', btnSalveazaSetari: 'Salvează Setările', msgNiciunAnunt: 'Niciun anunț găsit.', msgIncarcare: 'Se încarcă anunțurile...', msgFaraAnunturi: 'Nu ai anunțuri aici.',
+                tabSuperadmin: 'Reclame Video', tabRedactare: 'Anunțuri la Redactare', tabUtilizatori: 'Lista Utilizatorilor',
+                lblSaTitluVideo: 'Încărcare Reclame Video', lblSaDescVideo: 'Alege zona în care dorești să apară reclama video.', lblSaSelectZona: 'Selectează Zona de afișare:', optZonaSus: 'Player SUS (Orizontal, sub meniu)', optZonaLat: 'Player LATERAL (Vertical, în sidebar)', btnAlegeVideo: '📁 Alege Fișier Video', btnIncarcaVideo: 'Încarcă Video', lblSaReclameSus: 'Reclame SUS (Active):', lblSaReclameLat: 'Reclame LATERAL (Active):', lblSaTitluSuspect: 'Anunțuri Suspecte (Necesită Moderare)', lblSaDescSuspect: 'Aceste anunțuri au fost blocate temporar de sistem deoarece conțin cuvinte sensibile. Nu sunt vizibile publicului până nu sunt aprobate.', placeholderCautareUser: '🔍 Caută după email...', lblTotalUseri: '👥 Total Utilizatori:', lblBazaDateUseri: 'Baza de date: Utilizatori Înregistrați', thNume: 'Nume', thEmail: 'Email', thTel: 'Telefon', thTip: 'Tip Cont', thActiuni: 'Acțiuni', btnStergeTabel: '🗑️ Șterge', lblInapoi: '← Înapoi la listă', lblPublicitate: 'Publicitate', footerTermeni: 'Termeni și Condiții', footerContact: 'Contactează-ne', footerDrepturi: '© 2026 Edineț-Anunțuri. Toate drepturile rezervate.', optFiz: 'Persoană Fizică', optFirm: 'Firmă', lblContFizicTag: 'Cont Personal (Persoană Fizică)', btnAlegeFisier: '📁 Alege Fișier', lblZonaPericol: 'Zonă Periculoasă: Ștergere Cont', lblDescPericol: 'Dacă doriți să vă ștergeți definitiv contul și toate datele asociate din platformă, folosiți butonul de mai jos.', btnStergeContDef: '🗑️ Șterge Contul Meu Definitiv', btnAproba: '✅ Aprobă', btnRedacteaza: '✏️ Redactează', btnStergeAvertisment: '🗑️ Șterge & Avertizează', btnRidica: '🔄 Ridică', btnContacteaza: '✉️ Contactează', lblDescriereAnunt: 'Descriere'
+            },
+            'RU': { 
+                btnAdauga: '+ Добавить', btnAcasa: 'Главная', btnCont: 'Мой Аккаунт', btnLogin: 'Войти', btnLogout: 'Выйти', btnCauta: '🔍 Поиск', catToate: 'Все категории', catSelect: 'Выберите категорию...', locToate: 'Все населенные пункты', locSelect: 'Выберите населенный пункт...', titluLogin: 'Авторизация', lblParola: 'Пароль:', btnIntra: 'Войти', btnNuCont: 'Нет аккаунта?', btnRecup: 'Забыли пароль?', titluRecup: 'Восстановление пароля', descRecup: 'Введите свой адрес электронной почты, чтобы получить ссылку для сброса пароля.', btnTrimiteRecup: 'Отправить ссылку', btnInapoiLogin: 'Назад к авторизации', titluReg: 'Создать Аккаунт', lblTip: 'Тип аккаунта:', lblNumeFiz: 'Имя:', lblNumeFirm: 'Название компании:', lblTel: 'Телефон:', lblLoc: 'Населенный пункт:', btnCreaza: 'Создать', lblProfilFirma: 'Профиль (Сфера):', lblDespreFirma: 'О нас:', titluAdd: 'Добавить Объявление', lblAddTitlu: 'Заголовок:', lblAddCat: 'Категория:', lblAddLoc: 'Населенный пункт:', lblAddTel: 'Телефон:', lblAddPret: 'Цена:', lblAddDesc: 'Описание:', lblAddFoto: 'Фото:', btnAddFoto: '📁 Добавить Фото', btnPublica: 'Опубликовать', titluPanou: 'Панель управления', tabActive: 'Активные', tabNeactive: 'Неактивные / Истекшие', tabPortofel: '💰 Кошелек и Платежи', tabSetari: 'Настройки и Удаление', tabDespre: 'О нас', tabProfilFirma: 'Профиль фирмы', titluDespre: 'О нашей компании', titluProfilFirma: 'Профиль и деятельность', titluPortofel: 'Текущий баланс', titluAlimenteaza: 'Пополнить кошелек', titluSetari: 'Настройка профиля и бренда', lblSetariAvatar: 'Аватар (Фото профиля):', lblSetariBanner: 'Баннер обложки (Большое фото):', lblSetariProfil: 'Профиль / Сфера деятельности:', lblSetariDespre: 'О нас (Краткое описание):', btnSalveazaSetari: 'Сохранить', msgNiciunAnunt: 'Объявления не найдены.', msgIncarcare: 'Загрузка объявлений...', msgFaraAnunturi: 'У вас нет объявлений.',
+                tabSuperadmin: 'Видеореклама', tabRedactare: 'На модерации', tabUtilizatori: 'Список пользователей',
+                lblSaTitluVideo: 'Загрузка Видеорекламы', lblSaDescVideo: 'Выберите зону, в которой будет отображаться видеореклама.', lblSaSelectZona: 'Выберите зону показа:', optZonaSus: 'Плеер ВВЕРХУ (Горизонтальный)', optZonaLat: 'Плеер СБОКУ (В сайдбаре)', btnAlegeVideo: '📁 Выбрать видеофайл', btnIncarcaVideo: 'Загрузить видео', lblSaReclameSus: 'Реклама ВВЕРХУ (Активная):', lblSaReclameLat: 'Реклама СБОКУ (Активная):', lblSaTitluSuspect: 'Подозрительные объявления (Модерация)', lblSaDescSuspect: 'Эти объявления временно заблокированы системой из-за подозрительных слов. Они не видны публике до одобрения.', placeholderCautareUser: '🔍 Поиск по email...', lblTotalUseri: '👥 Всего пользователей:', lblBazaDateUseri: 'База данных: Зарегистрированные пользователи', thNume: 'Имя', thEmail: 'Email', thTel: 'Телефон', thTip: 'Тип аккаунта', thActiuni: 'Действия', btnStergeTabel: '🗑️ Удалить', lblInapoi: '← Назад к списку', lblPublicitate: 'Реклама', footerTermeni: 'Правила и условия', footerContact: 'Связаться с нами', footerDrepturi: '© 2026 Edineț-Anunțuri. Все права защищены.', optFiz: 'Физическое лицо', optFirm: 'Компания / Фирма', lblContFizicTag: 'Личный аккаунт (Физ. лицо)', btnAlegeFisier: '📁 Выбрать файл', lblZonaPericol: 'Опасная зона: Удаление аккаунта', lblDescPericol: 'Если вы хотите навсегда удалить свой аккаунт и все связанные данные, используйте кнопку ниже.', btnStergeContDef: '🗑️ Удалить мой аккаунт навсегда', btnAproba: '✅ Одобрить', btnRedacteaza: '✏️ Редактировать', btnStergeAvertisment: '🗑️ Удалить с предупреждением', btnRidica: '🔄 Поднять', btnContacteaza: '✉️ Связаться', lblDescriereAnunt: 'Описание'
+            }
+        };
+
+        const categoriiListaRO = [ "Fructe, Legume și Produse Ecologice", "Produse Zootehnice și Apicole", "Animale Domestice și Păsări", "Cereale, Furaje și Nutrețuri", "Tehnică Agricolă și Utilaje", "Material Semincer, Puieți și Răsaduri", "Terenuri Agricole și Extravilane", "Piese de Schimb (Auto și Agricole)", "Imobiliare (Case, Apartamente, Spații)", "Auto, Moto și Transport", "Electronice și Electrocasnice", "Materiale de Construcție și Reparații", "Mobilă și Articole pentru Casă", "Îmbrăcăminte, Încălțăminte și Accesorii", "Locuri de Muncă (Oferte și Cereri)", "Servicii Profesionale", "Diverse / Altele" ];
+        const categoriiListaRU = [ "Фрукты, Овощи и Экопродукты", "Животноводство и Пчеловодство", "Домашние животные и птицы", "Зерно, Корма и Фураж", "Сельхозтехника и Оборудование", "Семена, Саженцы и Рассада", "Сельхозугодья и Земельные участки", "Запчасти (Авто и Сельхоз)", "Недвижимость (Дома, Квартиры)", "Авто, Мото и Транспорт", "Электроника и Бытовая техника", "Строительные материалы и Ремонт", "Мебель и Товары для дома", "Одежда, Обувь и Аксессуары", "Работа (Вакансии и Резюме)", "Услуги и Сервис", "Разное / Другое" ];
+        const sateLista = [ "Edineț (Oraș)", "Cupcini (Oraș)", "Alexăndreni", "Bădragii Noi", "Bădragii Vechi", "Bălănești", "Bleșteni", "Brătușeni", "Brînzeni", "Burlănești", "Buzdugeni", "Cepeleuți", "Chetroșica Nouă", "Chetroșica Veche", "Chiurt", "Clișcăuți", "Constantinovca", "Corpaci", "Cuconeștii Noi", "Fetești", "Fîntîna Albă", "Gașpar", "Goleni", "Gordinești", "Hancăuți", "Hincăuți", "Hlinaia", "Iachimeni", "Lopatnic", "Obreja", "Onești", "Parcova", "Poiana", "Rîngaci", "Roșiori", "Rotunda", "Ruseni", "Slobozia", "Stolniceni", "Șofrîncani", "Terebna", "Tîrnova", "Trinca", "Vancicăuți", "Viișoara", "Volodeni", "Zăbriceni" ];
+
+        function populeazaSelectCategorii(id, textPlaceholder) { 
+            const sel = document.getElementById(id); 
+            if(sel) { 
+                const valCurenta = sel.value;
+                sel.innerHTML = `<option value="">${textPlaceholder}</option>`; 
+                const listaNume = (window.limbaCurenta === 'RO') ? categoriiListaRO : categoriiListaRU;
+                categoriiListaRO.forEach((cVal, idx) => {
+                    const textAfisat = listaNume[idx];
+                    sel.innerHTML += `<option value="${cVal}">${textAfisat}</option>`;
+                });
+                if(valCurenta) sel.value = valCurenta;
+            } 
+        }
+
+        function populeazaSelectSate(id, textPlaceholder) { 
+            const sel = document.getElementById(id); 
+            if(sel) { 
+                const valCurenta = sel.value;
+                sel.innerHTML = `<option value="">${textPlaceholder}</option>`; 
+                sateLista.forEach(s => sel.innerHTML += `<option value="${s}">${s}</option>`); 
+                if(valCurenta) sel.value = valCurenta;
+            } 
+        }
+
+        window.comutaLimba = function() {
+            window.limbaCurenta = (window.limbaCurenta === 'RO') ? 'RU' : 'RO';
+            const lang = window.limbaCurenta;
+            const d = dictionar[lang];
+
+            document.getElementById('btn-schimba-limba').innerText = lang === 'RO' ? '🌐 RU' : '🌐 RO';
+            document.getElementById('btn-deschide-adaugare').innerText = d.btnAdauga;
+            document.getElementById('btn-acasa').innerText = d.btnAcasa;
+            document.getElementById('btn-cont-meu').innerText = d.btnCont;
+            document.getElementById('btn-deschide-login').innerText = auth.currentUser ? d.btnLogout : d.btnLogin;
+            document.getElementById('btn-cauta-filtre').innerText = d.btnCauta;
+
+            populeazaSelectCategorii('filtrare-categorie', d.catToate); 
+            populeazaSelectCategorii('categorie', d.catSelect); 
+            populeazaSelectSate('filtrare-regiune', d.locToate); 
+            populeazaSelectSate('regiune', d.locSelect); 
+            populeazaSelectSate('reg-localitate', d.locSelect);
+
+            if(document.getElementById('lbl-se-incarca')) document.getElementById('lbl-se-incarca').innerText = d.msgIncarcare;
+            if(document.getElementById('lbl-publicitate-1')) document.getElementById('lbl-publicitate-1').innerText = d.lblPublicitate;
+            if(document.getElementById('lbl-inapoi-lista')) document.getElementById('lbl-inapoi-lista').innerText = d.lblInapoi;
+            if(document.getElementById('lbl-inapoi-lista-2')) document.getElementById('lbl-inapoi-lista-2').innerText = d.lblInapoi;
+            if(document.getElementById('lbl-cont-fizic-tag')) document.getElementById('lbl-cont-fizic-tag').innerText = d.lblContFizicTag;
+
+            // Panou & Taburi Super Admin & User
+            if(document.getElementById('titlu-panou-cont')) document.getElementById('titlu-panou-cont').innerText = d.titluPanou;
+            if(document.getElementById('tab-active')) document.getElementById('tab-active').innerText = d.tabActive;
+            if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').innerText = d.tabNeactive;
+            if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').innerText = d.tabPortofel;
+            if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').innerText = d.tabSetari;
+            if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').innerText = d.tabSuperadmin;
+            if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').innerText = d.tabRedactare;
+            if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').innerText = d.tabUtilizatori;
+
+            // Super Admin Continut
+            if(document.getElementById('lbl-sa-titlu-video')) document.getElementById('lbl-sa-titlu-video').innerText = d.lblSaTitluVideo;
+            if(document.getElementById('lbl-sa-desc-video')) document.getElementById('lbl-sa-desc-video').innerText = d.lblSaDescVideo;
+            if(document.getElementById('lbl-sa-select-zona')) document.getElementById('lbl-sa-select-zona').innerText = d.lblSaSelectZona;
+            if(document.getElementById('opt-zona-sus')) document.getElementById('opt-zona-sus').innerText = d.optZonaSus;
+            if(document.getElementById('opt-zona-lat')) document.getElementById('opt-zona-lat').innerText = d.optZonaLat;
+            if(document.getElementById('lbl-btn-video')) document.getElementById('lbl-btn-video').innerText = d.btnAlegeVideo;
+            if(document.getElementById('btn-incarca-video')) document.getElementById('btn-incarca-video').innerText = d.btnIncarcaVideo;
+            if(document.getElementById('lbl-sa-reclame-sus')) document.getElementById('lbl-sa-reclame-sus').innerText = d.lblSaReclameSus;
+            if(document.getElementById('lbl-sa-reclame-lat')) document.getElementById('lbl-sa-reclame-lat').innerText = d.lblSaReclameLat;
+            if(document.getElementById('lbl-sa-titlu-suspect')) document.getElementById('lbl-sa-titlu-suspect').innerText = d.lblSaTitluSuspect;
+            if(document.getElementById('lbl-sa-desc-suspect')) document.getElementById('lbl-sa-desc-suspect').innerText = d.lblSaDescSuspect;
+            if(document.getElementById('cautare-email-user')) document.getElementById('cautare-email-user').placeholder = d.placeholderCautareUser;
+            if(document.getElementById('lbl-total-utilizatori')) document.getElementById('lbl-total-utilizatori').innerText = d.lblTotalUseri;
+            if(document.getElementById('lbl-baza-date-useri')) document.getElementById('lbl-baza-date-useri').innerText = d.lblBazaDateUseri;
+
+            // Portofel & Setari
+            if(document.getElementById('lbl-titlu-portofel')) document.getElementById('lbl-titlu-portofel').innerText = d.titluPortofel;
+            if(document.getElementById('lbl-titlu-alimenteaza')) document.getElementById('lbl-titlu-alimenteaza').innerText = d.titluAlimenteaza;
+            if(document.getElementById('lbl-titlu-setari')) document.getElementById('lbl-titlu-setari').innerText = d.titluSetari;
+            if(document.getElementById('lbl-setari-avatar')) document.getElementById('lbl-setari-avatar').innerText = d.lblSetariAvatar;
+            if(document.getElementById('lbl-btn-avatar')) document.getElementById('lbl-btn-avatar').innerText = d.btnAlegeFisier;
+            if(document.getElementById('lbl-setari-banner')) document.getElementById('lbl-setari-banner').innerText = d.lblSetariBanner;
+            if(document.getElementById('lbl-btn-banner')) document.getElementById('lbl-btn-banner').innerText = d.btnAlegeFisier;
+            if(document.getElementById('lbl-setari-profil')) document.getElementById('lbl-setari-profil').innerText = d.lblSetariProfil;
+            if(document.getElementById('lbl-setari-despre')) document.getElementById('lbl-setari-despre').innerText = d.lblSetariDespre;
+            if(document.getElementById('btn-salveaza-profil')) document.getElementById('btn-salveaza-profil').innerText = d.btnSalveazaSetari;
+            if(document.getElementById('lbl-zona-pericol')) document.getElementById('lbl-zona-pericol').innerText = d.lblZonaPericol;
+            if(document.getElementById('lbl-desc-pericol')) document.getElementById('lbl-desc-pericol').innerText = d.lblDescPericol;
+            if(document.getElementById('btn-sterge-cont-definitiv')) document.getElementById('btn-sterge-cont-definitiv').innerText = d.btnStergeContDef;
+
+            // Firma tabs
+            if(document.getElementById('tab-btn-despre')) document.getElementById('tab-btn-despre').innerText = d.tabDespre;
+            if(document.getElementById('tab-btn-profil')) document.getElementById('tab-btn-profil').innerText = d.tabProfilFirma;
+            if(document.getElementById('lbl-titlu-despre')) document.getElementById('lbl-titlu-despre').innerText = d.titluDespre;
+            if(document.getElementById('lbl-titlu-profil')) document.getElementById('lbl-titlu-profil').innerText = d.titluProfilFirma;
+
+            // Modale & Footer
+            if(document.getElementById('lbl-modal-login-titlu')) document.getElementById('lbl-modal-login-titlu').innerText = d.titluLogin;
+            if(document.getElementById('lbl-modal-parola')) document.getElementById('lbl-modal-parola').innerText = d.lblParola;
+            if(document.getElementById('btn-modal-intra')) document.getElementById('btn-modal-intra').innerText = d.btnIntra;
+            if(document.getElementById('btn-modal-nu-cont')) document.getElementById('btn-modal-nu-cont').innerText = d.btnNuCont;
+            if(document.getElementById('btn-modal-recuperare')) document.getElementById('btn-modal-recuperare').innerText = d.btnRecup;
+            if(document.getElementById('lbl-modal-recup-titlu')) document.getElementById('lbl-modal-recup-titlu').innerText = d.titluRecup;
+            if(document.getElementById('lbl-modal-recup-desc')) document.getElementById('lbl-modal-recup-desc').innerText = d.descRecup;
+            if(document.getElementById('btn-modal-trimite-recup')) document.getElementById('btn-modal-trimite-recup').innerText = d.btnTrimiteRecup;
+            if(document.getElementById('btn-modal-inapoi-login')) document.getElementById('btn-modal-inapoi-login').innerText = d.btnInapoiLogin;
+            if(document.getElementById('lbl-modal-reg-titlu')) document.getElementById('lbl-modal-reg-titlu').innerText = d.titluReg;
+            if(document.getElementById('lbl-modal-reg-tip')) document.getElementById('lbl-modal-reg-tip').innerText = d.lblTip;
+            if(document.getElementById('opt-pers-fiz')) document.getElementById('opt-pers-fiz').innerText = d.optFiz;
+            if(document.getElementById('opt-pers-firm')) document.getElementById('opt-pers-firm').innerText = d.optFirm;
+            if(document.getElementById('lbl-modal-reg-tel')) document.getElementById('lbl-modal-reg-tel').innerText = d.lblTel;
+            if(document.getElementById('lbl-modal-reg-loc')) document.getElementById('lbl-modal-reg-loc').innerText = d.lblLoc;
+            if(document.getElementById('lbl-modal-reg-pass')) document.getElementById('lbl-modal-reg-pass').innerText = d.lblParola;
+            if(document.getElementById('btn-modal-creaza')) document.getElementById('btn-modal-creaza').innerText = d.btnCreaza;
+            if(document.getElementById('lbl-reg-profil')) document.getElementById('lbl-reg-profil').innerText = d.lblProfilFirma;
+            if(document.getElementById('lbl-reg-despre')) document.getElementById('lbl-reg-despre').innerText = d.lblDespreFirma;
+            const tip = document.getElementById('reg-tip-cont').value;
+            document.getElementById('label-nume-reg').innerText = (tip === 'firma') ? d.lblNumeFirm : d.lblNumeFiz;
+
+            if(document.getElementById('titlu-modal-formular')) document.getElementById('titlu-modal-formular').innerText = d.titluAdd;
+            if(document.getElementById('lbl-add-titlu')) document.getElementById('lbl-add-titlu').innerText = d.lblAddTitlu;
+            if(document.getElementById('lbl-add-cat')) document.getElementById('lbl-add-cat').innerText = d.lblAddCat;
+            if(document.getElementById('lbl-add-loc')) document.getElementById('lbl-add-loc').innerText = d.lblAddLoc;
+            if(document.getElementById('lbl-add-tel')) document.getElementById('lbl-add-tel').innerText = d.lblAddTel;
+            if(document.getElementById('lbl-add-pret')) document.getElementById('lbl-add-pret').innerText = d.lblAddPret;
+            if(document.getElementById('lbl-add-desc')) document.getElementById('lbl-add-desc').innerText = d.lblAddDesc;
+            if(document.getElementById('lbl-add-foto')) document.getElementById('lbl-add-foto').innerText = d.lblAddFoto;
+            if(document.getElementById('lbl-btn-add-foto')) document.getElementById('lbl-btn-add-foto').innerText = d.btnAddFoto;
+            if(document.getElementById('buton-publicare')) document.getElementById('buton-publicare').innerText = d.btnPublica;
+
+            if(document.getElementById('lbl-footer-termeni')) document.getElementById('lbl-footer-termeni').innerText = d.footerTermeni;
+            if(document.getElementById('lbl-footer-contact')) document.getElementById('lbl-footer-contact').innerText = d.footerContact;
+            if(document.getElementById('lbl-footer-drepturi')) document.getElementById('lbl-footer-drepturi').innerText = d.footerDrepturi;
+
+            if(window.deseneazaAnunturi) window.deseneazaAnunturi();
+            if(window.toataListaUtilizatori && window.toataListaUtilizatori.length > 0) renderUtilizatori(window.toataListaUtilizatori);
+            if(window.stareTabCurent === 'redactare') incarcaAnunturiRedactare();
+        }
+
+        window.schimbaTabFirma = function(tabName) {
+            document.querySelectorAll('.btn-tab-firma').forEach(btn => btn.classList.remove('activ'));
+            document.getElementById('tab-continut-despre').style.display = 'none';
+            document.getElementById('tab-continut-profil').style.display = 'none';
+            if(tabName === 'despre') {
+                document.getElementById('tab-btn-despre').classList.add('activ');
+                document.getElementById('tab-continut-despre').style.display = 'block';
+            } else {
+                document.getElementById('tab-btn-profil').classList.add('activ');
+                document.getElementById('tab-continut-profil').style.display = 'block';
+            }
+        }
+
+        onSnapshot(query(collection(db, "reclame_video"), orderBy("dataIncarcare", "asc")), snap => {
+            window.playlistReclameSus = []; window.playlistReclameLateral = [];
+            let htmlSus = ""; let htmlLateral = "";
+            snap.forEach(d => {
+                let data = d.data(); let zona = data.zona || 'sus';
+                let btnStergeTxt = window.limbaCurenta === 'RO' ? "Șterge" : "Удалить";
+                let blocReclama = `<div style="display:flex; justify-content:space-between; align-items:center; background:#f9f9f9; padding:10px; margin-bottom:5px; border-radius:4px; border:1px solid #eee;"><video src="${data.url}" width="100" height="60" muted style="background:#000; border-radius:4px; object-fit:cover;"></video><button type="button" onclick="stergeReclamaVideo('${d.id}')" style="background:#e74c3c; color:white; border:none; padding:6px 10px; border-radius:4px; font-weight:bold; cursor:pointer; font-size:12px;">${btnStergeTxt}</button></div>`;
+                if(zona === 'sus') { window.playlistReclameSus.push(data.url); htmlSus += blocReclama; } 
+                else { window.playlistReclameLateral.push(data.url); htmlLateral += blocReclama; }
+            });
+            const msgFaraReclamaSus = window.limbaCurenta === 'RO' ? "Nicio reclamă Sus." : "Нет рекламы вверху.";
+            const msgFaraReclamaLat = window.limbaCurenta === 'RO' ? "Nicio reclamă Laterală." : "Нет рекламы сбоку.";
+            const divSus = document.getElementById("lista-reclame-sus"); if(divSus) divSus.innerHTML = htmlSus || `<p style='color:#777;'>${msgFaraReclamaSus}</p>`;
+            const divLat = document.getElementById("lista-reclame-lateral"); if(divLat) divLat.innerHTML = htmlLateral || `<p style='color:#777;'>${msgFaraReclamaLat}</p>`;
+            ruleazaPlaylistVideo('player-video-sus', window.playlistReclameSus, 'container-video-sus');
+            ruleazaPlaylistVideo('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
+        });
+
+        window.ruleazaPlaylistVideo = function(elementId, playlistArray, containerId) {
+            const videoPlayer = document.getElementById(elementId); const container = document.getElementById(containerId);
+            if (!videoPlayer) return;
+            if (playlistArray.length === 0) { videoPlayer.src = ""; if(container) container.style.display = 'block'; return; }
+            if(container) container.style.display = 'block';
+            let indexCurent = 0;
+            if(!videoPlayer.src.includes(playlistArray[indexCurent])) videoPlayer.src = playlistArray[indexCurent];
+            videoPlayer.onended = function() { indexCurent = (indexCurent + 1) % playlistArray.length; videoPlayer.src = playlistArray[indexCurent]; videoPlayer.play().catch(e => console.log(e)); };
+        }
+
+        window.stergeReclamaVideo = async function(id) { 
+            const msgConf = window.limbaCurenta === 'RO' ? "Ștergi definitiv această reclamă?" : "Удалить эту рекламу навсегда?";
+            if(confirm(msgConf)) { 
+                await deleteDoc(doc(db, "reclame_video", id)); 
+                alert(window.limbaCurenta === 'RO' ? "Reclama a fost ștearsă!" : "Реклама удалена!"); 
+            } 
+        }
+
+        const btnIncarcaVideo = document.getElementById("btn-incarca-video");
+        if(btnIncarcaVideo) {
+            btnIncarcaVideo.addEventListener("click", async () => {
+                const file = document.getElementById("input-video-reclama").files[0];
+                const zonaSelectata = document.getElementById("select-zona-video").value;
+                if(!file) return alert(window.limbaCurenta === 'RO' ? "Selectează un fișier video!" : "Выберите видеофайл!");
+                if(zonaSelectata === 'sus' && window.playlistReclameSus.length >= 5) return alert(window.limbaCurenta === 'RO' ? "Limită: 5 reclame SUS active!" : "Лимит: 5 активных реклам ВВЕРХУ!");
+                if(zonaSelectata === 'lateral' && window.playlistReclameLateral.length >= 5) return alert(window.limbaCurenta === 'RO' ? "Limită: 5 reclame LATERAL active!" : "Лимит: 5 активных реклам СБОКУ!");
+                btnIncarcaVideo.innerText = window.limbaCurenta === 'RO' ? "Se încarcă..." : "Загрузка..."; 
+                btnIncarcaVideo.disabled = true;
+                try {
+                    const rVid = ref(storage, 'reclame_video/' + zonaSelectata + '_' + Date.now() + '_' + file.name);
+                    await uploadBytes(rVid, file); const url = await getDownloadURL(rVid);
+                    await addDoc(collection(db, "reclame_video"), { url: url, zona: zonaSelectata, dataIncarcare: serverTimestamp() });
+                    alert(window.limbaCurenta === 'RO' ? "Reclamă publicată în zona: " + zonaSelectata.toUpperCase() : "Реклама опубликована в зоне: " + zonaSelectata.toUpperCase()); 
+                    document.getElementById("input-video-reclama").value = '';
+                    document.getElementById("nume-fisier-video").innerText = window.limbaCurenta === 'RO' ? "Niciun fișier selectat" : "Файл не выбран";
+                } catch(e) { alert("Eroare: " + e.message); } finally { btnIncarcaVideo.innerText = dictionar[window.limbaCurenta].btnIncarcaVideo; btnIncarcaVideo.disabled = false; }
+            });
+        }
+
+        const cuvinteInterzise = ["arma", "arme", "pistol", "pusca", "glont", "bomba", "drog", "droguri", "cocaina", "heroina", "marijuana", "canabis", "etnobotanice", "pula", "pizda", "fut", "curva", "prostituata", "sex", "escorta"];
+        function contineCuvinteInterzise(text) { return cuvinteInterzise.some(c => new RegExp("\\b" + c + "\\b", "i").test(text.toLowerCase())); }
+
+        window.onload = function() {
+            populeazaSelectCategorii('filtrare-categorie', 'Toate Categoriile'); populeazaSelectCategorii('categorie', 'Alege categoria...');
+            populeazaSelectSate('filtrare-regiune', 'Toate localitățile'); populeazaSelectSate('regiune', 'Alege localitatea...'); populeazaSelectSate('reg-localitate', 'Alege localitatea...');
+        };
+
+        window.comutaCampuriInregistrare = function() {
+            const tip = document.getElementById('reg-tip-cont').value;
+            document.getElementById('campuri-firma-extra').style.display = (tip === 'firma') ? 'block' : 'none';
+        }
+
+        window.arataPaginaPrincipala = function() {
+            document.getElementById('sectiune-principala').style.display = 'block'; document.getElementById('sectiune-detalii').style.display = 'none';
+            document.getElementById('sectiune-profil-public').style.display = 'none'; document.getElementById('sectiune-contul-meu').style.display = 'none';
+            if(window.deseneazaAnunturi) window.deseneazaAnunturi();
+            ruleazaPlaylistVideo('player-video-sus', window.playlistReclameSus, 'container-video-sus');
+            ruleazaPlaylistVideo('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
+        }
+
+        window.arataContulMeu = function() {
+            document.getElementById('sectiune-principala').style.display = 'none'; document.getElementById('sectiune-detalii').style.display = 'none';
+            document.getElementById('sectiune-profil-public').style.display = 'none'; document.getElementById('sectiune-contul-meu').style.display = 'block';
+            if(window.rolUtilizatorGlobal === 'super_admin') schimbaTabCont('utilizatori'); else schimbaTabCont('activ');
+        }
+
+        window.schimbaTabCont = function(stare) {
+            window.stareTabCurent = stare;
+            document.querySelectorAll('.tab-cont').forEach(t => t.classList.remove('activ'));
+            document.getElementById('container-anunturi-personale').style.display = 'none';
+            document.getElementById('panou-portofel').style.display = 'none';
+            document.getElementById('panou-setari-cont').style.display = 'none';
+            document.getElementById('panou-superadmin').style.display = 'none';
+            document.getElementById('panou-redactare').style.display = 'none';
+            document.getElementById('panou-utilizatori').style.display = 'none';
             
-            if(panouFizica) panouFizica.style.display = 'none';
-            if(panouFirma) panouFirma.style.display = 'none';
-        } else {
-            if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').style.display = 'none'; 
-            if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').style.display = 'none'; 
-            if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'none';
-            if(document.getElementById('tab-active')) document.getElementById('tab-active').style.display = 'block'; 
-            if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').style.display = 'block'; 
-            if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').style.display = 'block'; 
-            if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').style.display = 'block';
-            let soldCurent = dateUser.soldMdl || 0;
-            const soldEl = document.getElementById("valoare-sold-mdl"); if(soldEl) soldEl.innerText = soldCurent.toFixed(2) + " MDL";
+            if(stare === 'activ') { document.getElementById('tab-active').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
+            else if(stare === 'inactiv') { document.getElementById('tab-neactive').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
+            else if(stare === 'portofel') { document.getElementById('tab-portofel').classList.add('activ'); document.getElementById('panou-portofel').style.display = 'block'; }
+            else if(stare === 'stergere') { document.getElementById('tab-stergere').classList.add('activ'); document.getElementById('panou-setari-cont').style.display = 'block'; }
+            else if(stare === 'superadmin') { document.getElementById('tab-superadmin').classList.add('activ'); document.getElementById('panou-superadmin').style.display = 'block'; }
+            else if(stare === 'redactare') { document.getElementById('tab-redactare').classList.add('activ'); document.getElementById('panou-redactare').style.display = 'block'; incarcaAnunturiRedactare(); }
+            else if(stare === 'utilizatori') { document.getElementById('tab-utilizatori').classList.add('activ'); document.getElementById('panou-utilizatori').style.display = 'block'; incarcaUtilizatori(); }
+            
+            if(stare === 'activ' || stare === 'inactiv') if(window.deseneazaAnunturi) window.deseneazaAnunturi();
+        }
 
-            if(dateUser.tipCont === 'firma') {
-                if(panouFirma) panouFirma.style.display = 'block';
-                if(panouFizica) panouFizica.style.display = 'none';
-                if(document.getElementById("firma-nume-afis")) document.getElementById("firma-nume-afis").innerText = dateUser.nume || "Firmă";
-                if(document.getElementById("firma-profil-afis")) document.getElementById("firma-profil-afis").innerText = dateUser.profilFirma || "Domeniu";
-                if(document.getElementById("firma-despre-afis")) document.getElementById("firma-despre-afis").innerText = dateUser.despreFirma || "Nicio descriere adăugată încă.";
-                if(document.getElementById("firma-profil-detaliat")) document.getElementById("firma-profil-detaliat").innerText = dateUser.profilFirma || "Fără detalii despre profil.";
+        window.incarcaUtilizatori = async function() {
+            const container = document.getElementById("container-lista-utilizatori");
+            container.innerHTML = `<p>${window.limbaCurenta === 'RO' ? 'Se preia lista utilizatorilor...' : 'Загрузка списка пользователей...'}</p>`;
+            try {
+                const snap = await getDocs(collection(db, "utilizatori"));
+                window.toataListaUtilizatori = [];
+                snap.forEach(doc => {
+                    let u = doc.data(); 
+                    u.id = doc.id;
+                    window.toataListaUtilizatori.push(u);
+                });
+                renderUtilizatori(window.toataListaUtilizatori);
+            } catch(e) { container.innerHTML = "<p style='color:red;'>Eroare: " + e.message + "</p>"; }
+        }
+
+        window.renderUtilizatori = function(lista) {
+            const container = document.getElementById("container-lista-utilizatori");
+            const contor = document.getElementById("contor-utilizatori");
+            const d = dictionar[window.limbaCurenta];
+            if(contor) contor.innerText = lista.length; 
+            
+            if(lista.length === 0) {
+                container.innerHTML = `<p style='color:#666;'>${window.limbaCurenta === 'RO' ? 'Niciun utilizator găsit.' : 'Пользователи не найдены.'}</p>`;
+                return;
+            }
+
+            let html = `<table class='tabel-admin'><tr><th>${d.thNume}</th><th>${d.thEmail}</th><th>${d.thTel}</th><th>${d.thTip}</th><th>${d.thActiuni}</th></tr>`;
+            lista.forEach(u => {
+                let tipText = u.tipCont === 'firma' ? `<span style="color:#e67e22; font-weight:bold;">${d.optFirm}</span>` : d.optFiz;
+                let faraNume = window.limbaCurenta === 'RO' ? 'Fără nume' : 'Без имени';
+                html += `<tr><td>${u.nume || faraNume}</td><td>${u.email || '-'}</td><td>${u.telefon || '-'}</td><td>${tipText}</td><td><button style="background:#e74c3c; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-weight:bold;" onclick="stergeUtilizatorDinBaza('${u.id}', '${u.email}')">${d.btnStergeTabel}</button></td></tr>`;
+            });
+            html += "</table>"; 
+            container.innerHTML = html;
+        }
+
+        window.cautaUtilizator = function() {
+            const termen = document.getElementById("cautare-email-user").value.toLowerCase();
+            const listaFiltrata = window.toataListaUtilizatori.filter(u => u.email && u.email.toLowerCase().includes(termen));
+            renderUtilizatori(listaFiltrata);
+        }
+
+        window.stergeUtilizatorDinBaza = async function(uid, email) {
+            if(uid === auth.currentUser.uid) return alert(window.limbaCurenta === 'RO' ? "Nu poți șterge contul tău de Super Admin curent!" : "Вы не можете удалить свой текущий аккаунт Super Admin!");
+            const msgConf = window.limbaCurenta === 'RO' ? `Atenție! Ești sigur că vrei să ștergi profilul utilizatorului ${email}?` : `Внимание! Вы уверены, что хотите удалить профиль пользователя ${email}?`;
+            if(confirm(msgConf)) {
+                try { 
+                    await deleteDoc(doc(db, "utilizatori", uid)); 
+                    alert(window.limbaCurenta === 'RO' ? "Utilizatorul a fost șters!" : "Пользователь удален!"); 
+                    incarcaUtilizatori(); 
+                } catch(e) { alert("Eroare: " + e.message); }
+            }
+        }
+
+        window.stergeContulPropriu = async function() {
+            const msgConf = window.limbaCurenta === 'RO' ? "ATENȚIE! Această acțiune este ireversibilă. Toate datele contului și setările dumneavoastră vor fi șterse definitiv. Sigur doriți să continuați?" : "ВНИМАНИЕ! Это действие необратимо. Все ваши данные будут удалены навсегда. Продолжить?";
+            if(confirm(msgConf)) {
+                const user = auth.currentUser; if(!user) return;
+                try { 
+                    await deleteDoc(doc(db, "utilizatori", user.uid)); 
+                    await deleteUser(user); 
+                    alert(window.limbaCurenta === 'RO' ? "Contul dumneavoastră a fost șters cu succes." : "Ваш аккаунт успешно удален."); 
+                    window.location.reload(); 
+                } catch(err) { alert("Eroare: " + err.message); }
+            }
+        }
+
+        window.incarcaAnunturiRedactare = function() {
+            const container = document.getElementById("container-anunturi-redactare"); let html = "";
+            const anunturiSuspecte = window.toateAnunturile.filter(a => a.status === 'suspect');
+            anunturiSuspecte.forEach(a => { html += genereazaCard(a, true); });
+            const msgZeroSuspect = window.limbaCurenta === 'RO' ? "✅ Niciun anunț suspect în așteptare." : "✅ Нет подозрительных объявлений.";
+            container.innerHTML = html || `<p style='text-align:center; color:#27ae60; font-weight:bold; margin-top:30px;'>${msgZeroSuspect}</p>`;
+        }
+
+        window.aprobaAnunt = async function(id) {
+            const msgConf = window.limbaCurenta === 'RO' ? "Ești sigur că vrei să aprobi acest anunț și să devină vizibil pe site?" : "Одобрить это объявление и сделать видимым на сайте?";
+            if(confirm(msgConf)) {
+                await updateDoc(doc(db, "anunturi", id), { status: 'activ', dataPublicare: serverTimestamp() }); 
+                alert(window.limbaCurenta === 'RO' ? "Anunțul a fost aprobat cu succes!" : "Объявление успешно одобрено!");
+            }
+        }
+
+        window.actualizeazaPreviewUI = function() {
+            const cont = document.getElementById("preview-imagini");
+            if(cont) { cont.innerHTML = ""; window.fisiereSelectateGlobal.forEach((item, i) => { cont.innerHTML += `<div class="preview-item"><img src="${item.preview}"><button type="button" class="btn-sterge-foto" onclick="stergeFotoUI(${i})">X</button></div>`; }); }
+        }
+
+        window.stergeFotoUI = function(index) { window.fisiereSelectateGlobal.splice(index, 1); window.actualizeazaPreviewUI(); }
+
+        const btnDeschideAdaugare = document.getElementById("btn-deschide-adaugare");
+        if(btnDeschideAdaugare) {
+            btnDeschideAdaugare.addEventListener("click", () => {
+                if (!auth.currentUser) {
+                    alert(window.limbaCurenta === 'RO' ? "Vă rugăm să vă autentificați pentru a adăuga un anunț!" : "Пожалуйста, войдите, чтобы добавить объявление!");
+                    document.getElementById('modal-login').style.display = 'flex';
+                    return;
+                }
+                document.getElementById("formular-anunt").reset(); 
+                document.getElementById("edit-id-anunt").value = ""; 
+                window.fisiereSelectateGlobal = []; 
+                window.actualizeazaPreviewUI(); 
+                document.getElementById('nume-fisier-foto').innerText = window.limbaCurenta === 'RO' ? "Niciun fișier selectat" : "Файл не выбран"; 
+                document.getElementById('text-conversie-info').innerText = ""; 
+                document.getElementById('modal-adaugare').style.display = "flex"; 
+            });
+        }
+
+        onAuthStateChanged(auth, async (user) => {
+            const btnLoginTop = document.getElementById("btn-deschide-login");
+            const btnCont = document.getElementById("btn-cont-meu");
+            if (user) {
+                window.utilizatorCurentGlobal = user;
+                let dateUser = {};
+                try { const uDoc = await getDoc(doc(db, "utilizatori", user.uid)); if(uDoc.exists()) { dateUser = uDoc.data(); } } catch(e) { console.log("Profil negăsit în Firestore."); }
+                window.dateUtilizatorCurent = dateUser;
+                window.rolUtilizatorGlobal = dateUser.rol || 'user';
                 
-                let savedLogo = sanitizeUrl(dateUser.avatarUrl);
-                if(document.getElementById("firma-logo-prev")) {
-                    document.getElementById("firma-logo-prev").src = savedLogo || FALLBACK_LOGO_130;
+                const panouFizica = document.getElementById("panou-fizica-container");
+                const panouFirma = document.getElementById("panou-firma-container");
+
+                if (window.rolUtilizatorGlobal === 'super_admin' || user.email === 'viorelsandu437@gmail.com') {
+                    window.rolUtilizatorGlobal = 'super_admin'; 
+                    if(document.getElementById('label-super-admin')) { document.getElementById('label-super-admin').innerText = 'SUPER ADMIN'; document.getElementById('label-super-admin').style.display = 'inline-block'; }
+                    if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').style.display = 'block'; 
+                    if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').style.display = 'block'; 
+                    if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'block';
+                    if(document.getElementById('tab-active')) document.getElementById('tab-active').style.display = 'none'; 
+                    if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').style.display = 'none'; 
+                    if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').style.display = 'none'; 
+                    if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').style.display = 'none';
+                    
+                    if(panouFizica) panouFizica.style.display = 'none';
+                    if(panouFirma) panouFirma.style.display = 'none';
+                } else {
+                    if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').style.display = 'none'; 
+                    if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').style.display = 'none'; 
+                    if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'none';
+                    if(document.getElementById('tab-active')) document.getElementById('tab-active').style.display = 'block'; 
+                    if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').style.display = 'block'; 
+                    if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').style.display = 'block'; 
+                    if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').style.display = 'block';
+                    let soldCurent = dateUser.soldMdl || 0;
+                    const soldEl = document.getElementById("valoare-sold-mdl"); if(soldEl) soldEl.innerText = soldCurent.toFixed(2) + " MDL";
+
+                    if(dateUser.tipCont === 'firma') {
+                        if(panouFirma) panouFirma.style.display = 'block';
+                        if(panouFizica) panouFizica.style.display = 'none';
+                        if(document.getElementById("firma-nume-afis")) document.getElementById("firma-nume-afis").innerText = dateUser.nume || "Firmă";
+                        if(document.getElementById("firma-profil-afis")) document.getElementById("firma-profil-afis").innerText = dateUser.profilFirma || "Domeniu";
+                        if(document.getElementById("firma-despre-afis")) document.getElementById("firma-despre-afis").innerText = dateUser.despreFirma || (window.limbaCurenta === 'RO' ? "Nicio descriere adăugată încă." : "Описание пока не добавлено.");
+                        if(document.getElementById("firma-profil-detaliat")) document.getElementById("firma-profil-detaliat").innerText = dateUser.profilFirma || (window.limbaCurenta === 'RO' ? "Fără detalii despre profil." : "Нет деталей профиля.");
+                        
+                        let savedLogo = sanitizeUrl(dateUser.avatarUrl);
+                        if(document.getElementById("firma-logo-prev")) {
+                            document.getElementById("firma-logo-prev").src = savedLogo || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3ELogo%3C/text%3E%3C/svg%3E";
+                        }
+
+                        let savedBanner = sanitizeUrl(dateUser.bannerUrl);
+                        if(savedBanner && document.getElementById("firma-banner-prev")) document.getElementById("firma-banner-prev").style.backgroundImage = `url('${savedBanner}')`;
+                        if(document.getElementById("setari-extra-firma")) document.getElementById("setari-extra-firma").style.display = "block";
+                        if(document.getElementById("setari-profil-firma")) document.getElementById("setari-profil-firma").value = dateUser.profilFirma || "";
+                        if(document.getElementById("setari-despre-firma")) document.getElementById("setari-despre-firma").value = dateUser.despreFirma || "";
+                    } else {
+                        if(panouFirma) panouFirma.style.display = 'none';
+                        if(document.getElementById("setari-extra-firma")) document.getElementById("setari-extra-firma").style.display = "none";
+                        
+                        if (panouFizica) panouFizica.style.display = 'flex';
+                        const avatarFizica = document.getElementById("fizica-avatar-prev");
+                        if (avatarFizica) {
+                            let savedAvatar = sanitizeUrl(dateUser.avatarUrl);
+                            avatarFizica.src = savedAvatar || user.photoURL || "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EUser%3C/text%3E%3C/svg%3E";
+                            avatarFizica.onerror = function () {
+                                this.onerror = null;
+                                this.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EUser%3C/text%3E%3C/svg%3E";
+                            };
+                        }
+                        const numeFizica = document.getElementById("fizica-nume-afis");
+                        if (numeFizica) {
+                            numeFizica.innerText = dateUser.nume || user.displayName || (window.limbaCurenta === 'RO' ? "Utilizator" : "Пользователь");
+                        }
+                    }
                 }
 
-                let savedBanner = sanitizeUrl(dateUser.bannerUrl);
-                if(savedBanner && document.getElementById("firma-banner-prev")) document.getElementById("firma-banner-prev").style.backgroundImage = `url('${savedBanner}')`;
-                if(document.getElementById("setari-extra-firma")) document.getElementById("setari-extra-firma").style.display = "block";
-                if(document.getElementById("setari-profil-firma")) document.getElementById("setari-profil-firma").value = dateUser.profilFirma || "";
-                if(document.getElementById("setari-despre-firma")) document.getElementById("setari-despre-firma").value = dateUser.despreFirma || "";
+                if(btnLoginTop) btnLoginTop.innerText = window.limbaCurenta === 'RO' ? "Deconectare" : "Выйти"; 
+                if(btnCont) btnCont.style.display = "block"; 
+                if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none';
             } else {
-                if(panouFirma) panouFirma.style.display = 'none';
-                if(document.getElementById("setari-extra-firma")) document.getElementById("setari-extra-firma").style.display = "none";
-                
-                if (panouFizica) panouFizica.style.display = 'flex';
-                const avatarFizica = document.getElementById("fizica-avatar-prev");
-                if (avatarFizica) {
-                    let savedAvatar = sanitizeUrl(dateUser.avatarUrl);
-                    avatarFizica.src = savedAvatar || user.photoURL || FALLBACK_AVATAR_80;
-                    avatarFizica.onerror = function () {
-                        this.onerror = null;
-                        this.src = FALLBACK_AVATAR_80;
-                    };
-                }
-                const numeFizica = document.getElementById("fizica-nume-afis");
-                if (numeFizica) {
-                    numeFizica.innerText = dateUser.nume || user.displayName || "Utilizator";
-                }
+                window.utilizatorCurentGlobal = null; window.rolUtilizatorGlobal = 'user'; window.dateUtilizatorCurent = null;
+                if(document.getElementById('label-super-admin')) document.getElementById('label-super-admin').style.display = 'none'; 
+                if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').style.display = 'none'; 
+                if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').style.display = 'none'; 
+                if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'none';
+                if(btnLoginTop) btnLoginTop.innerText = window.limbaCurenta === 'RO' ? "Autentificare" : "Войти"; 
+                if(btnCont) btnCont.style.display = "none"; 
+                if(document.getElementById("panou-firma-container")) document.getElementById("panou-firma-container").style.display = 'none';
+                if(document.getElementById("panou-fizica-container")) document.getElementById("panou-fizica-container").style.display = 'none';
+                arataPaginaPrincipala();
             }
-        }
-
-        if(btnLoginTop) btnLoginTop.innerText = window.limbaCurenta === 'RO' ? "Deconectare" : "Выйти"; 
-        if(btnCont) btnCont.style.display = "block"; 
-        if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none';
-    } else {
-        window.utilizatorCurentGlobal = null; window.rolUtilizatorGlobal = 'user'; window.dateUtilizatorCurent = null;
-        if(document.getElementById('label-super-admin')) document.getElementById('label-super-admin').style.display = 'none'; 
-        if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').style.display = 'none'; 
-        if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').style.display = 'none'; 
-        if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'none';
-        if(btnLoginTop) btnLoginTop.innerText = window.limbaCurenta === 'RO' ? "Autentificare" : "Войти"; 
-        if(btnCont) btnCont.style.display = "none"; 
-        if(document.getElementById("panou-firma-container")) document.getElementById("panou-firma-container").style.display = 'none';
-        if(document.getElementById("panou-fizica-container")) document.getElementById("panou-fizica-container").style.display = 'none';
-        arataPaginaPrincipala();
-    }
-    if(window.deseneazaAnunturi) window.deseneazaAnunturi();
-});
-
-window.deschideInregistrare = () => { if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none'; if(document.getElementById('modal-recuperare')) document.getElementById('modal-recuperare').style.display = 'none'; if(document.getElementById('modal-inregistrare')) document.getElementById('modal-inregistrare').style.display = 'flex'; };
-window.deschideRecuperare = () => { if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none'; if(document.getElementById('modal-recuperare')) document.getElementById('modal-recuperare').style.display = 'flex'; };
-
-const btnLoginTop2 = document.getElementById("btn-deschide-login");
-if(btnLoginTop2) {
-    btnLoginTop2.addEventListener("click", () => {
-        if (auth.currentUser) { signOut(auth); } 
-        else {
-            if(document.getElementById('modal-recuperare')) document.getElementById('modal-recuperare').style.display = 'none';
-            if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = "flex";
-        }
-    });
-}
-
-const formRecuperare = document.getElementById("formular-recuperare");
-if(formRecuperare) { 
-    formRecuperare.addEventListener("submit", async (e) => { 
-        e.preventDefault(); 
-        const emailInput = document.getElementById("recup-email"); 
-        const statusBox = document.getElementById("mesaj-status-recup"); 
-        if(!emailInput) return; 
-        const email = emailInput.value.trim(); 
-        emailInput.value = "";
-        formRecuperare.reset();
-        if(statusBox) { 
-            statusBox.style.display = "block"; 
-            statusBox.style.color = "#0b5ed7"; 
-            statusBox.innerText = window.limbaCurenta === 'RO' ? "Se trimite link-ul..." : "Отправка ссылки..."; 
-        } 
-        try {
-            const trimiteResetare = httpsCallable(functions, "trimiteResetareParola");
-            await trimiteResetare({ email: email, redirectUrl: window.location.href });
-            if(statusBox) {
-                statusBox.style.color = "#27ae60";
-                statusBox.innerText = window.limbaCurenta === 'RO' ? "✅ Link trimis cu succes! Verifică email-ul (inclusiv Spam)." : "✅ Ссылка отправлена! Проверьте почту.";
-            }
-        } catch(err) {
-            if(statusBox) {
-                statusBox.style.color = "#dc3545";
-                statusBox.innerText = (window.limbaCurenta === 'RO' ? "Eroare: " : "Ошибка: ") + err.message;
-            }
-        } 
-    }); 
-}
-
-const formSetari = document.getElementById("formular-setari-profil");
-if(formSetari) { formSetari.addEventListener("submit", async (e) => { e.preventDefault(); if(!auth.currentUser) return; const btnSalvare = document.getElementById("btn-salveaza-profil"); btnSalvare.innerText = "Se încarcă..."; btnSalvare.disabled = true; try { let avatarUrl = window.dateUtilizatorCurent.avatarUrl || ""; let bannerUrl = window.dateUtilizatorCurent.bannerUrl || ""; const fileAvatar = document.getElementById("input-avatar-user").files[0]; if (fileAvatar) { const rAv = ref(storage, 'utilizatori/avatar_'+auth.currentUser.uid+'_'+Date.now()); await uploadBytes(rAv, fileAvatar); avatarUrl = await getDownloadURL(rAv); } const dateNoi = { avatarUrl: avatarUrl }; if(window.dateUtilizatorCurent.tipCont === 'firma') { const fileBanner = document.getElementById("input-banner-firma").files[0]; if (fileBanner) { const rBanner = ref(storage, 'firme/banner_'+auth.currentUser.uid+'_'+Date.now()); await uploadBytes(rBanner, fileBanner); bannerUrl = await getDownloadURL(rBanner); } dateNoi.bannerUrl = bannerUrl; dateNoi.profilFirma = document.getElementById("setari-profil-firma").value; dateNoi.despreFirma = document.getElementById("setari-despre-firma").value; } await setDoc(doc(db, "utilizatori", auth.currentUser.uid), dateNoi, { merge: true }); alert("Profil actualizat!"); window.location.reload(); } catch(err) { alert(err.message); } finally { btnSalvare.innerText = "Salvează"; btnSalvare.disabled = false; } }); }
-
-const formInregistrare = document.getElementById("formular-inregistrare");
-if(formInregistrare) { formInregistrare.addEventListener("submit", async (e) => { e.preventDefault(); try { const tip = document.getElementById("reg-tip-cont").value; const emailVal = document.getElementById("reg-email").value.trim(); const passVal = document.getElementById("reg-parola").value; const numeVal = document.getElementById("reg-nume").value.trim(); const telVal = document.getElementById("reg-telefon").value.trim(); const locVal = document.getElementById("reg-localitate").value; const userCredential = await createUserWithEmailAndPassword(auth, emailVal, passVal); const user = userCredential.user; if (user) { try { const trimiteVerificare = httpsCallable(functions, "trimiteVerificareEmail"); await trimiteVerificare({ redirectUrl: window.location.href }); } catch (mailErr) { console.error("Eroare la trimiterea emailului de verificare:", mailErr); } } await updateProfile(user, { displayName: numeVal }); let dateNoi = { nume: numeVal, email: emailVal, telefon: telVal, localitate: locVal, tipCont: tip, rol: 'user', stareCont: 'activ', dataInregistrare: serverTimestamp(), avatarUrl: "", bannerUrl: "", soldMdl: 0 }; if(tip === 'firma') { dateNoi.profilFirma = document.getElementById("reg-profil").value; dateNoi.despreFirma = document.getElementById("reg-despre").value; } await setDoc(doc(db, "utilizatori", user.uid), dateNoi); alert(window.limbaCurenta === 'RO' ? "Cont creat cu succes! Vă rugăm să vă verificați adresa de email pentru link-ul de confirmare." : "Аккаунт успешно создан! Проверьте свою электронную почту."); if(document.getElementById('modal-inregistrare')) document.getElementById('modal-inregistrare').style.display = "none"; formInregistrare.reset(); } catch(err) { alert("Eroare critică la înregistrare: " + err.message); console.error("Detalii eroare:", err); } }); }
-
-const formLogin = document.getElementById("formular-login");
-if(formLogin) { 
-    formLogin.addEventListener("submit", async (e) => { 
-        e.preventDefault(); 
-        const errBox = document.getElementById("mesaj-eroare-login"); 
-        if(errBox) errBox.style.display = "none"; 
-        try { 
-            const emailVal = document.getElementById("login-email").value.trim(); 
-            const passVal = document.getElementById("login-parola").value; 
-            await signInWithEmailAndPassword(auth, emailVal, passVal); 
-            if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none'; 
-            formLogin.reset(); 
-        } catch(err) { 
-            if(errBox) { 
-                errBox.innerText = window.limbaCurenta === 'RO' ? "Date incorecte sau cont inexistent în baza de autentificare." : "Неверные данные или аккаунт не существует."; 
-                errBox.style.display = "block"; 
-            } else { 
-                alert("Eroare logare: " + err.message); 
-            } 
-        } 
-    }); 
-}
-
-const formAnunt = document.getElementById("formular-anunt");
-if(formAnunt) { formAnunt.addEventListener("submit", async (e) => { e.preventDefault(); if (!auth.currentUser) return; let titlu = document.getElementById("titlu").value; let desc = document.getElementById("descriere").value; let statusNou = 'activ'; let mesajFinal = window.limbaCurenta === 'RO' ? "Anunțul a fost publicat! Este valabil 90 de zile." : "Объявление опубликовано! Действительно 90 дней."; if (contineCuvinteInterzise(titlu + " " + desc)) { statusNou = 'suspect'; mesajFinal = window.limbaCurenta === 'RO' ? "⚠️ Anunțul tău conține cuvinte suspecte. A fost trimis spre verificare și va apărea pe site doar după aprobarea administratorului." : "⚠️ Ваше объявление содержит подозрительные слова. Оно отправлено на проверку."; } try { let imagini = []; for(let item of window.fisiereSelectateGlobal) { if(item.tip === 'url') imagini.push(item.date); else { const r = ref(storage, 'poze/'+Date.now()+'-'+item.date.name); await uploadBytes(r, item.date); imagini.push(await getDownloadURL(r)); } } const dateAnunt = { titlu: titlu, categorie: document.getElementById("categorie").value, regiune: document.getElementById("regiune").value, pret: Number(document.getElementById("pret").value), valuta: document.getElementById("valuta").value, descriere: desc, telefonContact: document.getElementById("contact-telefon").value, status: statusNou, imagini: imagini, autorUID: auth.currentUser.uid, numeAutor: auth.currentUser.displayName, emailAutor: auth.currentUser.email, dataPublicare: serverTimestamp() }; const idEdit = document.getElementById("edit-id-anunt").value; if(idEdit) { await updateDoc(doc(db, "anunturi", idEdit), dateAnunt); if(statusNou === 'suspect') alert(mesajFinal); else alert("Actualizat cu succes!"); } else { await addDoc(collection(db, "anunturi"), dateAnunt); alert(mesajFinal); } if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'none'; } catch(err) { alert(err.message); } }); }
-
-window.editeazaAnunt = function(id) { 
-    const a = window.toateAnunturile.find(x => x.id === id); 
-    if(!a) return; 
-    document.getElementById("edit-id-anunt").value = a.id; 
-    document.getElementById("titlu").value = a.titlu; 
-    document.getElementById("categorie").value = a.categorie; 
-    document.getElementById("regiune").value = a.regiune; 
-    document.getElementById("contact-telefon").value = a.telefonContact || ""; 
-    document.getElementById("pret").value = a.pret; 
-    document.getElementById("valuta").value = a.valuta || 'MDL'; 
-    document.getElementById("descriere").value = a.descriere; 
-    window.fisiereSelectateGlobal = []; 
-    if(a.imagini) a.imagini.forEach(u => window.fisiereSelectateGlobal.push({ tip: 'url', date: u, preview: u })); 
-    window.actualizeazaPreviewUI(); 
-    document.getElementById('nume-fisier-foto').innerText = "Fișiere existente încărcate"; 
-    document.getElementById('text-conversie-info').innerText = ""; 
-    if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'flex'; 
-}
-
-window.deseneazaAnunturi = function() { 
-    const pub = document.getElementById("container-anunturi-publice"); 
-    const per = document.getElementById("container-anunturi-personale"); 
-    const catFiltru = document.getElementById("filtrare-categorie") ? document.getElementById("filtrare-categorie").value : "";
-    const regFiltru = document.getElementById("filtrare-regiune") ? document.getElementById("filtrare-regiune").value : "";
-    const msIn90Days = 90 * 24 * 60 * 60 * 1000; 
-    const acum = new Date(); 
-    const msgGol = dictionar[window.limbaCurenta].msgNiciunAnunt; 
-    const msgUserGol = dictionar[window.limbaCurenta].msgFaraAnunturi; 
-    
-    window.toateAnunturile.forEach(async (a) => { 
-        if(a.dataPublicare && a.status === 'activ') { 
-            if((acum - new Date(a.dataPublicare.seconds * 1000)) > msIn90Days) await updateDoc(doc(db, "anunturi", a.id), { status: 'inactiv' }); 
-        } 
-    }); 
-
-    if(document.getElementById('sectiune-principala') && document.getElementById('sectiune-principala').style.display !== 'none') { 
-        if(pub) { 
-            pub.innerHTML = ""; 
-            let lista = window.toateAnunturile.filter(a => a.status === 'activ'); 
-            if(catFiltru) lista = lista.filter(a => a.categorie === catFiltru);
-            if(regFiltru) lista = lista.filter(a => a.regiune === regFiltru);
-
-            if(lista.length === 0) pub.innerHTML = `<p style="text-align:center;">${msgGol}</p>`; 
-            else lista.forEach(a => pub.innerHTML += genereazaCard(a, false)); 
-        } 
-    } else { 
-        if(per) { 
-            per.innerHTML = ""; 
-            if(auth.currentUser) { 
-                const listaPers = window.toateAnunturile.filter(a => a.autorUID === auth.currentUser.uid && a.status === window.stareTabCurent); 
-                if(listaPers.length === 0) per.innerHTML = `<p style="text-align:center;">${msgUserGol}</p>`; 
-                else listaPers.forEach(a => per.innerHTML += genereazaCard(a, true)); 
-            } 
-        } 
-    } 
-}
-
-onSnapshot(collection(db, "anunturi"), snap => { 
-    window.toateAnunturile = []; 
-    snap.forEach(d => { 
-        let a = d.data(); 
-        a.id = d.id; 
-        if(!a.status) a.status='activ'; 
-        window.toateAnunturile.push(a); 
-    }); 
-    window.toateAnunturile.sort((x, y) => {
-        let t1 = x.dataPublicare && x.dataPublicare.seconds ? x.dataPublicare.seconds : 0;
-        let t2 = y.dataPublicare && y.dataPublicare.seconds ? y.dataPublicare.seconds : 0;
-        return t2 - t1;
-    });
-    window.deseneazaAnunturi(); 
-    if(window.stareTabCurent === 'redactare') window.incarcaAnunturiRedactare(); 
-});
-
-const FALLBACK_CARD_260x180 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='180'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EFara+Poza%3C/text%3E%3C/svg%3E";
-const FALLBACK_DETALII_600x400 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EFara+Poza%3C/text%3E%3C/svg%3E";
-const FALLBACK_AVATAR_50 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='12' fill='%23000000'%3EUser%3C/text%3E%3C/svg%3E";
-const FALLBACK_AVATAR_80 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EUser%3C/text%3E%3C/svg%3E";
-const FALLBACK_AVATAR_90 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3EUser%3C/text%3E%3C/svg%3E";
-const FALLBACK_LOGO_100 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3ELogo%3C/text%3E%3C/svg%3E";
-const FALLBACK_LOGO_130 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Crect width='100%25' height='100%25' fill='%23cccccc'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000'%3ELogo%3C/text%3E%3C/svg%3E";
-const FALLBACK_BANNER_1000x200 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='200'%3E%3Crect width='100%25' height='100%25' fill='%232c3e50'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23ffffff'%3Ebanner%3C/text%3E%3C/svg%3E";
-
-function genereazaCard(a, inCont) {
-    let img = a.imagini && a.imagini.length ? a.imagini[0] : FALLBACK_CARD_260x180;
-    let actiuni = "";
-    let clasaSuspect = a.status === 'suspect' ? 'suspect' : '';
-    let valutaSimbol = a.valuta || 'MDL';
-    if(inCont) {
-        if(a.status === 'suspect' && window.rolUtilizatorGlobal === 'super_admin') {
-            actiuni = `<div class="actiuni-anunt"><button class="btn-actiune" style="background:#27ae60;" onclick="aprobaAnunt('${a.id}')">✅ Aprobă</button><button class="btn-actiune btn-edit" onclick="editeazaAnunt('${a.id}')">✏️ Redactează</button><button class="btn-actiune btn-sterge" onclick="stergeAnuntCuAvertisment('${a.id}', '${a.emailAutor}')">🗑️ Șterge & Avertizează</button></div>`;
-        } else {
-            let btnRidicare = (window.rolUtilizatorGlobal === 'super_admin' || (window.dateUtilizatorCurent && window.dateUtilizatorCurent.tipCont === 'firma')) ? `<button class="btn-actiune btn-ridica-manual" onclick="ridicaAnunt('${a.id}')">🔄 Ridicare</button>` : `<button class="btn-actiune btn-republica" onclick="ridicaAnunt('${a.id}')">🔄 Ridică</button>`;
-            actiuni = `<div class="actiuni-anunt"><button class="btn-actiune btn-edit" onclick="editeazaAnunt('${a.id}')">✏️ Redactează</button>${btnRidicare}<button class="btn-actiune btn-sterge" onclick="stergeAnuntCuAvertisment('${a.id}', '${a.emailAutor}')">🗑️ Șterge</button></div>`;
-        }
-    }
-    return `<div style="display:flex; flex-direction:column;"><div class="anunt-card-orizontal ${a.status==='inactiv'?'inactiv':''} ${clasaSuspect}" onclick="deschideDetalii('${a.id}')"><div class="card-img-container"><img src="${img}"></div><div class="card-content"><div><div style="display:flex; justify-content:space-between;"><h3 class="card-titlu">${a.titlu}</h3><div class="card-pret-principal">${a.pret} ${valutaSimbol}</div></div><p class="card-descriere">${a.descriere}</p></div><div class="card-footer-row"><span>📍 ${a.regiune}</span></div></div></div>${actiuni}</div>`;
-}
-
-window.ridicaAnunt = async function(id) { await updateDoc(doc(db, "anunturi", id), { dataPublicare: serverTimestamp(), status: 'activ' }); alert("Anunț ridicat!"); }
-window.stergeAnuntCuAvertisment = async function(id, emailAutor) { if(confirm("Ștergi și avertizezi utilizatorul?")) { await deleteDoc(doc(db, "anunturi", id)); alert("Șters!"); window.location.reload(); } }
-
-window.deschideDetalii = async (id) => {
-    const a = window.toateAnunturile.find(x => x.id === id);
-    if(!a) return;
-    let mainImg = a.imagini && a.imagini.length ? a.imagini[0] : FALLBACK_DETALII_600x400;
-    let thumbsHtml = '';
-    if(a.imagini && a.imagini.length > 1) a.imagini.forEach(img => { thumbsHtml += `<img src="${img}" class="detalii-thumb" onclick="document.getElementById('detalii-img-principala').src='${img}'">`; });
-    let valutaSimbol = a.valuta || 'MDL';
-    let htmlProfilVanzator = "";
-    let htmlContact = `<div style="background:#f8f9fa; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid #ddd; text-align:center;"><div style="font-size:13px; color:#555; margin-bottom:5px;">Telefon:</div><div style="font-size:18px; font-weight:bold; color:#27ae60;">${a.telefonContact}</div></div><button onclick="document.getElementById('modal-mesaj').style.display='flex'" style="background:#0b5ed7; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:14px;">✉️ Contactează</button>`;
-    try {
-        const uDoc = await getDoc(doc(db, "utilizatori", a.autorUID));
-        if(uDoc.exists()) {
-            let ud = uDoc.data();
-            let avatar = sanitizeUrl(ud.avatarUrl) || FALLBACK_AVATAR_50;
-            if(ud.tipCont === 'firma') {
-                htmlProfilVanzator = `<div class="vanzator-card-profil"><img src="${avatar}" class="vanzator-avatar-mic"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${ud.nume}</div><div style="color:#0b5ed7; font-size:12px; font-weight:bold;">COMPANIE / FIRMĂ</div><button onclick="deschideProfilPublic('${a.autorUID}')" style="background:none; border:none; color:#555; padding:0; cursor:pointer; font-size:13px; text-align:left; text-decoration:underline;">Vezi profilul și anunțurile →</button></div></div>`;
-            } else {
-                htmlProfilVanzator = `<div class="vanzator-card-profil"><img src="${avatar}" class="vanzator-avatar-mic"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${ud.nume}</div><button onclick="deschideProfilPublic('${a.autorUID}')" style="background:none; border:none; color:#0b5ed7; padding:0; cursor:pointer; font-size:13px; text-align:left; font-weight:bold;">Toate anunțurile utilizatorului →</button></div></div>`;
-            }
-        } else {
-            htmlProfilVanzator = `<div class="vanzator-card-profil"><img src="${FALLBACK_AVATAR_50}" class="vanzator-avatar-mic"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${a.numeAutor}</div></div></div>`;
-        }
-    } catch(e) {
-        htmlProfilVanzator = `<div class="vanzator-card-profil"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${a.numeAutor}</div></div></div>`;
-    }
-    let htmlDetalii = `<div class="detalii-stanga"><h1 style="font-size:24px; margin-top:0;">${a.titlu}</h1><div style="color:#777; font-size:13px; margin-bottom:15px;">📍 ${a.regiune}</div><div class="detalii-galerie"><img src="${mainImg}" id="detalii-img-principala" class="detalii-img-mare"><div class="detalii-thumbs">${thumbsHtml}</div></div><div class="detalii-pret-box">${a.pret} ${valutaSimbol}</div><h3 style="border-bottom: 2px solid #0b5ed7; padding-bottom: 5px; margin-top:25px;">Descriere</h3><p style="white-space:pre-wrap; line-height:1.6; font-size:15px; color:#333;">${a.descriere}</p></div><div class="detalii-dreapta">${htmlProfilVanzator}${htmlContact}<div class="video-container-sidebar" id="container-video-lateral-detalii"><video id="player-video-dreapta" controls muted playsinline></video><p style="text-align:center; font-size:11px; color:#999; margin-top:5px;">Publicitate</p></div></div>`;
-    document.getElementById('continut-detalii-anunt').innerHTML = htmlDetalii;
-    setTimeout(() => { ruleazaPlaylistVideo('player-video-dreapta', window.playlistReclameLateral, 'container-video-lateral-detalii'); }, 200);
-    document.getElementById('sectiune-principala').style.display = 'none';
-    document.getElementById('sectiune-contul-meu').style.display = 'none';
-    document.getElementById('sectiune-detalii').style.display = 'block';
-    window.scrollTo(0, 0);
-}
-
-window.deschideProfilPublic = async (uid) => {
-    let userData = { nume: "Utilizator", tipCont: "fizica", avatarUrl: "", bannerUrl: "", profilFirma: "", despreFirma: "" };
-    try { const docU = await getDoc(doc(db, "utilizatori", uid)); if(docU.exists()) userData = docU.data(); } catch(e) {}
-    let anunturiUser = window.toateAnunturile.filter(a => a.autorUID === uid && a.status === 'activ');
-    let anunturiHtml = "";
-    if(anunturiUser.length === 0) {
-        anunturiHtml = `<p style="text-align:center; color:#666;">Acest utilizator nu are anunțuri active momentan.</p>`;
-    } else {
-        anunturiUser.forEach(a => {
-            let img = a.imagini && a.imagini.length ? a.imagini[0] : FALLBACK_CARD_260x180;
-            let valSimbol = a.valuta || 'MDL';
-            anunturiHtml += `<div class="anunt-card-orizontal" onclick="deschideDetalii('${a.id}')"><div class="card-img-container"><img src="${img}"></div><div class="card-content"><div><div style="display:flex; justify-content:space-between;"><h3 class="card-titlu">${a.titlu}</h3><div class="card-pret-principal">${a.pret} ${valSimbol}</div></div><p class="card-descriere">${a.descriere}</p></div><div class="card-footer-row"><span>📍 ${a.regiune}</span></div></div></div>`;
+            if(window.deseneazaAnunturi) window.deseneazaAnunturi();
         });
-    }
-    let profilHtml = "";
-    if(userData.tipCont === 'firma') {
-        profilHtml = `<div class="profil-public-header"><div class="profil-public-banner" style="background-image: url('${sanitizeUrl(userData.bannerUrl) || FALLBACK_BANNER_1000x200}')"></div><div style="padding: 20px; display:flex; align-items:flex-end; gap:20px; margin-top:-60px;"><img src="${sanitizeUrl(userData.avatarUrl) || FALLBACK_LOGO_100}" style="width:110px; height:110px; border-radius:50%; border:4px solid white; object-fit:cover; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.2);"><div><h2 style="margin:0; font-size:24px;">${userData.nume}</h2><div style="color:#0b5ed7; font-weight:bold; font-size:14px; margin-top:3px;">${userData.profilFirma || "Firmă"}</div></div></div><div style="padding: 0 20px 20px 20px;"><h4 style="margin:0 0 5px 0;">Despre noi:</h4><p style="color:#555; font-size:14px; line-height:1.5; margin:0;">${userData.despreFirma || "Fără descriere adăugată."}</p></div></div>`;
-    } else {
-        profilHtml = `<div class="profil-public-header" style="padding:25px; display:flex; align-items:center; gap:20px;"><img src="${sanitizeUrl(userData.avatarUrl) || FALLBACK_AVATAR_90}" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:1px solid #ddd;"><div><h2 style="margin:0; font-size:22px;">${userData.nume}</h2><p style="color:#666; margin:5px 0 0 0; font-size:14px;">Persoană fizică</p></div></div>`;
-    }
-    document.getElementById('continut-profil-public').innerHTML = `${profilHtml}<h3 style="margin-bottom:15px;">Anunțurile utilizatorului (${anunturiUser.length})</h3><div class="lista-anunturi">${anunturiHtml}</div>`;
-    if(document.getElementById('sectiune-principala')) document.getElementById('sectiune-principala').style.display = 'none';
-    if(document.getElementById('sectiune-detalii')) document.getElementById('sectiune-detalii').style.display = 'none';
-    if(document.getElementById('sectiune-contul-meu')) document.getElementById('sectiune-contul-meu').style.display = 'none';
-    if(document.getElementById('sectiune-profil-public')) document.getElementById('sectiune-profil-public').style.display = 'block';
-    window.scrollTo(0, 0);
-}
 
+        window.deschideInregistrare = () => { if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none'; if(document.getElementById('modal-recuperare')) document.getElementById('modal-recuperare').style.display = 'none'; if(document.getElementById('modal-inregistrare')) document.getElementById('modal-inregistrare').style.display = 'flex'; };
+        window.deschideRecuperare = () => { if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none'; if(document.getElementById('modal-recuperare')) document.getElementById('modal-recuperare').style.display = 'flex'; };
+        
+        const btnLoginTop = document.getElementById("btn-deschide-login");
+        if(btnLoginTop) {
+            btnLoginTop.addEventListener("click", () => {
+                if (auth.currentUser) { signOut(auth); } 
+                else {
+                    if(document.getElementById('modal-recuperare')) document.getElementById('modal-recuperare').style.display = 'none';
+                    if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = "flex";
+                }
+            });
+        }
+
+        const formRecuperare = document.getElementById("formular-recuperare");
+        if(formRecuperare) { 
+            formRecuperare.addEventListener("submit", async (e) => { 
+                e.preventDefault(); 
+                const emailInput = document.getElementById("recup-email"); 
+                const statusBox = document.getElementById("mesaj-status-recup"); 
+                if(!emailInput) return; 
+                const email = emailInput.value.trim(); 
+                emailInput.value = "";
+                formRecuperare.reset();
+                if(statusBox) { 
+                    statusBox.style.display = "block"; 
+                    statusBox.style.color = "#0b5ed7"; 
+                    statusBox.innerText = window.limbaCurenta === 'RO' ? "Se trimite link-ul..." : "Отправка ссылки..."; 
+                } 
+                try {
+                    const trimiteResetare = httpsCallable(functions, "trimiteResetareParola");
+                    await trimiteResetare({ email: email, redirectUrl: window.location.href });
+                    if(statusBox) {
+                        statusBox.style.color = "#27ae60";
+                        statusBox.innerText = window.limbaCurenta === 'RO' ? "✅ Link trimis cu succes! Verifică email-ul (inclusiv Spam)." : "✅ Ссылка отправлена! Проверьте почту.";
+                    }
+                } catch(err) {
+                    if(statusBox) {
+                        statusBox.style.color = "#dc3545";
+                        statusBox.innerText = (window.limbaCurenta === 'RO' ? "Eroare: " : "Ошибка: ") + err.message;
+                    }
+                } 
+            }); 
+        }
+
+        const formSetari = document.getElementById("formular-setari-profil");
+        if(formSetari) { formSetari.addEventListener("submit", async (e) => { e.preventDefault(); if(!auth.currentUser) return; const btnSalvare = document.getElementById("btn-salveaza-profil"); btnSalvare.innerText = window.limbaCurenta === 'RO' ? "Se încarcă..." : "Загрузка..."; btnSalvare.disabled = true; try { let avatarUrl = window.dateUtilizatorCurent.avatarUrl || ""; let bannerUrl = window.dateUtilizatorCurent.bannerUrl || ""; const fileAvatar = document.getElementById("input-avatar-user").files[0]; if (fileAvatar) { const rAv = ref(storage, 'utilizatori/avatar_'+auth.currentUser.uid+'_'+Date.now()); await uploadBytes(rAv, fileAvatar); avatarUrl = await getDownloadURL(rAv); } const dateNoi = { avatarUrl: avatarUrl }; if(window.dateUtilizatorCurent.tipCont === 'firma') { const fileBanner = document.getElementById("input-banner-firma").files[0]; if (fileBanner) { const rBanner = ref(storage, 'firme/banner_'+auth.currentUser.uid+'_'+Date.now()); await uploadBytes(rBanner, fileBanner); bannerUrl = await getDownloadURL(rBanner); } dateNoi.bannerUrl = bannerUrl; dateNoi.profilFirma = document.getElementById("setari-profil-firma").value; dateNoi.despreFirma = document.getElementById("setari-despre-firma").value; } await setDoc(doc(db, "utilizatori", auth.currentUser.uid), dateNoi, { merge: true }); alert(window.limbaCurenta === 'RO' ? "Profil actualizat!" : "Профиль обновлен!"); window.location.reload(); } catch(err) { alert(err.message); } finally { btnSalvare.innerText = dictionar[window.limbaCurenta].btnSalveazaSetari; btnSalvare.disabled = false; } }); }
+
+        const formInregistrare = document.getElementById("formular-inregistrare");
+        if(formInregistrare) { formInregistrare.addEventListener("submit", async (e) => { e.preventDefault(); try { const tip = document.getElementById("reg-tip-cont").value; const emailVal = document.getElementById("reg-email").value.trim(); const passVal = document.getElementById("reg-parola").value; const numeVal = document.getElementById("reg-nume").value.trim(); const telVal = document.getElementById("reg-telefon").value.trim(); const locVal = document.getElementById("reg-localitate").value; const userCredential = await createUserWithEmailAndPassword(auth, emailVal, passVal); const user = userCredential.user; if (user) { try { const trimiteVerificare = httpsCallable(functions, "trimiteVerificareEmail"); await trimiteVerificare({ redirectUrl: window.location.href }); } catch (mailErr) { console.error("Eroare la trimiterea emailului de verificare:", mailErr); } } await updateProfile(user, { displayName: numeVal }); let dateNoi = { nume: numeVal, email: emailVal, telefon: telVal, localitate: locVal, tipCont: tip, rol: 'user', stareCont: 'activ', dataInregistrare: serverTimestamp(), avatarUrl: "", bannerUrl: "", soldMdl: 0 }; if(tip === 'firma') { dateNoi.profilFirma = document.getElementById("reg-profil").value; dateNoi.despreFirma = document.getElementById("reg-despre").value; } await setDoc(doc(db, "utilizatori", user.uid), dateNoi); alert(window.limbaCurenta === 'RO' ? "Cont creat cu succes! Vă rugăm să vă verificați adresa de email pentru link-ul de confirmare." : "Аккаунт успешно создан! Проверьте свою электронную почту."); if(document.getElementById('modal-inregistrare')) document.getElementById('modal-inregistrare').style.display = "none"; formInregistrare.reset(); } catch(err) { alert("Eroare: " + err.message); console.error("Detalii eroare:", err); } }); }
+
+        const formLogin = document.getElementById("formular-login");
+        if(formLogin) { 
+            formLogin.addEventListener("submit", async (e) => { 
+                e.preventDefault(); 
+                const errBox = document.getElementById("mesaj-eroare-login"); 
+                if(errBox) errBox.style.display = "none"; 
+                try { 
+                    const emailVal = document.getElementById("login-email").value.trim(); 
+                    const passVal = document.getElementById("login-parola").value; 
+                    await signInWithEmailAndPassword(auth, emailVal, passVal); 
+                    if(document.getElementById('modal-login')) document.getElementById('modal-login').style.display = 'none'; 
+                    formLogin.reset(); 
+                } catch(err) { 
+                    if(errBox) { 
+                        errBox.innerText = window.limbaCurenta === 'RO' ? "Date incorecte sau cont inexistent în baza de autentificare." : "Неверные данные или аккаунт не существует."; 
+                        errBox.style.display = "block"; 
+                    } else { 
+                        alert("Eroare logare: " + err.message); 
+                    } 
+                } 
+            }); 
+        }
+
+        const formAnunt = document.getElementById("formular-anunt");
+        if(formAnunt) { formAnunt.addEventListener("submit", async (e) => { e.preventDefault(); if (!auth.currentUser) return; let titlu = document.getElementById("titlu").value; let desc = document.getElementById("descriere").value; let statusNou = 'activ'; let mesajFinal = window.limbaCurenta === 'RO' ? "Anunțul a fost publicat! Este valabil 90 de zile." : "Объявление опубликовано! Действительно 90 дней."; if (contineCuvinteInterzise(titlu + " " + desc)) { statusNou = 'suspect'; mesajFinal = window.limbaCurenta === 'RO' ? "⚠️ Anunțul tău conține cuvinte suspecte. A fost trimis spre verificare și va apărea pe site doar după aprobarea administratorului." : "⚠️ Ваше объявление содержит подозрительные слова. Оно отправлено на проверку."; } try { let imagini = []; for(let item of window.fisiereSelectateGlobal) { if(item.tip === 'url') imagini.push(item.date); else { const r = ref(storage, 'poze/'+Date.now()+'-'+item.date.name); await uploadBytes(r, item.date); imagini.push(await getDownloadURL(r)); } } const dateAnunt = { titlu: titlu, categorie: document.getElementById("categorie").value, regiune: document.getElementById("regiune").value, pret: Number(document.getElementById("pret").value), valuta: document.getElementById("valuta").value, descriere: desc, telefonContact: document.getElementById("contact-telefon").value, status: statusNou, imagini: imagini, autorUID: auth.currentUser.uid, numeAutor: auth.currentUser.displayName, emailAutor: auth.currentUser.email, dataPublicare: serverTimestamp() }; const idEdit = document.getElementById("edit-id-anunt").value; if(idEdit) { await updateDoc(doc(db, "anunturi", idEdit), dateAnunt); if(statusNou === 'suspect') alert(mesajFinal); else alert(window.limbaCurenta === 'RO' ? "Actualizat cu succes!" : "Успешно обновлено!"); } else { await addDoc(collection(db, "anunturi"), dateAnunt); alert(mesajFinal); } if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'none'; } catch(err) { alert(err.message); } }); }
+
+        window.editeazaAnunt = function(id) { 
+            const a = window.toateAnunturile.find(x => x.id === id); 
+            if(!a) return; 
+            document.getElementById("edit-id-anunt").value = a.id; 
+            document.getElementById("titlu").value = a.titlu; 
+            document.getElementById("categorie").value = a.categorie; 
+            document.getElementById("regiune").value = a.regiune; 
+            document.getElementById("contact-telefon").value = a.telefonContact || ""; 
+            document.getElementById("pret").value = a.pret; 
+            document.getElementById("valuta").value = a.valuta || 'MDL'; 
+            document.getElementById("descriere").value = a.descriere; 
+            window.fisiereSelectateGlobal = []; 
+            if(a.imagini) a.imagini.forEach(u => window.fisiereSelectateGlobal.push({ tip: 'url', date: u, preview: u })); 
+            window.actualizeazaPreviewUI(); 
+            document.getElementById('nume-fisier-foto').innerText = window.limbaCurenta === 'RO' ? "Fișiere existente încărcate" : "Существующие файлы загружены"; 
+            document.getElementById('text-conversie-info').innerText = ""; 
+            if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'flex'; 
+        }
+
+        window.deseneazaAnunturi = function() { 
+            const pub = document.getElementById("container-anunturi-publice"); 
+            const per = document.getElementById("container-anunturi-personale"); 
+            const catFiltru = document.getElementById("filtrare-categorie") ? document.getElementById("filtrare-categorie").value : "";
+            const regFiltru = document.getElementById("filtrare-regiune") ? document.getElementById("filtrare-regiune").value : "";
+            const msIn90Days = 90 * 24 * 60 * 60 * 1000; 
+            const acum = new Date(); 
+            const msgGol = dictionar[window.limbaCurenta].msgNiciunAnunt; 
+            const msgUserGol = dictionar[window.limbaCurenta].msgFaraAnunturi; 
+            
+            window.toateAnunturile.forEach(async (a) => { 
+                if(a.dataPublicare && a.status === 'activ') { 
+                    if((acum - new Date(a.dataPublicare.seconds * 1000)) > msIn90Days) await updateDoc(doc(db, "anunturi", a.id), { status: 'inactiv' }); 
+                } 
+            }); 
+
+            if(document.getElementById('sectiune-principala') && document.getElementById('sectiune-principala').style.display !== 'none') { 
+                if(pub) { 
+                    pub.innerHTML = ""; 
+                    let lista = window.toateAnunturile.filter(a => a.status === 'activ'); 
+                    if(catFiltru) lista = lista.filter(a => a.categorie === catFiltru);
+                    if(regFiltru) lista = lista.filter(a => a.regiune === regFiltru);
+
+                    if(lista.length === 0) pub.innerHTML = `<p style="text-align:center;">${msgGol}</p>`; 
+                    else lista.forEach(a => pub.innerHTML += genereazaCard(a, false)); 
+                } 
+            } else { 
+                if(per) { 
+                    per.innerHTML = ""; 
+                    if(auth.currentUser) { 
+                        const listaPers = window.toateAnunturile.filter(a => a.autorUID === auth.currentUser.uid && a.status === window.stareTabCurent); 
+                        if(listaPers.length === 0) per.innerHTML = `<p style="text-align:center;">${msgUserGol}</p>`; 
+                        else listaPers.forEach(a => per.innerHTML += genereazaCard(a, true)); 
+                    } 
+                } 
+            } 
+        }
+
+        onSnapshot(collection(db, "anunturi"), snap => { 
+            window.toateAnunturile = []; 
+            snap.forEach(d => { 
+                let a = d.data(); 
+                a.id = d.id; 
+                if(!a.status) a.status='activ'; 
+                window.toateAnunturile.push(a); 
+            }); 
+            window.toateAnunturile.sort((x, y) => {
+                let t1 = x.dataPublicare && x.dataPublicare.seconds ? x.dataPublicare.seconds : 0;
+                let t2 = y.dataPublicare && y.dataPublicare.seconds ? y.dataPublicare.seconds : 0;
+                return t2 - t1;
+            });
+            window.deseneazaAnunturi(); 
+            if(window.stareTabCurent === 'redactare') window.incarcaAnunturiRedactare(); 
+        });
+
+        function genereazaCard(a, inCont) { 
+            const d = dictionar[window.limbaCurenta];
+            let faraPozaText = window.limbaCurenta === 'RO' ? "Fara+Poza" : "Нет+Фото";
+            let img = a.imagini && a.imagini.length ? a.imagini[0] : `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'260\' height=\'180\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'#000000\'%3E${faraPozaText}%3C/text%3E%3C/svg%3E`; 
+            let actiuni = ""; 
+            let clasaSuspect = a.status === 'suspect' ? 'suspect' : ''; 
+            let valutaSimbol = a.valuta || 'MDL'; 
+            
+            if(inCont) { 
+                if(a.status === 'suspect' && window.rolUtilizatorGlobal === 'super_admin') { 
+                    actiuni = `<div class="actiuni-anunt"><button class="btn-actiune" style="background:#27ae60;" onclick="aprobaAnunt('${a.id}')">${d.btnAproba}</button><button class="btn-actiune btn-edit" onclick="editeazaAnunt('${a.id}')">${d.btnRedacteaza}</button><button class="btn-actiune btn-sterge" onclick="stergeAnuntCuAvertisment('${a.id}', '${a.emailAutor}')">${d.btnStergeAvertisment}</button></div>`; 
+                } else { 
+                    let btnRidicare = (window.rolUtilizatorGlobal === 'super_admin' || (window.dateUtilizatorCurent && window.dateUtilizatorCurent.tipCont === 'firma')) ? `<button class="btn-actiune btn-ridica-manual" onclick="ridicaAnunt('${a.id}')">${d.btnRidica}</button>` : `<button class="btn-actiune btn-republica" onclick="ridicaAnunt('${a.id}')">${d.btnRidica}</button>`; 
+                    actiuni = `<div class="actiuni-anunt"><button class="btn-actiune btn-edit" onclick="editeazaAnunt('${a.id}')">${d.btnRedacteaza}</button>${btnRidicare}<button class="btn-actiune btn-sterge" onclick="stergeAnuntCuAvertisment('${a.id}', '${a.emailAutor}')">${d.btnStergeAvertisment}</button></div>`; 
+                } 
+            } 
+            return `<div style="display:flex; flex-direction:column;"><div class="anunt-card-orizontal ${a.status==='inactiv'?'inactiv':''} ${clasaSuspect}" onclick="deschideDetalii('${a.id}')"><div class="card-img-container"><img src="${img}"></div><div class="card-content"><div><div style="display:flex; justify-content:space-between;"><h3 class="card-titlu">${a.titlu}</h3><div class="card-pret-principal">${a.pret} ${valutaSimbol}</div></div><p class="card-descriere">${a.descriere}</p></div><div class="card-footer-row"><span>📍 ${a.regiune}</span></div></div></div>${actiuni}</div>`; 
+        }
+
+        window.ridicaAnunt = async function(id) { 
+            await updateDoc(doc(db, "anunturi", id), { dataPublicare: serverTimestamp(), status: 'activ' }); 
+            alert(window.limbaCurenta === 'RO' ? "Anunț ridicat!" : "Объявление поднято!"); 
+        }
+        window.stergeAnuntCuAvertisment = async function(id, emailAutor) { 
+            const msgConf = window.limbaCurenta === 'RO' ? "Ștergi și avertizezi utilizatorul?" : "Удалить и предупредить пользователя?";
+            if(confirm(msgConf)) { 
+                await deleteDoc(doc(db, "anunturi", id)); 
+                alert(window.limbaCurenta === 'RO' ? "Șters!" : "Удалено!"); 
+                window.location.reload(); 
+            } 
+        }
+
+        window.deschideDetalii = async (id) => { 
+            const a = window.toateAnunturile.find(x => x.id === id); 
+            if(!a) return; 
+            const d = dictionar[window.limbaCurenta];
+            let faraPozaText = window.limbaCurenta === 'RO' ? "Fara+Poza" : "Нет+Фото";
+            let mainImg = a.imagini && a.imagini.length ? a.imagini[0] : `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23000000\'%3E${faraPozaText}%3C/text%3E%3C/svg%3E`; 
+            let thumbsHtml = ''; 
+            if(a.imagini && a.imagini.length > 1) a.imagini.forEach(img => { thumbsHtml += `<img src="${img}" class="detalii-thumb" onclick="document.getElementById('detalii-img-principala').src='${img}'">`; }); 
+            let valutaSimbol = a.valuta || 'MDL'; 
+            let htmlProfilVanzator = ""; 
+            let lblTelText = window.limbaCurenta === 'RO' ? 'Telefon:' : 'Телефон:';
+            let htmlContact = `<div style="background:#f8f9fa; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid #ddd; text-align:center;"><div style="font-size:13px; color:#555; margin-bottom:5px;">${lblTelText}</div><div style="font-size:18px; font-weight:bold; color:#27ae60;">${a.telefonContact}</div></div><button onclick="document.getElementById('modal-mesaj').style.display='flex'" style="background:#0b5ed7; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:14px;">${d.btnContacteaza}</button>`; 
+            
+            try { 
+                const uDoc = await getDoc(doc(db, "utilizatori", a.autorUID)); 
+                if(uDoc.exists()) { 
+                    let ud = uDoc.data(); 
+                    let avatar = sanitizeUrl(ud.avatarUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%23000000\'%3EUser%3C/text%3E%3C/svg%3E'; 
+                    if(ud.tipCont === 'firma') { 
+                        let btnFirmaTxt = window.limbaCurenta === 'RO' ? "Vezi profilul și anunțurile →" : "Смотреть профиль и объявления →";
+                        let tagFirma = window.limbaCurenta === 'RO' ? "COMPANIE / FIRMĂ" : "КОМПАНИЯ / ФИРМА";
+                        htmlProfilVanzator = `<div class="vanzator-card-profil"><img src="${avatar}" class="vanzator-avatar-mic"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${ud.nume}</div><div style="color:#0b5ed7; font-size:12px; font-weight:bold;">${tagFirma}</div><button onclick="deschideProfilPublic('${a.autorUID}')" style="background:none; border:none; color:#555; padding:0; cursor:pointer; font-size:13px; text-align:left; text-decoration:underline;">${btnFirmaTxt}</button></div></div>`; 
+                    } else { 
+                        let btnUserTxt = window.limbaCurenta === 'RO' ? "Toate anunțurile utilizatorului →" : "Все объявления пользователя →";
+                        htmlProfilVanzator = `<div class="vanzator-card-profil"><img src="${avatar}" class="vanzator-avatar-mic"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${ud.nume}</div><button onclick="deschideProfilPublic('${a.autorUID}')" style="background:none; border:none; color:#0b5ed7; padding:0; cursor:pointer; font-size:13px; text-align:left; font-weight:bold;">${btnUserTxt}</button></div></div>`; 
+                    } 
+                } else { 
+                    htmlProfilVanzator = `<div class="vanzator-card-profil"><img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%23000000\'%3EUser%3C/text%3E%3C/svg%3E" class="vanzator-avatar-mic"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${a.numeAutor}</div></div></div>`; 
+                } 
+            } catch(e) { 
+                htmlProfilVanzator = `<div class="vanzator-card-profil"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${a.numeAutor}</div></div></div>`; 
+            } 
+
+            let htmlDetalii = `<div class="detalii-starga" style="flex:2; min-width:300px; background:white; padding:25px; border-radius:8px; border:1px solid #e0e0e0;"><h1 style="font-size:24px; margin-top:0;">${a.titlu}</h1><div style="color:#777; font-size:13px; margin-bottom:15px;">📍 ${a.regiune}</div><div class="detalii-galerie"><img src="${mainImg}" id="detalii-img-principala" class="detalii-img-mare"><div class="detalii-thumbs">${thumbsHtml}</div></div><div class="detalii-pret-box">${a.pret} ${valutaSimbol}</div><h3 style="border-bottom: 2px solid #0b5ed7; padding-bottom: 5px; margin-top:25px;">${d.lblDescriereAnunt}</h3><p style="white-space:pre-wrap; line-height:1.6; font-size:15px; color:#333;">${a.descriere}</p></div><div class="detalii-dreapta">${htmlProfilVanzator}${htmlContact}<div class="video-container-sidebar" id="container-video-lateral-detalii"><video id="player-video-dreapta" controls muted playsinline></video><p style="text-align:center; font-size:11px; color:#999; margin-top:5px;">${d.lblPublicitate}</p></div></div>`; 
+            
+            document.getElementById('continut-detalii-anunt').innerHTML = htmlDetalii; 
+            setTimeout(() => { ruleazaPlaylistVideo('player-video-dreapta', window.playlistReclameLateral, 'container-video-lateral-detalii'); }, 200); 
+            document.getElementById('sectiune-principala').style.display = 'none'; 
+            document.getElementById('sectiune-contul-meu').style.display = 'none'; 
+            document.getElementById('sectiune-detalii').style.display = 'block'; 
+            window.scrollTo(0, 0); 
+        }
+
+        window.deschideProfilPublic = async (uid) => { 
+            let userData = { nume: "Utilizator", tipCont: "fizica", avatarUrl: "", bannerUrl: "", profilFirma: "", despreFirma: "" }; 
+            try { const docU = await getDoc(doc(db, "utilizatori", uid)); if(docU.exists()) userData = docU.data(); } catch(e) {} 
+            let anunturiUser = window.toateAnunturile.filter(a => a.autorUID === uid && a.status === 'activ'); 
+            let anunturiHtml = ""; 
+            if(anunturiUser.length === 0) { 
+                anunturiHtml = `<p style="text-align:center; color:#666;">${window.limbaCurenta === 'RO' ? 'Acest utilizator nu are anunțuri active momentan.' : 'У этого пользователя пока нет активных объявлений.'}</p>`; 
+            } else { 
+                anunturiUser.forEach(a => { 
+                    anunturiHtml += genereazaCard(a, false); 
+                }); 
+            } 
+            let profilHtml = ""; 
+            if(userData.tipCont === 'firma') { 
+                let lblDespre = window.limbaCurenta === 'RO' ? "Despre noi:" : "О нас:";
+                let faraDesc = window.limbaCurenta === 'RO' ? "Fără descriere adăugată." : "Описание не добавлено.";
+                profilHtml = `<div class="profil-public-header"><div class="profil-public-banner" style="background-image: url('${sanitizeUrl(userData.bannerUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'200\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%232c3e50\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'18\' fill=\'%23ffffff\'%3Ebanner%3C/text%3E%3C/svg%3E'}')"></div><div style="padding: 20px; display:flex; align-items:flex-end; gap:20px; margin-top:-60px;"><img src="${sanitizeUrl(userData.avatarUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23000000\'%3ELogo%3C/text%3E%3C/svg%3E'}" style="width:110px; height:110px; border-radius:50%; border:4px solid white; object-fit:cover; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.2);"><div><h2 style="margin:0; font-size:24px;">${userData.nume}</h2><div style="color:#0b5ed7; font-weight:bold; font-size:14px; margin-top:3px;">${userData.profilFirma || (window.limbaCurenta === 'RO' ? "Firmă" : "Фирма")}</div></div></div><div style="padding: 0 20px 20px 20px;"><h4 style="margin:0 0 5px 0;">${lblDespre}</h4><p style="color:#555; font-size:14px; line-height:1.5; margin:0;">${userData.despreFirma || faraDesc}</p></div></div>`; 
+            } else { 
+                let tipFiz = window.limbaCurenta === 'RO' ? "Persoană fizică" : "Физическое лицо";
+                profilHtml = `<div class="profil-public-header" style="padding:25px; display:flex; align-items:center; gap:20px;"><img src="${sanitizeUrl(userData.avatarUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'90\' height=\'90\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23000000\'%3EUser%3C/text%3E%3C/svg%3E'}" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:1px solid #ddd;"><div><h2 style="margin:0; font-size:22px;">${userData.nume}</h2><p style="color:#666; margin:5px 0 0 0; font-size:14px;">${tipFiz}</p></div></div>`; 
+            } 
+            let lblTitluAnunturiUser = window.limbaCurenta === 'RO' ? `Anunțurile utilizatorului (${anunturiUser.length})` : `Объявления пользователя (${anunturiUser.length})`;
+            document.getElementById('continut-profil-public').innerHTML = `${profilHtml}<h3 style="margin-bottom:15px;">${lblTitluAnunturiUser}</h3><div class="lista-anunturi">${anunturiHtml}</div>`; 
+            if(document.getElementById('sectiune-principala')) document.getElementById('sectiune-principala').style.display = 'none'; 
+            if(document.getElementById('sectiune-detalii')) document.getElementById('sectiune-detalii').style.display = 'none'; 
+            if(document.getElementById('sectiune-contul-meu')) document.getElementById('sectiune-contul-meu').style.display = 'none'; 
+            if(document.getElementById('sectiune-profil-public')) document.getElementById('sectiune-profil-public').style.display = 'block'; 
+            window.scrollTo(0, 0); 
+        }
     </script>
 </body>
 </html>
