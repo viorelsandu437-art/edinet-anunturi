@@ -399,7 +399,6 @@
         import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, deleteDoc, updateDoc, getDoc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendEmailVerification, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-storage.js";
-        import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-functions.js";
 
         (function() {
             emailjs.init({ publicKey: "onV7RfXkiQzGGziPF" });
@@ -411,7 +410,7 @@
             projectId: "panoul-de-anunturi-edinet", 
             storageBucket: "panoul-de-anunturi-edinet.firebasestorage.app"
         });
-        const db = getFirestore(app); const auth = getAuth(app); const storage = getStorage(app); const functions = getFunctions(app, "us-central1");
+        const db = getFirestore(app); const auth = getAuth(app); const storage = getStorage(app);
 
         function sanitizeUrl(url) {
             if (!url || typeof url !== 'string') return "";
@@ -585,7 +584,6 @@
             if(document.getElementById('lbl-inapoi-lista-2')) document.getElementById('lbl-inapoi-lista-2').innerText = d.lblInapoi;
             if(document.getElementById('lbl-cont-fizic-tag')) document.getElementById('lbl-cont-fizic-tag').innerText = d.lblContFizicTag;
 
-            // Panou & Taburi Super Admin & User
             if(document.getElementById('titlu-panou-cont')) document.getElementById('titlu-panou-cont').innerText = d.titluPanou;
             if(document.getElementById('tab-active')) document.getElementById('tab-active').innerText = d.tabActive;
             if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').innerText = d.tabNeactive;
@@ -595,7 +593,6 @@
             if(document.getElementById('tab-redactare')) document.getElementById('tab-redactare').innerText = d.tabRedactare;
             if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').innerText = d.tabUtilizatori;
 
-            // Super Admin Continut
             if(document.getElementById('lbl-sa-titlu-video')) document.getElementById('lbl-sa-titlu-video').innerText = d.lblSaTitluVideo;
             if(document.getElementById('lbl-sa-desc-video')) document.getElementById('lbl-sa-desc-video').innerText = d.lblSaDescVideo;
             if(document.getElementById('lbl-sa-select-zona')) document.getElementById('lbl-sa-select-zona').innerText = d.lblSaSelectZona;
@@ -611,7 +608,6 @@
             if(document.getElementById('lbl-total-utilizatori')) document.getElementById('lbl-total-utilizatori').innerText = d.lblTotalUseri;
             if(document.getElementById('lbl-baza-date-useri')) document.getElementById('lbl-baza-date-useri').innerText = d.lblBazaDateUseri;
 
-            // Portofel & Setari
             if(document.getElementById('lbl-titlu-portofel')) document.getElementById('lbl-titlu-portofel').innerText = d.titluPortofel;
             if(document.getElementById('lbl-titlu-alimenteaza')) document.getElementById('lbl-titlu-alimenteaza').innerText = d.titluAlimenteaza;
             if(document.getElementById('lbl-titlu-setari')) document.getElementById('lbl-titlu-setari').innerText = d.titluSetari;
@@ -626,13 +622,11 @@
             if(document.getElementById('lbl-desc-pericol')) document.getElementById('lbl-desc-pericol').innerText = d.lblDescPericol;
             if(document.getElementById('btn-sterge-cont-definitiv')) document.getElementById('btn-sterge-cont-definitiv').innerText = d.btnStergeContDef;
 
-            // Firma tabs
             if(document.getElementById('tab-btn-despre')) document.getElementById('tab-btn-despre').innerText = d.tabDespre;
             if(document.getElementById('tab-btn-profil')) document.getElementById('tab-btn-profil').innerText = d.tabProfilFirma;
             if(document.getElementById('lbl-titlu-despre')) document.getElementById('lbl-titlu-despre').innerText = d.titluDespre;
             if(document.getElementById('lbl-titlu-profil')) document.getElementById('lbl-titlu-profil').innerText = d.titluProfilFirma;
 
-            // Modale & Footer & Termeni
             if(document.getElementById('lbl-termeni-titlu')) document.getElementById('lbl-termeni-titlu').innerText = d.termTitlu;
             if(document.getElementById('lbl-t-sec1')) document.getElementById('lbl-t-sec1').innerText = d.termSec1;
             if(document.getElementById('lbl-t-p1')) document.getElementById('lbl-t-p1').innerText = d.termP1;
@@ -1053,8 +1047,7 @@
                     statusBox.innerText = window.limbaCurenta === 'RO' ? "Se trimite link-ul..." : "Отправка ссылки..."; 
                 } 
                 try {
-                    const trimiteResetare = httpsCallable(functions, "trimiteResetareParola");
-                    await trimiteResetare({ email: email, redirectUrl: window.location.href });
+                    await sendPasswordResetEmail(auth, email);
                     if(statusBox) {
                         statusBox.style.color = "#27ae60";
                         statusBox.innerText = window.limbaCurenta === 'RO' ? "✅ Link trimis cu succes! Verifică email-ul (inclusiv Spam)." : "✅ Ссылка отправлена! Проверьте почту.";
@@ -1072,7 +1065,7 @@
         if(formSetari) { formSetari.addEventListener("submit", async (e) => { e.preventDefault(); if(!auth.currentUser) return; const btnSalvare = document.getElementById("btn-salveaza-profil"); btnSalvare.innerText = window.limbaCurenta === 'RO' ? "Se încarcă..." : "Загрузка..."; btnSalvare.disabled = true; try { let avatarUrl = window.dateUtilizatorCurent.avatarUrl || ""; let bannerUrl = window.dateUtilizatorCurent.bannerUrl || ""; const fileAvatar = document.getElementById("input-avatar-user").files[0]; if (fileAvatar) { const rAv = ref(storage, 'utilizatori/avatar_'+auth.currentUser.uid+'_'+Date.now()); await uploadBytes(rAv, fileAvatar); avatarUrl = await getDownloadURL(rAv); } const dateNoi = { avatarUrl: avatarUrl }; if(window.dateUtilizatorCurent.tipCont === 'firma') { const fileBanner = document.getElementById("input-banner-firma").files[0]; if (fileBanner) { const rBanner = ref(storage, 'firme/banner_'+auth.currentUser.uid+'_'+Date.now()); await uploadBytes(rBanner, fileBanner); bannerUrl = await getDownloadURL(rBanner); } dateNoi.bannerUrl = bannerUrl; dateNoi.profilFirma = document.getElementById("setari-profil-firma").value; dateNoi.despreFirma = document.getElementById("setari-despre-firma").value; } await setDoc(doc(db, "utilizatori", auth.currentUser.uid), dateNoi, { merge: true }); alert(window.limbaCurenta === 'RO' ? "Profil actualizat!" : "Профиль обновлен!"); window.location.reload(); } catch(err) { alert(err.message); } finally { btnSalvare.innerText = dictionar[window.limbaCurenta].btnSalveazaSetari; btnSalvare.disabled = false; } }); }
 
         const formInregistrare = document.getElementById("formular-inregistrare");
-        if(formInregistrare) { formInregistrare.addEventListener("submit", async (e) => { e.preventDefault(); try { const tip = document.getElementById("reg-tip-cont").value; const emailVal = document.getElementById("reg-email").value.trim(); const passVal = document.getElementById("reg-parola").value; const numeVal = document.getElementById("reg-nume").value.trim(); const telVal = document.getElementById("reg-telefon").value.trim(); const locVal = document.getElementById("reg-localitate").value; const userCredential = await createUserWithEmailAndPassword(auth, emailVal, passVal); const user = userCredential.user; if (user) { try { const trimiteVerificare = httpsCallable(functions, "trimiteVerificareEmail"); await trimiteVerificare({ redirectUrl: window.location.href }); } catch (mailErr) { console.error("Eroare la trimiterea emailului de verificare:", mailErr); } } await updateProfile(user, { displayName: numeVal }); let dateNoi = { nume: numeVal, email: emailVal, telefon: telVal, localitate: locVal, tipCont: tip, rol: 'user', stareCont: 'activ', dataInregistrare: serverTimestamp(), avatarUrl: "", bannerUrl: "", soldMdl: 0 }; if(tip === 'firma') { dateNoi.profilFirma = document.getElementById("reg-profil").value; dateNoi.despreFirma = document.getElementById("reg-despre").value; } await setDoc(doc(db, "utilizatori", user.uid), dateNoi); alert(window.limbaCurenta === 'RO' ? "Cont creat cu succes! Vă rugăm să vă verificați adresa de email pentru link-ul de confirmare." : "Аккаунт успешно создан! Проверьте свою электронную почту."); if(document.getElementById('modal-inregistrare')) document.getElementById('modal-inregistrare').style.display = "none"; formInregistrare.reset(); } catch(err) { alert("Eroare: " + err.message); console.error("Detalii eroare:", err); } }); }
+        if(formInregistrare) { formInregistrare.addEventListener("submit", async (e) => { e.preventDefault(); try { const tip = document.getElementById("reg-tip-cont").value; const emailVal = document.getElementById("reg-email").value.trim(); const passVal = document.getElementById("reg-parola").value; const numeVal = document.getElementById("reg-nume").value.trim(); const telVal = document.getElementById("reg-telefon").value.trim(); const locVal = document.getElementById("reg-localitate").value; const userCredential = await createUserWithEmailAndPassword(auth, emailVal, passVal); const user = userCredential.user; if (user) { try { await sendEmailVerification(user); } catch (mailErr) { console.error("Eroare la trimiterea emailului de verificare:", mailErr); } } await updateProfile(user, { displayName: numeVal }); let dateNoi = { nume: numeVal, email: emailVal, telefon: telVal, localitate: locVal, tipCont: tip, rol: 'user', stareCont: 'activ', dataInregistrare: serverTimestamp(), avatarUrl: "", bannerUrl: "", soldMdl: 0 }; if(tip === 'firma') { dateNoi.profilFirma = document.getElementById("reg-profil").value; dateNoi.despreFirma = document.getElementById("reg-despre").value; } await setDoc(doc(db, "utilizatori", user.uid), dateNoi); alert(window.limbaCurenta === 'RO' ? "Cont creat cu succes! Vă rugăm să vă verificați adresa de email pentru link-ul de confirmare." : "Аккаунт успешно создан! Проверьте свою электронную почту."); if(document.getElementById('modal-inregistrare')) document.getElementById('modal-inregistrare').style.display = "none"; formInregistrare.reset(); } catch(err) { alert("Eroare: " + err.message); console.error("Detalii eroare:", err); } }); }
 
         const formLogin = document.getElementById("formular-login");
         if(formLogin) { 
