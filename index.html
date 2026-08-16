@@ -120,7 +120,7 @@
             </div>
         </nav>
         <div class="video-container-sus" id="container-video-sus">
-            <video id="player-video-sus" controls autoplay muted playsinline></video>
+            <video id="player-video-sus" autoplay muted playsinline></video>
         </div>
         <div class="container" id="sectiune-principala">
             <div class="layout-principala">
@@ -136,7 +136,7 @@
                 </div>
                 <div class="coloana-dreapta">
                     <div class="video-container-sidebar" id="container-video-lateral-principal">
-                        <video id="player-video-dreapta-principal" controls muted playsinline></video>
+                        <video id="player-video-dreapta-principal" autoplay muted playsinline></video>
                         <p id="lbl-publicitate-1" style="text-align:center; font-size:11px; color:#999; margin-top:5px;">Publicitate</p>
                     </div>
                 </div>
@@ -734,18 +734,32 @@
             const msgFaraReclamaLat = window.limbaCurenta === 'RO' ? "Nicio reclamă Laterală." : "Нет рекламы сбоку.";
             const divSus = document.getElementById("lista-reclame-sus"); if(divSus) divSus.innerHTML = htmlSus || `<p style='color:#777;'>${msgFaraReclamaSus}</p>`;
             const divLat = document.getElementById("lista-reclame-lateral"); if(divLat) divLat.innerHTML = htmlLateral || `<p style='color:#777;'>${msgFaraReclamaLat}</p>`;
-            ruleazaPlaylistVideo('player-video-sus', window.playlistReclameSus, 'container-video-sus');
-            ruleazaPlaylistVideo('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
+            
+            ruleazaPlaylistVideoAuto('player-video-sus', window.playlistReclameSus, 'container-video-sus');
+            ruleazaPlaylistVideoAuto('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
         });
 
-        window.ruleazaPlaylistVideo = function(elementId, playlistArray, containerId) {
-            const videoPlayer = document.getElementById(elementId); const container = document.getElementById(containerId);
+        window.ruleazaPlaylistVideoAuto = function(elementId, playlistArray, containerId) {
+            const videoPlayer = document.getElementById(elementId); 
+            const container = document.getElementById(containerId);
             if (!videoPlayer) return;
-            if (playlistArray.length === 0) { videoPlayer.src = ""; if(container) container.style.display = 'block'; return; }
+            if (playlistArray.length === 0) { 
+                videoPlayer.src = ""; 
+                if(container) container.style.display = 'none'; 
+                return; 
+            }
             if(container) container.style.display = 'block';
+            
             let indexCurent = 0;
-            if(!videoPlayer.src.includes(playlistArray[indexCurent])) videoPlayer.src = playlistArray[indexCurent];
-            videoPlayer.onended = function() { indexCurent = (indexCurent + 1) % playlistArray.length; videoPlayer.src = playlistArray[indexCurent]; videoPlayer.play().catch(e => console.log(e)); };
+            videoPlayer.muted = true; // Necesar pentru autoplay continuu în browsere
+            videoPlayer.src = playlistArray[indexCurent];
+            videoPlayer.play().catch(e => console.log("Autoplay blocat de browser:", e));
+
+            videoPlayer.onended = function() {
+                indexCurent = (indexCurent + 1) % playlistArray.length;
+                videoPlayer.src = playlistArray[indexCurent];
+                videoPlayer.play().catch(e => console.log("Eroare redare playlist:", e));
+            };
         }
 
         window.stergeReclamaVideo = async function(id) { 
@@ -794,8 +808,8 @@
             document.getElementById('sectiune-principala').style.display = 'block'; document.getElementById('sectiune-detalii').style.display = 'none';
             document.getElementById('sectiune-profil-public').style.display = 'none'; document.getElementById('sectiune-contul-meu').style.display = 'none';
             if(window.deseneazaAnunturi) window.deseneazaAnunturi();
-            ruleazaPlaylistVideo('player-video-sus', window.playlistReclameSus, 'container-video-sus');
-            ruleazaPlaylistVideo('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
+            ruleazaPlaylistVideoAuto('player-video-sus', window.playlistReclameSus, 'container-video-sus');
+            ruleazaPlaylistVideoAuto('player-video-dreapta-principal', window.playlistReclameLateral, 'container-video-lateral-principal');
         }
 
         window.arataContulMeu = function() {
@@ -1247,10 +1261,12 @@
                 htmlProfilVanzator = `<div class="vanzator-card-profil"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${a.numeAutor}</div></div></div>`; 
             } 
 
-            let htmlDetalii = `<div class="detalii-stanga" style="flex:2; min-width:300px; background:white; padding:25px; border-radius:8px; border:1px solid #e0e0e0;"><h1 style="font-size:24px; margin-top:0;">${a.titlu}</h1><div style="color:#777; font-size:13px; margin-bottom:15px;">📍 ${a.regiune}</div><div class="detalii-galerie"><img src="${mainImg}" id="detalii-img-principala" class="detalii-img-mare"><div class="detalii-thumbs">${thumbsHtml}</div></div><div class="detalii-pret-box">${a.pret} ${valutaSimbol}</div><h3 style="border-bottom: 2px solid #0b5ed7; padding-bottom: 5px; margin-top:25px;">${d.lblDescriereAnunt}</h3><p style="white-space:pre-wrap; line-height:1.6; font-size:15px; color:#333;">${a.descriere}</p></div><div class="detalii-dreapta">${htmlProfilVanzator}${htmlContact}<div class="video-container-sidebar" id="container-video-lateral-detalii"><video id="player-video-dreapta" controls muted playsinline></video><p style="text-align:center; font-size:11px; color:#999; margin-top:5px;">${d.lblPublicitate}</p></div></div>`; 
+            let htmlDetalii = `<div class="detalii-stanga" style="flex:2; min-width:300px; background:white; padding:25px; border-radius:8px; border:1px solid #e0e0e0;"><h1 style="font-size:24px; margin-top:0;">${a.titlu}</h1><div style="color:#777; font-size:13px; margin-bottom:15px;">📍 ${a.regiune}</div><div class="detalii-galerie"><img src="${mainImg}" id="detalii-img-principala" class="detalii-img-mare"><div class="detalii-thumbs">${thumbsHtml}</div></div><div class="detalii-pret-box">${a.pret} ${valutaSimbol}</div><h3 style="border-bottom: 2px solid #0b5ed7; padding-bottom: 5px; margin-top:25px;">${d.lblDescriereAnunt}</h3><p style="white-space:pre-wrap; line-height:1.6; font-size:15px; color:#333;">${a.descriere}</p></div><div class="detalii-dreapta">${htmlProfilVanzator}${htmlContact}<div class="video-container-sidebar" id="container-video-lateral-detalii"><video id="player-video-dreapta" autoplay muted playsinline></video><p style="text-align:center; font-size:11px; color:#999; margin-top:5px;">${d.lblPublicitate}</p></div></div>`; 
             
             document.getElementById('continut-detalii-anunt').innerHTML = htmlDetalii; 
-            setTimeout(() => { ruleazaPlaylistVideo('player-video-dreapta', window.playlistReclameLateral, 'container-video-lateral-detalii'); }, 200); 
+            setTimeout(() => { 
+                ruleazaPlaylistVideoAuto('player-video-dreapta', window.playlistReclameLateral, 'container-video-lateral-detalii'); 
+            }, 200); 
             document.getElementById('sectiune-principala').style.display = 'none'; 
             document.getElementById('sectiune-contul-meu').style.display = 'none'; 
             document.getElementById('sectiune-detalii').style.display = 'block'; 
@@ -1276,7 +1292,7 @@
                 profilHtml = `<div class="profil-public-header"><div class="profil-public-banner" style="background-image: url('${sanitizeUrl(userData.bannerUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'200\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%232c3e50\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'18\' fill=\'%23ffffff\'%3Ebanner%3C/text%3E%3C/svg%3E'}')"></div><div style="padding: 0 20px 20px 20px; position: relative;"><div style="display: flex; align-items: flex-end; gap: 20px; margin-top: -60px;"><img src="${sanitizeUrl(userData.avatarUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23000000\'%3ELogo%3C/text%3E%3C/svg%3E'}" style="width: 110px; height: 110px; border-radius: 50%; border: 4px solid white; object-fit: cover; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"><div><h2 style="margin: 0; font-size: 24px;">${userData.nume}</h2><div style="color: #0b5ed7; font-weight: bold; font-size: 14px; margin-top: 3px;">${userData.profilFirma || (window.limbaCurenta === 'RO' ? "Firmă" : "Фирма")}</div></div></div></div><div style="padding: 0 20px 20px 20px;"><h4 style="margin:0 0 5px 0;">${lblDespre}</h4><p style="color:#555; font-size:14px; line-height:1.5; margin:0;">${userData.despreFirma || faraDesc}</p></div></div>`; 
             } else { 
                 let tipFiz = window.limbaCurenta === 'RO' ? "Persoană fizică" : "Физическое лицо";
-                profilHtml = `<div class="profil-public-header" style="padding:25px; display:flex; align-items:center; gap:20px;"><img src="${sanitizeUrl(userData.avatarUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'90\' height=\'90\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23000000\'%3EUser%3C/text%3E%3C/svg%3E'}" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:1px solid #ddd;"><div><h2 style="margin:0; font-size:22px;">${userData.nume}</h2><p style="color:#666; margin:5px 0 0 0; font-size:14px;">${tipFiz}</p></div></div>`; 
+                profilHtml = `<div class="profil-public-header" style="padding:25px; display:flex; align-items:center; gap:20px;"><img src="${sanitizeUrl(userData.avatarUrl) || 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'90\' height=\'90\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23cccccc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23000000\'%3EUser%3C/text%3E%3C/svg%3E'}" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:1px solid #ddd;"><div><h2 style="margin:0; font-size:22px;">${userData.nume}</h2><p style="color:#666; margin:5px 0 0 0; font-size:14px;">${tipFiz}</p></div></div>`; 
             } 
             let lblTitluAnunturiUser = window.limbaCurenta === 'RO' ? `Anunțurile utilizatorului (${anunturiUser.length})` : `Объявления пользователя (${anunturiUser.length})`;
             document.getElementById('continut-profil-public').innerHTML = `${profilHtml}<h3 style="margin-bottom:15px;">${lblTitluAnunturiUser}</h3><div class="lista-anunturi">${anunturiHtml}</div>`; 
