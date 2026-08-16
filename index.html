@@ -341,7 +341,7 @@
                 <div class="form-row">
                     <div class="form-group" style="flex: 2;">
                         <label id="lbl-add-pret">Preț:</label>
-                        <input type="number" id="pret" required oninput="calculeazaConversieValuta()">
+                        <input type="number" id="pret" step="any" required oninput="calculeazaConversieValuta()">
                     </div>
                     <div class="form-group" style="flex: 1;">
                         <label id="lbl-add-valuta">Valută:</label>
@@ -473,6 +473,16 @@
             const input = document.getElementById(inputId);
             const span = document.getElementById(spanId);
             if(input.files && input.files.length > 0) {
+                window.fisiereSelectateGlobal = [];
+                for(let i = 0; i < input.files.length; i++) {
+                    let file = input.files[i];
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        window.fisiereSelectateGlobal.push({ tip: 'file', date: file, preview: e.target.result });
+                        window.actualizeazaPreviewUI();
+                    }
+                    reader.readAsDataURL(file);
+                }
                 span.innerText = `${input.files.length} ` + (window.limbaCurenta === 'RO' ? 'fișier(e) selectat(e)' : 'файл(ов) выбрано');
                 span.style.color = "#27ae60";
                 span.style.fontWeight = "bold";
@@ -480,7 +490,7 @@
         }
 
         window.calculeazaConversieValuta = function() {
-            const pretVal = parseFloat(document.getElementById("pret").value) || 0;
+            const pretVal = parseFloat(document.getElementById("pret").value.replace(',', '.')) || 0;
             const valutaSel = document.getElementById("valuta").value;
             const infoBox = document.getElementById("text-conversie-info");
             if(pretVal <= 0) { infoBox.innerText = ""; return; }
@@ -609,7 +619,7 @@
             if(document.getElementById('lbl-baza-date-useri')) document.getElementById('lbl-baza-date-useri').innerText = d.lblBazaDateUseri;
 
             if(document.getElementById('lbl-titlu-portofel')) document.getElementById('lbl-titlu-portofel').innerText = d.titluPortofel;
-            if(document.getElementById('lbl-titlu-alimenteaza')) document.getElementById('lbl-titlu-alimenteaza').innerText = d.titluAlimenteaza;
+            if(document.getElementById('lbl-titlu-alimenteaza')) document.getElementById('lbl-titlu-alimenteaza').innerText = d.lblStitluAlimenteaza;
             if(document.getElementById('lbl-titlu-setari')) document.getElementById('lbl-titlu-setari').innerText = d.titluSetari;
             if(document.getElementById('lbl-setari-avatar')) document.getElementById('lbl-setari-avatar').innerText = d.lblSetariAvatar;
             if(document.getElementById('lbl-btn-avatar')) document.getElementById('lbl-btn-avatar').innerText = d.btnAlegeFisier;
@@ -900,7 +910,12 @@
 
         window.actualizeazaPreviewUI = function() {
             const cont = document.getElementById("preview-imagini");
-            if(cont) { cont.innerHTML = ""; window.fisiereSelectateGlobal.forEach((item, i) => { cont.innerHTML += `<div class="preview-item"><img src="${item.preview}"><button type="button" class="btn-sterge-foto" onclick="stergeFotoUI(${i})">X</button></div>`; }); }
+            if(cont) { 
+                cont.innerHTML = ""; 
+                window.fisiereSelectateGlobal.forEach((item, i) => { 
+                    cont.innerHTML += `<div class="preview-item"><img src="${item.preview}"><button type="button" class="btn-sterge-foto" onclick="stergeFotoUI(${i})">X</button></div>`; 
+                }); 
+            }
         }
 
         window.stergeFotoUI = function(index) { window.fisiereSelectateGlobal.splice(index, 1); window.actualizeazaPreviewUI(); }
@@ -1091,7 +1106,7 @@
         }
 
         const formAnunt = document.getElementById("formular-anunt");
-        if(formAnunt) { formAnunt.addEventListener("submit", async (e) => { e.preventDefault(); if (!auth.currentUser) return; let titlu = document.getElementById("titlu").value; let desc = document.getElementById("descriere").value; let statusNou = 'activ'; let mesajFinal = window.limbaCurenta === 'RO' ? "Anunțul a fost publicat! Este valabil 90 de zile." : "Объявление опубликовано! Действительно 90 дней."; if (contineCuvinteInterzise(titlu + " " + desc)) { statusNou = 'suspect'; mesajFinal = window.limbaCurenta === 'RO' ? "⚠️ Anunțul tău conține cuvinte suspecte. A fost trimis spre verificare și va apărea pe site doar după aprobarea administratorului." : "⚠️ Ваше объявление содержит подозрительные слова. Оно отправлено на проверку."; } try { let imagini = []; for(let item of window.fisiereSelectateGlobal) { if(item.tip === 'url') imagini.push(item.date); else { const r = ref(storage, 'poze/'+Date.now()+'-'+item.date.name); await uploadBytes(r, item.date); imagini.push(await getDownloadURL(r)); } } const dateAnunt = { titlu: titlu, categorie: document.getElementById("categorie").value, regiune: document.getElementById("regiune").value, pret: Number(document.getElementById("pret").value), valuta: document.getElementById("valuta").value, descriere: desc, telefonContact: document.getElementById("contact-telefon").value, status: statusNou, imagini: imagini, autorUID: auth.currentUser.uid, numeAutor: auth.currentUser.displayName, emailAutor: auth.currentUser.email, dataPublicare: serverTimestamp() }; const idEdit = document.getElementById("edit-id-anunt").value; if(idEdit) { await updateDoc(doc(db, "anunturi", idEdit), dateAnunt); if(statusNou === 'suspect') alert(mesajFinal); else alert(window.limbaCurenta === 'RO' ? "Actualizat cu succes!" : "Успешно обновлено!"); } else { await addDoc(collection(db, "anunturi"), dateAnunt); alert(mesajFinal); } if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'none'; } catch(err) { alert(err.message); } }); }
+        if(formAnunt) { formAnunt.addEventListener("submit", async (e) => { e.preventDefault(); if (!auth.currentUser) return; let titlu = document.getElementById("titlu").value; let desc = document.getElementById("descriere").value; let statusNou = 'activ'; let mesajFinal = window.limbaCurenta === 'RO' ? "Anunțul a fost publicat! Este valabil 90 de zile." : "Объявление опубликовано! Действительно 90 дней."; if (contineCuvinteInterzise(titlu + " " + desc)) { statusNou = 'suspect'; mesajFinal = window.limbaCurenta === 'RO' ? "⚠️ Anunțul tău conține cuvinte suspecte. A fost trimis spre verificare și va apărea pe site doar după aprobarea administratorului." : "⚠️ Ваше объявление содержит подозрительные слова. Оно отправлено на проверку."; } try { let imagini = []; for(let item of window.fisiereSelectateGlobal) { if(item.tip === 'url') imagini.push(item.date); else { const r = ref(storage, 'poze/'+Date.now()+'-'+item.date.name); await uploadBytes(r, item.date); imagini.push(await getDownloadURL(r)); } } const pretVal = parseFloat(document.getElementById("pret").value.replace(',', '.')) || 0; const dateAnunt = { titlu: titlu, categorie: document.getElementById("categorie").value, regiune: document.getElementById("regiune").value, pret: pretVal, valuta: document.getElementById("valuta").value, descriere: desc, telefonContact: document.getElementById("contact-telefon").value, status: statusNou, imagini: imagini, autorUID: auth.currentUser.uid, numeAutor: auth.currentUser.displayName, emailAutor: auth.currentUser.email, dataPublicare: serverTimestamp() }; const idEdit = document.getElementById("edit-id-anunt").value; if(idEdit) { await updateDoc(doc(db, "anunturi", idEdit), dateAnunt); if(statusNou === 'suspect') alert(mesajFinal); else alert(window.limbaCurenta === 'RO' ? "Actualizat cu succes!" : "Успешно обновлено!"); } else { await addDoc(collection(db, "anunturi"), dateAnunt); alert(mesajFinal); } if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'none'; } catch(err) { alert(err.message); } }); }
 
         window.editeazaAnunt = function(id) { 
             const a = window.toateAnunturile.find(x => x.id === id); 
