@@ -1286,11 +1286,13 @@
             const a = window.toateAnunturile.find(x => x.id === id); 
             if(!a) return; 
             
+            // Actualizăm vizualizarea local instantaneu pentru a fi siguri că numărul crește mereu
+            a.vizualizari = (a.vizualizari || 0) + 1;
+
             try {
                 await updateDoc(doc(db, "anunturi", id), {
                     vizualizari: increment(1)
                 });
-                a.vizualizari = (a.vizualizari || 0) + 1;
             } catch(err) {
                 console.log("Eroare la incrementare vizualizări:", err);
             }
