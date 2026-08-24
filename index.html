@@ -1290,6 +1290,7 @@
                 await updateDoc(doc(db, "anunturi", id), {
                     vizualizari: increment(1)
                 });
+                a.vizualizari = (a.vizualizari || 0) + 1;
             } catch(err) {
                 console.log("Eroare la incrementare vizualizări:", err);
             }
@@ -1329,7 +1330,7 @@
                 htmlProfilVanzator = `<div class="vanzator-card-profil"><div><div style="font-weight:bold; font-size:16px; color:#1c1e21;">${a.numeAutor}</div></div></div>`; 
             } 
 
-            let vizTotal = (a.vizualizari || 0) + 1;
+            let vizTotal = a.vizualizari || 0;
             let txtVizDetaliu = window.limbaCurenta === 'RO' ? 'Vizualizări:' : 'Просмотров:';
 
             let htmlDetalii = `<div class="detalii-stanga" style="flex:2; min-width:300px; background:white; padding:25px; border-radius:8px; border:1px solid #e0e0e0;"><h1 style="font-size:24px; margin-top:0;">${a.titlu}</h1><div style="display:flex; justify-content:space-between; color:#777; font-size:13px; margin-bottom:15px;"><span>📍 ${a.regiune}</span><span>👁️ ${txtVizDetaliu} ${vizTotal}</span></div><div class="detalii-galerie"><img src="${mainImg}" id="detalii-img-principala" class="detalii-img-mare"><div class="detalii-thumbs">${thumbsHtml}</div></div><div class="detalii-pret-box">${a.pret} ${valutaSimbol}</div><h3 style="border-bottom: 2px solid #0b5ed7; padding-bottom: 5px; margin-top:25px;">${d.lblDescriereAnunt}</h3><p style="white-space:pre-wrap; line-height:1.6; font-size:15px; color:#333;">${a.descriere}</p></div><div class="detalii-dreapta">${htmlProfilVanzator}${htmlContact}<div class="video-container-sidebar" id="container-video-lateral-detalii"><video id="player-video-dreapta" autoplay muted playsinline></video><p style="text-align:center; font-size:11px; color:#999; margin-top:5px;">${d.lblPublicitate}</p></div></div>`; 
