@@ -46,6 +46,8 @@
         .tab-cont.portofel.activ { background: #2e7d32; color: white; }
         .tab-cont.stergere { background: white; color: #dc3545; border-color: #dc3545; }
         .tab-cont.stergere.activ { background: #dc3545; color: white; }
+        .tab-cont.favorite { background: #fff3cd; color: #856404; border-color: #ffeeba; }
+        .tab-cont.favorite.activ { background: #ffc107; color: #000; border-color: #ffc107; }
         .tab-cont.superadmin { background: #8e44ad; color: white; border-color: #8e44ad; }
         .tab-cont.superadmin.activ { background: #732d91; color: white; }
         .tab-cont.superadmin-redactare { background: #e67e22; color: white; border-color: #e67e22; }
@@ -189,6 +191,7 @@
             <div class="tab-uri-cont">
                 <div class="tab-cont activ" id="tab-active" onclick="schimbaTabCont('activ')">Anunțuri Active</div>
                 <div class="tab-cont" id="tab-neactive" onclick="schimbaTabCont('inactiv')">Anunțuri Neactive / Expirate</div>
+                <div class="tab-cont favorite" id="tab-favorite" onclick="schimbaTabCont('favorite')">⭐ Favoritele Mele</div>
                 <div class="tab-cont portofel" id="tab-portofel" onclick="schimbaTabCont('portofel')">💰 Portofel & Plăți</div>
                 <div class="tab-cont stergere" id="tab-stergere" onclick="schimbaTabCont('stergere')">Setări Cont & Ștergere</div>
                 <div class="tab-cont superadmin" id="tab-superadmin" onclick="schimbaTabCont('superadmin')" style="display:none;">Reclame Video</div>
@@ -436,7 +439,7 @@
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, deleteDoc, updateDoc, getDoc, setDoc, getDocs, increment } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, deleteDoc, updateDoc, getDoc, setDoc, getDocs, increment, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendEmailVerification, sendPasswordResetEmail, deleteUser } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-storage.js";
 
@@ -572,14 +575,14 @@
         window.limbaCurenta = 'RO';
         const dictionar = {
             'RO': { 
-                btnAdauga: 'Adaugă anunț', btnAcasa: 'Acasă', btnCont: 'Contul Meu', btnLogin: 'Autentificare', btnLogout: 'Deconectare', btnCauta: '🔍 Caută', catToate: 'Toate Categoriile', catSelect: 'Alege categoria...', locToate: 'Toate localitățile', locSelect: 'Alege localitatea...', titluLogin: 'Autentificare', lblParola: 'Parolă:', btnIntra: 'Intră', btnNuCont: 'Nu ai cont?', btnRecup: 'Ați uitat parola?', titluRecup: 'Recuperare Parolă', descRecup: 'Introduceți adresa de email pentru a primi un link de resetare a parolei.', btnTrimiteRecup: 'Trimite Link', btnInapoiLogin: 'Înapoi la Autentificare', titluReg: 'Creare Cont', lblTip: 'Tip Cont:', lblNumeFiz: 'Nume:', lblNumeFirm: 'Denumire Firmă / Companie:', lblTel: 'Telefon:', lblLoc: 'Localitate:', btnCreaza: 'Crează', lblProfilFirma: 'Profil (Domeniu):', lblDespreFirma: 'Despre noi:', titluAdd: 'Adaugă Anunț', lblAddTitlu: 'Titlu:', lblAddCat: 'Categorie:', lblAddLoc: 'Localitate:', lblAddTel: 'Telefon principal:', lblAddTel2: 'Al doilea telefon (opțional):', lblAddWhatsapp: 'WhatsApp (opțional):', lblAddPret: 'Preț:', lblAddDesc: 'Descriere:', lblAddFoto: 'Foto (Maxim 10):', btnAddFoto: '📁 Adaugă Fotografii', btnPublica: 'Publică', titluPanou: 'Panoul de administrare', tabActive: 'Anunțuri Active', tabNeactive: 'Anunțuri Neactive / Expirate', tabPortofel: '💰 Portofel & Plăți', tabSetari: 'Setări Cont & Ștergere', tabDespre: 'Despre noi', tabProfilFirma: 'Profilul firmei', titluDespre: 'Despre compania noastră', titluProfilFirma: 'Profilul și activitatea firmei', titluPortofel: 'Sold Curent în Portofel', titluAlimenteaza: 'Alimentează Portofelul', titluSetari: 'Personalizare Profil & Branding', lblSetariAvatar: 'Avatar (Imagine de profil):', lblSetariBanner: 'Banner copertă (Imagine mare de sus):', lblSetariProfil: 'Profil / Domeniu de activitate:', lblSetariDespre: 'Despre noi (Scurtă descriere):', btnSalveazaSetari: 'Salvează Setările', msgNiciunAnunt: 'Niciun anunț găsit.', msgIncarcare: 'Se încarcă anunțurile...', msgFaraAnunturi: 'Nu ai anunțuri aici.',
+                btnAdauga: 'Adaugă anunț', btnAcasa: 'Acasă', btnCont: 'Contul Meu', btnLogin: 'Autentificare', btnLogout: 'Deconectare', btnCauta: '🔍 Caută', catToate: 'Toate Categoriile', catSelect: 'Alege categoria...', locToate: 'Toate localitățile', locSelect: 'Alege localitatea...', titluLogin: 'Autentificare', lblParola: 'Parolă:', btnIntra: 'Intră', btnNuCont: 'Nu ai cont?', btnRecup: 'Ați uitat parola?', titluRecup: 'Recuperare Parolă', descRecup: 'Introduceți adresa de email pentru a primi un link de resetare a parolei.', btnTrimiteRecup: 'Trimite Link', btnInapoiLogin: 'Înapoi la Autentificare', titluReg: 'Creare Cont', lblTip: 'Tip Cont:', lblNumeFiz: 'Nume:', lblNumeFirm: 'Denumire Firmă / Companie:', lblTel: 'Telefon:', lblLoc: 'Localitate:', btnCreaza: 'Crează', lblProfilFirma: 'Profil (Domeniu):', lblDespreFirma: 'Despre noi:', titluAdd: 'Adaugă Anunț', lblAddTitlu: 'Titlu:', lblAddCat: 'Categorie:', lblAddLoc: 'Localitate:', lblAddTel: 'Telefon principal:', lblAddTel2: 'Al doilea telefon (opțional):', lblAddWhatsapp: 'WhatsApp (opțional):', lblAddPret: 'Preț:', lblAddDesc: 'Descriere:', lblAddFoto: 'Foto (Maxim 10):', btnAddFoto: '📁 Adaugă Fotografii', btnPublica: 'Publică', titluPanou: 'Panoul de administrare', tabActive: 'Anunțuri Active', tabNeactive: 'Anunțuri Neactive / Expirate', tabFavorite: '⭐ Favoritele Mele', tabPortofel: '💰 Portofel & Plăți', tabSetari: 'Setări Cont & Ștergere', tabDespre: 'Despre noi', tabProfilFirma: 'Profilul firmei', titluDespre: 'Despre compania noastră', titluProfilFirma: 'Profilul și activitatea firmei', titluPortofel: 'Sold Curent în Portofel', titluAlimenteaza: 'Alimentează Portofelul', titluSetari: 'Personalizare Profil & Branding', lblSetariAvatar: 'Avatar (Imagine de profil):', lblSetariBanner: 'Banner copertă (Imagine mare de sus):', lblSetariProfil: 'Profil / Domeniu de activitate:', lblSetariDespre: 'Despre noi (Scurtă descriere):', btnSalveazaSetari: 'Salvează Setările', msgNiciunAnunt: 'Niciun anunț găsit.', msgIncarcare: 'Se încarcă anunțurile...', msgFaraAnunturi: 'Nu ai anunțuri aici.',
                 tabSuperadmin: 'Reclame Video', tabRedactare: 'Anunțuri la Redactare', tabUtilizatori: 'Lista Utilizatorilor',
                 lblSaTitluVideo: 'Încărcare Reclame Video', lblSaDescVideo: 'Alege zona în care dorești să apară reclama video.', lblSaSelectZona: 'Selectează Zona de afișare:', optZonaSus: 'Player SUS (Orizontal, sub meniu)', optZonaLat: 'Player LATERAL (Vertical, în sidebar)', btnAlegeVideo: '📁 Alege Fișier Video', btnIncarcaVideo: 'Încarcă Video', lblSaReclameSus: 'Reclame SUS (Active):', lblSaReclameLat: 'Reclame LATERAL (Active):', lblSaTitluSuspect: 'Anunțuri Suspecte (Necesită Moderare)', lblSaDescSuspect: 'Aceste anunțuri au fost blocate temporar de sistem deoarece conțin cuvinte sensibile. Nu sunt vizibile publicului până nu sunt aprobate.', placeholderCautareUser: '🔍 Caută după email...', lblTotalUseri: '👥 Total Utilizatori:', lblBazaDateUseri: 'Baza de date: Utilizatori Înregistrați', thNume: 'Nume', thEmail: 'Email', thTel: 'Telefon', thTip: 'Tip Cont', thActiuni: 'Acțiuni', btnStergeTabel: '🗑️ Șterge', lblInapoi: '← Înapoi la listă', lblPublicitate: 'Publicitate', footerTermeni: 'Termeni și Condiții', footerContact: 'Contactează-ne', footerDrepturi: '© 2026 Edineț-Anunțuri. Toate drepturile rezervate.', optFiz: 'Persoană Fizică', optFirm: 'Firmă', lblContFizicTag: 'Cont Personal (Persoană Fizică)', btnAlegeFisier: '📁 Alege Fișier', lblZonaPericol: 'Zonă Periculoasă: Ștergere Cont', lblDescPericol: 'Dacă doriți să vă ștergeți definitiv contul și toate datele asociate din platformă, folosiți butonul de mai jos.', btnStergeContDef: '🗑️ Șterge Contul Meu Definitiv', btnAproba: '✅ Aprobă', btnRedacteaza: '✏️ Redactează', btnStergeAvertisment: '🗑️ Șterge & Avertizează', btnRidica: '🔄 Ridică', btnContacteaza: '✉️ Contactează', lblDescriereAnunt: 'Descriere',
                 termTitlu: 'Termeni, Condiții și Pachete Business', termSec1: '1. Condiții pentru Persoane Fizice', termP1: '• Fiecare persoană fizică beneficiază de posibilitatea de a adăuga anunțuri gratuite valabile timp de <strong>90 de zile</strong>.', termP2: '• După expirarea celor 90 de zile, anunțul poate fi republicat sau ridicat în listă contra sumei de <strong>1 MDL (~0.05€)</strong> prin intermediul portofelului electronic.', termSec2: '2. Pachete Firme (Business) - Beneficii Detaliate', termP3: 'Firmele beneficiază de o perioadă de încercare gratuită de 30 de zile și pachete avantajoase care includ <strong>ridicări în listă (topare)</strong> și <strong>anunțuri promovate</strong> pentru vizibilitate maximă:', thPachet: 'Pachet', thPret: 'Preț', thBeneficii: 'Beneficii incluse', p3luni: '3 Luni', p6luni: '6 Luni', p12luni: '12 Luni', p2ani: 'Business 2 Ani', b10rid: '10 Ridicări manuale în listă', b25rid: '25 Ridicări + 1 Anunț Promovat', b60rid: '60 Ridicări + 3 Anunțuri Promovate', bnelim: 'Ridicări nelimitate + 5 Anunțuri Promovate', termSec3: '3. Interdicții Stricte conform Legislației Republicii Moldova', termInterz: '❌ Substanțe Narcotice, Arme, Animale Moarte, Conținut Sexual, Limbaj Necenzurat.', termInterzDesc: 'Promovarea sau comercializarea acestora se sancționează cu blocarea contului și sesizarea organelor competente.', termSec4: '4. Drepturile Administratorului', termP4: '• Administratorul are dreptul absolut de a verifica, edita, suspenda sau șterge orice anunț care nu respectă normele platformei, notificând utilizatorul prin email.',
                 cntAdminTitlu: 'Contact Admin', cntEmail: 'Email:', cntMesaj: 'Mesaj:', btnCntTrimite: 'Trimite'
             },
             'RU': { 
-                btnAdauga: 'Добавить объявление', btnAcasa: 'Главная', btnCont: 'Мой Аккаунт', btnLogin: 'Войти', btnLogout: 'Выйти', btnCauta: '🔍 Поиск', catToate: 'Все категории', catSelect: 'Выберите категорию...', locToate: 'Все населенные пункты', locSelect: 'Выберите населенный пункт...', titluLogin: 'Авторизация', lblParola: 'Пароль:', btnIntra: 'Войти', btnNuCont: 'Нет аккаунта?', btnRecup: 'Забыли пароль?', titluRecup: 'Восстановление пароля', descRecup: 'Введите свой адрес электронной почты, чтобы получить ссылку для сброса пароля.', btnTrimiteRecup: 'Отправить ссылку', btnInapoiLogin: 'Назад к авторизации', titluReg: 'Создать Аккаунт', lblTip: 'Тип аккаунта:', lblNumeFiz: 'Имя:', lblNumeFirm: 'Название компании:', lblTel: 'Телефон:', lblLoc: 'Населенный пункт:', btnCreaza: 'Создать', lblProfilFirma: 'Профиль (Сфера):', lblDespreFirma: 'О нас:', titluAdd: 'Добавить Объявление', lblAddTitlu: 'Заголовок:', lblAddCat: 'Категория:', lblAddLoc: 'Населенный пункт:', lblAddTel: 'Основной телефон:', lblAddTel2: 'Второй телефон (необязательно):', lblAddWhatsapp: 'WhatsApp (необязательно):', lblAddPret: 'Цена:', lblAddDesc: 'Описание:', lblAddFoto: 'Фото (Максимум 10):', btnAddFoto: '📁 Добавить Фото', btnPublica: 'Опубликовать', titluPanou: 'Панель управления', tabActive: 'Активные', tabNeactive: 'Неактивные / Истекшие', tabPortofel: '💰 Кошелек и Платежи', tabSetari: 'Настройки и Удаление', tabDespre: 'О нас', tabProfilFirma: 'Профиль фирмы', titluDespre: 'О нашей компании', tabProfilFirma: 'Профиль и деятельность', tabPortofel: 'Текущий баланс', tabAlimenteaza: 'Пополнить кошелек', tabSetari: 'Настройка профиля и бренда', lblSetariAvatar: 'Аватар (Фото профиля):', lblSetariBanner: 'Баннер обложки (Большое фото):', lblSetariProfil: 'Профиль / Сфера деятельности:', lblSetariDespre: 'О нас (Краткое описание):', btnSalveazaSetari: 'Сохранить', msgNiciunAnunt: 'Объявления не найдены.', msgIncarcare: 'Загрузка объявлений...', msgFaraAnunturi: 'У вас нет объявлений.',
+                btnAdauga: 'Добавить объявление', btnAcasa: 'Главная', btnCont: 'Мой Аккаунт', btnLogin: 'Войти', btnLogout: 'Выйти', btnCauta: '🔍 Поиск', catToate: 'Все категории', catSelect: 'Выберите категорию...', locToate: 'Все населенные пункты', locSelect: 'Выберите населенный пункт...', titluLogin: 'Авторизация', lblParola: 'Пароль:', btnIntra: 'Войти', btnNuCont: 'Нет аккаунта?', btnRecup: 'Забыли пароль?', titluRecup: 'Восстановление пароля', descRecup: 'Введите свой адрес электронной почты, чтобы получить ссылку для сброса пароля.', btnTrimiteRecup: 'Отправить ссылку', btnInapoiLogin: 'Назад к авторизации', titluReg: 'Создать Аккаунт', lblTip: 'Тип аккаунта:', lblNumeFiz: 'Имя:', lblNumeFirm: 'Название компании:', lblTel: 'Телефон:', lblLoc: 'Населенный пункт:', btnCreaza: 'Создать', lblProfilFirma: 'Профиль (Сфера):', lblDespreFirma: 'О нас:', titluAdd: 'Добавить Объявление', lblAddTitlu: 'Заголовок:', lblAddCat: 'Категория:', lblAddLoc: 'Населенный пункт:', lblAddTel: 'Основной телефон:', lblAddTel2: 'Второй телефон (необязательно):', lblAddWhatsapp: 'WhatsApp (необязательно):', lblAddPret: 'Цена:', lblAddDesc: 'Описание:', lblAddFoto: 'Фото (Максимум 10):', btnAddFoto: '📁 Добавить Фото', btnPublica: 'Опубликовать', titluPanou: 'Панель управления', tabActive: 'Активные', tabNeactive: 'Неактивные / Истекшие', tabFavorite: '⭐ Избранные', tabPortofel: '💰 Кошелек и Платежи', tabSetari: 'Настройки и Удаление', tabDespre: 'О нас', tabProfilFirma: 'Профиль фирмы', titluDespre: 'О нашей компании', tabProfilFirma: 'Профиль и деятельность', tabPortofel: 'Текущий баланс', tabAlimenteaza: 'Пополнить кошелек', tabSetari: 'Настройка профиля и бренда', lblSetariAvatar: 'Аватар (Фото профиля):', lblSetariBanner: 'Баннер обложки (Большое фото):', lblSetariProfil: 'Профиль / Сфера деятельности:', lblSetariDespre: 'О нас (Краткое описание):', btnSalveazaSetari: 'Сохранить', msgNiciunAnunt: 'Объявления не найдены.', msgIncarcare: 'Загрузка объявлений...', msgFaraAnunturi: 'У вас нет объявлений.',
                 tabSuperadmin: 'Видеореклама', tabRedactare: 'На модерации', tabUtilizatori: 'Список пользователей',
                 lblSaTitluVideo: 'Загрузка Видеорекламы', lblSaDescVideo: 'Выберите зону, в которой будет отображаться видеореклама.', lblSaSelectZona: 'Выберите зону показа:', optZonaSus: 'Плеер ВВЕРХУ (Горизонтальный)', optZonaLat: 'Плеер СБОКУ (В сайдбаре)', btnAlegeVideo: '📁 Выбрать видеофайл', btnIncarcaVideo: 'Загрузить видео', lblSaReclameSus: 'Реклама ВВЕРХУ (Активная):', lblSaReclameLat: 'Реклама СБОКУ (Активная):', lblSaTitluSuspect: 'Подозрительные объявления (Модерация)', lblSaDescSuspect: 'Эти объявления временно заблокированы системой из-за подозрительных слов. Они не видны публике до одобрения.', placeholderCautareUser: '🔍 Поиск по email...', lblTotalUseri: '👥 Всего пользователей:', lblBazaDateUseri: 'База данных: Зарегистрированные пользователи', thNume: 'Имя', thEmail: 'Email', thTel: 'Телефон', thTip: 'Тип аккаунта', thActiuni: 'Действия', btnStergeTabel: '🗑️ Удалить', lblInapoi: '← Назад к списку', lblPublicitate: 'Реклама', footerTermeni: 'Правила и условия', footerContact: 'Связаться с нами', footerDrepturi: '© 2026 Edineț-Anunțuri. Все права защищены.', optFiz: 'Физическое лицо', optFirm: 'Компания / Фирма', lblContFizicTag: 'Личный аккаунт (Физ. лицо)', btnAlegeFisier: '📁 Выбрать файл', lblZonaPericol: 'Опасная зона: Удаление аккаунта', lblDescPericol: 'Если вы хотите навсегда удалить свой аккаунт и все связанные данные, используйте кнопку ниже.', btnStergeContDef: '🗑️ Удалить мой аккаунт навсегда', btnAproba: '✅ Одобрить', btnRedacteaza: '✏️ Редактировать', btnStergeAvertisment: '🗑️ Удалить с предупреждением', btnRidica: '🔄 Поднять', btnContacteaza: '✉️ Связаться', lblDescriereAnunt: 'Описание',
                 termTitlu: 'Правила, Условия и Бизнес-пакеты', termSec1: '1. Условия для физических лиц', termP1: '• Каждый физическое лицо имеет возможность добавлять бесплатные объявления сроком на 90 дней.', termP2: '• По истечении 90 дней объявление можно перепубликовать или поднять в списке за 1 MDL (~0.05€) с помощью электронного кошелька.', termSec2: '2. Бизнес-пакеты для компаний - Детальные преимущества', termP3: 'Компании получают 30-дневный бесплатный пробный период и выгодные пакеты, включающие поднятия в списке и продвигаемые объявления для максимальной видимости:', thPachet: 'Пакет', thPret: 'Цена', thBeneficii: 'Включенные преимущества', p3luni: '3 Месяца', p6luni: '6 Месяцев', p12luni: '12 Месяцев', p2ani: 'Бизнес 2 Года', b10rid: '10 ручных поднятий в списке', b25rid: '25 поднятий + 1 продвигаемое объявление', b60rid: '60 поднятий + 3 продвигаемых объявления', bnelim: 'Неограниченные поднятия + 5 продвигаемых объявлений', termSec3: '3. Строгие запреты согласно законодательству Республики Молдова', termInterz: '❌ Наркотические вещества, Оружие, Мертвые животные, Контент сексуального характера, Нецензурная лексика.', termInterzDesc: 'Продвижение или продажа таковых наказывается блокировкой аккаунта и передачей дела в компетентные органы.', termSec4: '4. Права Администратора', termP4: '• Администратор имеет абсолютное право проверять, редактировать, приостанавливать или удалять любое объявление, не соответствующее нормам платформы, с уведомлением пользователя по электронной почте.',
@@ -646,6 +649,7 @@
             if(document.getElementById('titlu-panou-cont')) document.getElementById('titlu-panou-cont').innerText = d.titluPanou;
             if(document.getElementById('tab-active')) document.getElementById('tab-active').innerText = d.tabActive;
             if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').innerText = d.tabNeactive;
+            if(document.getElementById('tab-favorite')) document.getElementById('tab-favorite').innerText = d.tabFavorite;
             if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').innerText = d.tabPortofel;
             if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').innerText = d.tabSetari;
             if(document.getElementById('tab-superadmin')) document.getElementById('tab-superadmin').innerText = d.tabSuperadmin;
@@ -880,13 +884,14 @@
             
             if(stare === 'activ') { document.getElementById('tab-active').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
             else if(stare === 'inactiv') { document.getElementById('tab-neactive').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
+            else if(stare === 'favorite') { document.getElementById('tab-favorite').classList.add('activ'); document.getElementById('container-anunturi-personale').style.display = 'flex'; }
             else if(stare === 'portofel') { document.getElementById('tab-portofel').classList.add('activ'); document.getElementById('panou-portofel').style.display = 'block'; }
             else if(stare === 'stergere') { document.getElementById('tab-stergere').classList.add('activ'); document.getElementById('panou-setari-cont').style.display = 'block'; }
             else if(stare === 'superadmin') { document.getElementById('tab-superadmin').classList.add('activ'); document.getElementById('panou-superadmin').style.display = 'block'; }
             else if(stare === 'redactare') { document.getElementById('tab-redactare').classList.add('activ'); document.getElementById('panou-redactare').style.display = 'block'; incarcaAnunturiRedactare(); }
             else if(stare === 'utilizatori') { document.getElementById('tab-utilizatori').classList.add('activ'); document.getElementById('panou-utilizatori').style.display = 'block'; incarcaUtilizatori(); }
             
-            if(stare === 'activ' || stare === 'inactiv') if(window.deseneazaAnunturi) window.deseneazaAnunturi();
+            if(stare === 'activ' || stare === 'inactiv' || stare === 'favorite') if(window.deseneazaAnunturi) window.deseneazaAnunturi();
         }
 
         window.incarcaUtilizatori = async function() {
@@ -1023,6 +1028,7 @@
                     if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'block';
                     if(document.getElementById('tab-active')) document.getElementById('tab-active').style.display = 'none'; 
                     if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').style.display = 'none'; 
+                    if(document.getElementById('tab-favorite')) document.getElementById('tab-favorite').style.display = 'none';
                     if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').style.display = 'none'; 
                     if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').style.display = 'none';
                     
@@ -1034,6 +1040,7 @@
                     if(document.getElementById('tab-utilizatori')) document.getElementById('tab-utilizatori').style.display = 'none';
                     if(document.getElementById('tab-active')) document.getElementById('tab-active').style.display = 'block'; 
                     if(document.getElementById('tab-neactive')) document.getElementById('tab-neactive').style.display = 'block'; 
+                    if(document.getElementById('tab-favorite')) document.getElementById('tab-favorite').style.display = 'block';
                     if(document.getElementById('tab-portofel')) document.getElementById('tab-portofel').style.display = 'block'; 
                     if(document.getElementById('tab-stergere')) document.getElementById('tab-stergere').style.display = 'block';
                     let soldCurent = dateUser.soldMdl || 0;
@@ -1170,7 +1177,7 @@
         }
 
         const formAnunt = document.getElementById("formular-anunt");
-        if(formAnunt) { formAnunt.addEventListener("submit", async (e) => { e.preventDefault(); if (!auth.currentUser) return; let titlu = document.getElementById("titlu").value; let desc = document.getElementById("descriere").value; let statusNou = 'activ'; let mesajFinal = window.limbaCurenta === 'RO' ? "Anunțul a fost publicat! Este valabil 90 de zile." : "Объявление опубликовано! Действительно 90 дней."; if (contineCuvinteInterzise(titlu + " " + desc)) { statusNou = 'suspect'; mesajFinal = window.limbaCurenta === 'RO' ? "⚠️ Anunțul tău conține cuvinte suspecte. A fost trimis spre verificare și va apărea pe site doar după aprobarea administratorului." : "⚠️ Ваше объявление содержит подозрительные слова. Оно отправлено на проверку."; } try { let imagini = []; for(let item of window.fisiereSelectateGlobal) { if(item.tip === 'url') imagini.push(item.date); else { const r = ref(storage, 'poze/'+Date.now()+'-'+item.date.name); await uploadBytes(r, item.date); imagini.push(await getDownloadURL(r)); } } const pretVal = parseFloat(document.getElementById("pret").value.replace(',', '.')) || 0; const dateAnunt = { titlu: titlu, categorie: document.getElementById("categorie").value, regiune: document.getElementById("regiune").value, pret: pretVal, valuta: document.getElementById("valuta").value, descriere: desc, telefonContact: document.getElementById("contact-telefon").value, telefon2: document.getElementById("contact-telefon2").value.trim(), whatsapp: document.getElementById("whatsapp").value.trim(), status: statusNou, imagini: imagini, autorUID: auth.currentUser.uid, numeAutor: auth.currentUser.displayName, emailAutor: auth.currentUser.email, dataPublicare: serverTimestamp() }; const idEdit = document.getElementById("edit-id-anunt").value; if(idEdit) { await updateDoc(doc(db, "anunturi", idEdit), dateAnunt); if(statusNou === 'suspect') alert(mesajFinal); else alert(window.limbaCurenta === 'RO' ? "Actualizat cu succes!" : "Успешно обновлено!"); } else { dateAnunt.vizualizari = 0; await addDoc(collection(db, "anunturi"), dateAnunt); alert(mesajFinal); } if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'none'; } catch(err) { alert(err.message); } }); }
+        if(formAnunt) { formAnunt.addEventListener("submit", async (e) => { e.preventDefault(); if (!auth.currentUser) return; let titlu = document.getElementById("titlu").value; let desc = document.getElementById("descriere").value; let statusNou = 'activ'; let mesajFinal = window.limbaCurenta === 'RO' ? "Anunțul a fost publicat! Este valabil 90 de zile." : "Объявление опубликовано! Действительно 90 дней."; if (contineCuvinteInterzise(titlu + " " + desc)) { statusNou = 'suspect'; mesajFinal = window.limbaCurenta === 'RO' ? "⚠️ Anunțul tău conține cuvinte suspecte. A fost trimis spre verificare și va apărea pe site doar după aprobarea administratorului." : "⚠️ Ваше объявление содержит подозрительные слова. Оно отправлено на проверку."; } try { let imagini = []; for(let item of window.fisiereSelectateGlobal) { if(item.tip === 'url') imagini.push(item.date); else { const r = ref(storage, 'poze/'+Date.now()+'-'+item.date.name); await uploadBytes(r, item.date); imagini.push(await getDownloadURL(r)); } } const pretVal = parseFloat(document.getElementById("pret").value.replace(',', '.')) || 0; const dateAnunt = { titlu: titlu, categorie: document.getElementById("categorie").value, regiune: document.getElementById("regiune").value, pret: pretVal, valuta: document.getElementById("valuta").value, descriere: desc, telefonContact: document.getElementById("contact-telefon").value, telefon2: document.getElementById("contact-telefon2").value.trim(), whatsapp: document.getElementById("whatsapp").value.trim(), status: statusNou, imagini: imagini, autorUID: auth.currentUser.uid, numeAutor: auth.currentUser.displayName, emailAutor: auth.currentUser.email, dataPublicare: serverTimestamp() }; const idEdit = document.getElementById("edit-id-anunt").value; if(idEdit) { await updateDoc(doc(db, "anunturi", idEdit), dateAnunt); if(statusNou === 'suspect') alert(mesajFinal); else alert(window.limbaCurenta === 'RO' ? "Actualizat cu succes!" : "Успешно обновлено!"); } else { dateAnunt.vizualizari = 0; dateAnunt.favoritedBy = []; await addDoc(collection(db, "anunturi"), dateAnunt); alert(mesajFinal); } if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'none'; } catch(err) { alert(err.message); } }); }
 
         window.editeazaAnunt = function(id) { 
             const a = window.toateAnunturile.find(x => x.id === id); 
@@ -1191,6 +1198,66 @@
             document.getElementById('nume-fisier-foto').innerText = window.limbaCurenta === 'RO' ? "Fișiere existente încărcate" : "Существующие файлы загружены"; 
             document.getElementById('text-conversie-info').innerText = ""; 
             if(document.getElementById('modal-adaugare')) document.getElementById('modal-adaugare').style.display = 'flex'; 
+        }
+
+        window.toggleFavorite = async function(id) {
+            if(!auth.currentUser) {
+                alert(window.limbaCurenta === 'RO' ? "Vă rugăm să vă autentificați pentru a adăuga anunțul la favorite!" : "Пожалуйста, авторизуйтесь, чтобы добавить в избранное!");
+                document.getElementById('modal-login').style.display = 'flex';
+                return;
+            }
+            const a = window.toateAnunturile.find(x => x.id === id);
+            if(!a) return;
+            
+            const uid = auth.currentUser.uid;
+            if(!a.favoritedBy) a.favoritedBy = [];
+            
+            let isFav = a.favoritedBy.includes(uid);
+            const anuntRef = doc(db, "anunturi", id);
+
+            try {
+                if(isFav) {
+                    await updateDoc(anuntRef, { favoritedBy: arrayRemove(uid) });
+                    a.favoritedBy = a.favoritedBy.filter(item => item !== uid);
+                    alert(window.limbaCurenta === 'RO' ? "Anunțul a fost eliminat din favorite." : "Объявление удалено из избранного.");
+                } else {
+                    await updateDoc(anuntRef, { favoritedBy: arrayUnion(uid) });
+                    a.favoritedBy.push(uid);
+                    alert(window.limbaCurenta === 'RO' ? "Anunțul a fost adăugat la favorite!" : "Объявление добавлено в избранное!");
+                }
+                // Reîmprospėtăm pagina de detalii pentru a actualiza butonul
+                deschideDetalii(id);
+            } catch(err) {
+                alert("Eroare: " + err.message);
+            }
+        }
+
+        window.partajeazaAnunt = function(titlu) {
+            if(navigator.share) {
+                navigator.share({
+                    title: titlu,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert(window.limbaCurenta === 'RO' ? "Linkul a fost copiat în clipboard!" : "Ссылка скопирована в буфер обмена!");
+            }
+        }
+
+        window.raporteazaAnunt = function(id) {
+            let motiv = prompt(window.limbaCurenta === 'RO' ? "Introduceți motivul raportării:" : "Введите причину жалобы:");
+            if(motiv) {
+                const templateParams = {
+                    email: auth.currentUser ? auth.currentUser.email : 'anonim@site.com',
+                    message: `RAPORT ANUNȚ ID: ${id}\nMotiv: ${motiv}`
+                };
+                emailjs.send('default_service', 'template_xz3tu8g', templateParams)
+                    .then(() => {
+                        alert(window.limbaCurenta === 'RO' ? "Raportul a fost trimis administratorului. Vă mulțumim!" : "Жалоба отправлена администратору. Спасибо!");
+                    }, (err) => {
+                        alert("Eroare: " + JSON.stringify(err));
+                    });
+            }
         }
 
         window.deseneazaAnunturi = function() { 
@@ -1223,7 +1290,12 @@
                 if(per) { 
                     per.innerHTML = ""; 
                     if(auth.currentUser) { 
-                        const listaPers = window.toateAnunturile.filter(a => a.autorUID === auth.currentUser.uid && a.status === window.stareTabCurent); 
+                        let listaPers = [];
+                        if(window.stareTabCurent === 'favorite') {
+                            listaPers = window.toateAnunturile.filter(a => a.favoritedBy && a.favoritedBy.includes(auth.currentUser.uid));
+                        } else {
+                            listaPers = window.toateAnunturile.filter(a => a.autorUID === auth.currentUser.uid && a.status === window.stareTabCurent); 
+                        }
                         if(listaPers.length === 0) per.innerHTML = `<p style="text-align:center;">${msgUserGol}</p>`; 
                         else listaPers.forEach(a => per.innerHTML += genereazaCard(a, true)); 
                     } 
@@ -1237,6 +1309,7 @@
                 let a = d.data(); 
                 a.id = d.id; 
                 if(!a.status) a.status='activ'; 
+                if(!a.favoritedBy) a.favoritedBy = [];
                 window.toateAnunturile.push(a); 
             }); 
             window.toateAnunturile.sort((x, y) => {
@@ -1256,17 +1329,19 @@
             let clasaSuspect = a.status === 'suspect' ? 'suspect' : ''; 
             let valutaSimbol = a.valuta || 'MDL'; 
             let viz = a.vizualizari || 0;
+            let favCount = a.favoritedBy ? a.favoritedBy.length : 0;
             let txtViz = window.limbaCurenta === 'RO' ? 'vizualizări' : 'просмотров';
+            let txtFav = window.limbaCurenta === 'RO' ? 'favorite' : 'избранных';
             
             if(inCont) { 
                 if(a.status === 'suspect' && window.rolUtilizatorGlobal === 'super_admin') { 
                     actiuni = `<div class="actiuni-anunt"><button class="btn-actiune" style="background:#27ae60;" onclick="aprobaAnunt('${a.id}')">${d.btnAproba}</button><button class="btn-actiune btn-edit" onclick="editeazaAnunt('${a.id}')">${d.btnRedacteaza}</button><button class="btn-actiune btn-sterge" onclick="stergeAnuntCuAvertisment('${a.id}', '${a.emailAutor}')">${d.btnStergeAvertisment}</button></div>`; 
-                } else { 
+                } else if(window.stareTabCurent !== 'favorite') { 
                     let btnRidicare = (window.rolUtilizatorGlobal === 'super_admin' || (window.dateUtilizatorCurent && window.dateUtilizatorCurent.tipCont === 'firma')) ? `<button class="btn-actiune btn-ridica-manual" onclick="ridicaAnunt('${a.id}')">${d.btnRidica}</button>` : `<button class="btn-actiune btn-republica" onclick="ridicaAnunt('${a.id}')">${d.btnRidica}</button>`; 
                     actiuni = `<div class="actiuni-anunt"><button class="btn-actiune btn-edit" onclick="editeazaAnunt('${a.id}')">${d.btnRedacteaza}</button>${btnRidicare}<button class="btn-actiune btn-sterge" onclick="stergeAnuntCuAvertisment('${a.id}', '${a.emailAutor}')">${d.btnStergeAvertisment}</button></div>`; 
                 } 
             } 
-            return `<div style="display:flex; flex-direction:column;"><div class="anunt-card-orizontal ${a.status==='inactiv'?'inactiv':''} ${clasaSuspect}" onclick="deschideDetalii('${a.id}')"><div class="card-img-container"><img src="${img}"></div><div class="card-content"><div><div style="display:flex; justify-content:space-between;"><h3 class="card-titlu">${a.titlu}</h3><div class="card-pret-principal">${a.pret} ${valutaSimbol}</div></div><p class="card-descriere">${a.descriere}</p></div><div class="card-footer-row"><span>📍 ${a.regiune}</span><span>👁️ ${viz} ${txtViz}</span></div></div></div>${actiuni}</div>`; 
+            return `<div style="display:flex; flex-direction:column;"><div class="anunt-card-orizontal ${a.status==='inactiv'?'inactiv':''} ${clasaSuspect}" onclick="deschideDetalii('${a.id}')"><div class="card-img-container"><img src="${img}"></div><div class="card-content"><div><div style="display:flex; justify-content:space-between;"><h3 class="card-titlu">${a.titlu}</h3><div class="card-pret-principal">${a.pret} ${valutaSimbol}</div></div><p class="card-descriere">${a.descriere}</p></div><div class="card-footer-row"><span>📍 ${a.regiune}</span><span>👁️ ${viz} ${txtViz} | ⭐ ${favCount} ${txtFav}</span></div></div></div>${actiuni}</div>`; 
         }
 
         window.ridicaAnunt = async function(id) { 
@@ -1286,7 +1361,6 @@
             const a = window.toateAnunturile.find(x => x.id === id); 
             if(!a) return; 
             
-            // Incrementăm vizualizarea direct în baza de date și actualizăm local
             try {
                 await updateDoc(doc(db, "anunturi", id), {
                     vizualizari: increment(1)
@@ -1309,7 +1383,19 @@
             let waNumar = a.whatsapp ? a.whatsapp.replace(/[^0-9+]/g, '') : (a.telefonContact ? a.telefonContact.replace(/[^0-9+]/g, '') : '');
             let btnWhatsAppHtml = waNumar ? `<a href="https://wa.me/${waNumar}" target="_blank" style="background:#25d366; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; width:100%; display:block; text-align:center; text-decoration:none; margin-top:10px; font-size:14px; box-sizing:border-box;">💬 WhatsApp Chat</a>` : '';
 
-            let htmlContact = `<div style="background:#f8f9fa; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid #ddd; text-align:center;"><div style="font-size:13px; color:#555; margin-bottom:5px;">${lblTelText}</div><div style="font-size:18px; font-weight:bold; color:#27ae60;">${a.telefonContact}</div>${tel2Html}</div><button onclick="document.getElementById('modal-mesaj').style.display='flex'" style="background:#0b5ed7; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:14px;">${d.btnContacteaza}</button>${btnWhatsAppHtml}`; 
+            // Buton Favorite dinamic
+            let isFav = auth.currentUser && a.favoritedBy && a.favoritedBy.includes(auth.currentUser.uid);
+            let favBtnText = isFav ? (window.limbaCurenta === 'RO' ? '❤️ Șterge din favorite' : '❤️ Удалить из избранного') : (window.limbaCurenta === 'RO' ? '🤍 Adaugă în favorite' : '🤍 В избранное');
+            let favBtnColor = isFav ? '#e74c3c' : '#27ae60';
+            let favActionHtml = `<button onclick="toggleFavorite('${a.id}')" style="background:${favBtnColor}; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:14px; margin-top:10px;">${favBtnText}</button>`;
+            
+            let shareBtnText = window.limbaCurenta === 'RO' ? '🔗 Partajează anunțul' : '🔗 Поделиться';
+            let reportBtnText = window.limbaCurenta === 'RO' ? '⚠️ Raportează un anunț' : '⚠️ Пожаловаться';
+            
+            let shareActionHtml = `<button onclick="partajeazaAnunt('${a.titlu}')" style="background:#34495e; color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:13px; margin-top:10px;">${shareBtnText}</button>`;
+            let reportActionHtml = `<button onclick="raporteazaAnunt('${a.id}')" style="background:#7f8c8d; color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:13px; margin-top:8px;">${reportBtnText}</button>`;
+
+            let htmlContact = `<div style="background:#f8f9fa; padding:15px; border-radius:6px; margin-bottom:15px; border:1px solid #ddd; text-align:center;"><div style="font-size:13px; color:#555; margin-bottom:5px;">${lblTelText}</div><div style="font-size:18px; font-weight:bold; color:#27ae60;">${a.telefonContact}</div>${tel2Html}</div><button onclick="document.getElementById('modal-mesaj').style.display='flex'" style="background:#0b5ed7; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; font-size:14px;">${d.btnContacteaza}</button>${btnWhatsAppHtml}${favActionHtml}${shareActionHtml}${reportActionHtml}`; 
             
             try { 
                 const uDoc = await getDoc(doc(db, "utilizatori", a.autorUID)); 
